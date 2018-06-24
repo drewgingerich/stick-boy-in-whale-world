@@ -6,9 +6,9 @@ using UnityEngine;
 public class BoiGo : MonoBehaviour {
 
 	[Header("Oh shit!")]
-	public float acceleration = 40;
-	public float maxVelocity = 20;
-	public float friction = 2;
+	[SerializeField] float acceleration = 40;
+	[SerializeField] float maxVelocity = 20;
+	[SerializeField] float friction = 2;
 
 	Rigidbody2D rb2d;
 	Vector2 inputDirection;
