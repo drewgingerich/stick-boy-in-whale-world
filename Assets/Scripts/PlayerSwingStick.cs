@@ -26,6 +26,9 @@ public class PlayerSwingStick : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Just the animation for swinging the stick
+	/// </summary>
 	IEnumerator StickIsSwinging() {
 		isSwinging = true;
 		stick.SetActive(true);
