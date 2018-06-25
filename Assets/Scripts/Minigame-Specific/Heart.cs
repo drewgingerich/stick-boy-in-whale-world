@@ -22,13 +22,17 @@ public class Heart : MonoBehaviour {
 
 	public void StartHeart() {
 		isRunning = true;
-		StartCoroutine( heartAttackCountdown() );
+		StartCoroutine( HeartAttackCountdown() );
 	}
 
 	public void StopHeart() {
-		StartCoroutine( heartIsStoppedRoutine() );
+		StartCoroutine( HeartIsStoppedRoutine() );
 	}
 
+	public void TakeDamage( float damage ) {
+		healthLeft -= damage;
+	}
+	
 	/// Refers to Stick.cs
 	public void OnHitByStick() {
 		StartHeart();
@@ -39,7 +43,7 @@ public class Heart : MonoBehaviour {
 		heartHealthSlider.value = healthLeft;
 	}
 
-	IEnumerator heartAttackCountdown() { 
+	IEnumerator HeartAttackCountdown() { 
 		for( float timeLeft = timeBetweenHeartAttacks; timeLeft > 0f; timeLeft -= Time.deltaTime ) {
 			yield return null;
 		}
@@ -47,7 +51,7 @@ public class Heart : MonoBehaviour {
 		isRunning = false;
 	}
 
-	IEnumerator heartIsStoppedRoutine() {
+	IEnumerator HeartIsStoppedRoutine() {
 		while( !isRunning ){
 			healthLeft -= healthLostPerSecond * Time.deltaTime;
 			yield return null;
