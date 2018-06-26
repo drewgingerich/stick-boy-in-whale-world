@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Moves gameobject in localspace to target. Uses frame-timing, not fixedupdate.
+/// Moves gameobject in localspace to target. Uses Update frame-timing, not fixedupdate.
 /// </summary>
 public class SlideToPosition : MonoBehaviour {
 
