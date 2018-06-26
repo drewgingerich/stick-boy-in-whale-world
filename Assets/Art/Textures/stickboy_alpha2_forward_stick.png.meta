@@ -49,7 +49,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0.16
+  spriteTessellationDetail: 1
   textureType: 8
   textureShape: 1
   maxTextureSizeSet: 0
@@ -110,20 +110,35 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline:
-    - - {x: -26.5, y: 24}
-      - {x: -26.5, y: -18}
-      - {x: -21.5, y: -24}
-      - {x: 26.5, y: -24}
-      - {x: 26.5, y: -4}
-      - {x: 10.5, y: 24}
+    - - {x: -3.5, y: -24}
+      - {x: -0.5, y: -24}
+      - {x: -0.5, y: -18}
+      - {x: 4.5, y: -18}
+      - {x: 4.5, y: -3}
+      - {x: -3.5, y: 3}
+      - {x: -3.5, y: 5}
+      - {x: -3.5, y: 23}
+      - {x: -19.5, y: 23}
+      - {x: -19.5, y: 5}
+      - {x: -20.5, y: 3}
+      - {x: -25.5, y: -3}
+      - {x: -25.5, y: -15}
+      - {x: -23.5, y: -18}
+      - {x: -17.5, y: -18}
+      - {x: -17.5, y: -24}
+      - {x: -12.5, y: -24}
+      - {x: -8.5, y: -20}
     physicsShape:
-    - - {x: -18.5, y: 24}
-      - {x: -26.5, y: 21}
-      - {x: -26.5, y: -24}
-      - {x: 23.5, y: -24}
-      - {x: 26.5, y: -22}
-      - {x: 26.5, y: -11}
-      - {x: -0.5, y: 24}
+    - - {x: -19.5, y: 23}
+      - {x: -19.5, y: 3}
+      - {x: -25.5, y: 3}
+      - {x: -25.5, y: -17}
+      - {x: -16.5, y: -24}
+      - {x: -0.5, y: -24}
+      - {x: 4.5, y: -18}
+      - {x: 4.5, y: -3}
+      - {x: -3.5, y: 2}
+      - {x: -3.5, y: 23}
   spritePackingTag: 
   userData: 
   assetBundleName: 
