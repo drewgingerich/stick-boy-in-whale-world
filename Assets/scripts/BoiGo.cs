@@ -6,7 +6,7 @@ using UnityEngine;
 public class BoiGo : MonoBehaviour {
 
 	[Header("Oh shit!")]
-	[SerializeField] float acceleration = 40;
+	[SerializeField] float acceleration = 30;
 	[SerializeField] float maxVelocity = 20;
 	[SerializeField] float friction = 2;
 
