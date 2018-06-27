@@ -24,10 +24,20 @@ public class GolfMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if( currentMode == InputMode.Idle && Input.touchCount > 0 ) {
+		if( currentMode == InputMode.Idle && Input.touchCount > 0 && TouchHelper.IsObjectUnderFinger(Input.touches[0], transform, .5f) ) {
 			StartCoroutine( GolfSwingRoutine() );
 		}
-		
+	}
+
+	void OnDrawGizmos() {
+		if( Input.touchCount > 0 ) {
+			string combinedDebug = "";
+			Gizmos.DrawSphere(Input.touches[0].position, Input.touches[0].radius);
+			foreach( GameObject thisObject in TouchHelper.WhatIsUnderFinger(Input.touches[0], null, .5f)) {
+				combinedDebug += thisObject.name + ", ";
+			}
+			Debug.Log( combinedDebug );
+		}
 	}
 
 	IEnumerator GolfSwingRoutine() {
