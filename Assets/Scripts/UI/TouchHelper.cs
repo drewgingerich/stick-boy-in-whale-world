@@ -40,20 +40,41 @@ public class TouchHelper {
 	/// <summary>
 	/// Sends a ray from the finger to see what gameobjects are underneath.
 	/// </summary>
-	/// <param name="finger"></param>
 	/// <param name="tag">Optionally only return objects with specified Unity Tag</param>
-	/// <returns></returns>
-	public static List<GameObject> WhatIsUnderFinger( Touch finger, string tag = null) {
+	/// <param name="expandRadiusBy">Optionally expand the effective search size of the finger</param>
+	/// <returns>List of all objects if `tag` is not specified or only the objects with the `tag` specified</returns>
+	public static List<GameObject> WhatIsUnderFinger( Touch finger, string tag = null, float expandRadiusBy = 0f) {
 
 		Vector2 origin = GetFingerWorldPosition(finger);
 		float radius = finger.radius;
 		Vector2 direction = Vector2.down;
 		// RaycastHit2D hit = Physics2D.CircleCast( origin, radius, direction );
-		Collider2D[] hits = Physics2D.OverlapCircleAll( origin, radius );
+		Collider2D[] hits = Physics2D.OverlapCircleAll( origin, radius + expandRadiusBy );
 		// Debug.Log( hit );
-		
+		List<GameObject> prunedList = new List<GameObject>();
+		for( int i = 0; i < hits.Length; i++ ) {
+			if( tag == null || hits[i].gameObject.tag == tag ) {
+				prunedList.Add( hits[i].gameObject );
+			}
+		}
 
-		return null;
+		return prunedList;
 
+	}
+
+	/// <summary>
+	/// Is the user tapping on a specific object?
+	/// </summary>
+	/// <param name="target">Object to look for</param>
+	/// <param name="expandRadiusBy">Optionally expand the effective search size of the finger</param>
+	/// <returns></returns>
+	public static bool IsObjectUnderFinger(Touch finger, Transform target, float expandRadiusBy = 0f ) {
+		List<GameObject> possibleTargets = WhatIsUnderFinger( finger, target.tag , expandRadiusBy);
+		foreach( GameObject thisObject in possibleTargets ) {
+			if( thisObject == target.gameObject ){
+				return true;
+			}
+		}
+		return false;
 	}
 }
