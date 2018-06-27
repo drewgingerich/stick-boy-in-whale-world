@@ -9,6 +9,7 @@ public class GolfMovement : MonoBehaviour {
 	
 	[Header("Balance")]
 	public float movementForceModifier = .1f;
+	public bool useTapToMove = false;
 	
 	[Header("Current State")]
 	[SerializeField] InputMode currentMode;
@@ -26,18 +27,23 @@ public class GolfMovement : MonoBehaviour {
 		if( currentMode == InputMode.Idle && Input.touchCount > 0 ) {
 			StartCoroutine( GolfSwingRoutine() );
 		}
+		
 	}
 
 	IEnumerator GolfSwingRoutine() {
 		Debug.Log("Touch Down");
 		lineRenderer.enabled = true;
 		currentMode = InputMode.ReceivingInput;
-		lineRenderer.SetPosition(0, transform.position);
+		
 		Vector3 touchPos = Vector3.zero;
 		while( Input.touches[0].phase != TouchPhase.Ended && Input.touches[0].phase != TouchPhase.Canceled ) {
-			Debug.Log(Input.touches[0].phase);
+			// Debug.Log(Input.touches[0].phase);
+			Vector3 playerPosition = transform.position;
+			playerPosition.z -= 2f;
+			lineRenderer.SetPosition(0, playerPosition );
+			Debug.Log( TouchHelper.WhatIsUnderFinger( Input.touches[0] ) );
 			touchPos = TouchHelper.GetFingerWorldPosition(Input.touches[0]);
-			touchPos.z = transform.position.z;
+			touchPos.z = transform.position.z - 2;
 			TouchHelper.RotateToFace2D(rbod, touchPos );
 			lineRenderer.SetPosition(1, touchPos );
 			yield return null;

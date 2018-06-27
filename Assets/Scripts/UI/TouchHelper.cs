@@ -36,4 +36,24 @@ public class TouchHelper {
 		float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 		original.MoveRotation( angle );
 	}
+
+	/// <summary>
+	/// Sends a ray from the finger to see what gameobjects are underneath.
+	/// </summary>
+	/// <param name="finger"></param>
+	/// <param name="tag">Optionally only return objects with specified Unity Tag</param>
+	/// <returns></returns>
+	public static List<GameObject> WhatIsUnderFinger( Touch finger, string tag = null) {
+
+		Vector2 origin = GetFingerWorldPosition(finger);
+		float radius = finger.radius;
+		Vector2 direction = Vector2.down;
+		// RaycastHit2D hit = Physics2D.CircleCast( origin, radius, direction );
+		Collider2D[] hits = Physics2D.OverlapCircleAll( origin, radius );
+		// Debug.Log( hit );
+		
+
+		return 
+
+	}
 }
