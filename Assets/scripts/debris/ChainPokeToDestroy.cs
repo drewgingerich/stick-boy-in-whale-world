@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class ChainPokeToDestroy : MonoBehaviour {
 
 	[SerializeField] float secondsToDestroy = 2f;
@@ -11,23 +12,46 @@ public class ChainPokeToDestroy : MonoBehaviour {
 	bool chainPoke;
 	float timeChainPoked;
 
+	Animator animator;
+
+	int spawnHash = Animator.StringToHash("Spawn");
+	int wobbleHash = Animator.StringToHash("Wobble");
+	int breakHash = Animator.StringToHash("Break");
+
+	void Awake() {
+		gameObject.SetActive(false);
+	}
+
 	void Update() {
 		timeSinceLastHit += Time.deltaTime;
 	}
-	public void Hit() {
+
+	public void StartMinigame() {
+		gameObject.SetActive(true);
+		timeSinceLastHit = 0;
+		animator.SetTrigger(spawnHash);
+	}
+	
+	public void Poke() {
 		if (timeSinceLastHit <= chainPokeMinimumTime)
 			chainPoke = true;
-		if (chainPoke)
+		if (chainPoke) {
 			timeChainPoked += Time.deltaTime;
+			animator.SetTrigger(wobbleHash);
+		}
 		if (timeChainPoked >= secondsToDestroy)
-			Destroy();
+			Break();
 		timeSinceLastHit = 0;
-		// Handle hit animations
 	}
 
-	void Destroy() {
-		Destroy(gameObject);
-		// Handle destruction animations
+	public void Break() {
+		animator.SetTrigger(breakHash);
+		StartCoroutine(BreakRoutine());
 	}
 
+	IEnumerator BreakRoutine() {
+		yield return new WaitForSeconds(2);
+		gameObject.SetActive(false);
+		EventManager.instance.FindNextEvent();
+	}
 }
