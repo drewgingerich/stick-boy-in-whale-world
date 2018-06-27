@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HeartGameManager : MonoBehaviour {
-	public enum chamberDirection { TopLeft, TopRight, BottomLeft, BottomRight, LAST };
+	public enum ChamberDirection { TopLeft, TopRight, BottomLeft, BottomRight, LAST };
 	[SerializeField] Heart heart;
 
 	[Header("Balance")]
@@ -16,33 +16,33 @@ public class HeartGameManager : MonoBehaviour {
 
 	[Header("Game State")]
 	/// <summary> The current simon-says pattern. Pattern is additive. </summary>
-	[SerializeField] List<chamberDirection> currentPattern;
-	[SerializeField] List<chamberDirection> buttonsPressedThisFrame;
+	[SerializeField] List<ChamberDirection> currentPattern;
+	[SerializeField] List<ChamberDirection> buttonsPressedThisFrame;
 	bool minigameRunning = false;
 
 	[Header("UISetup")]
-	[SerializeField] Button tlButton;
-	[SerializeField] Button trButton;
-	[SerializeField] Button blButton;
-	[SerializeField] Button brButton;
+	[SerializeField] HeartChamber tlChamber;
+	[SerializeField] HeartChamber trChamber;
+	[SerializeField] HeartChamber blChamber;
+	[SerializeField] HeartChamber brChamber;
 	[SerializeField] ColorBlock highlightedButtonColors;
 
 	/// <summary> All four buttons in a list </summary>
-	[SerializeField] List<Button> chamberButtons = new List<Button>();
+	[SerializeField] List<HeartChamber> chambers = new List<HeartChamber>();
 
 	void Awake() {
-		chamberButtons.Add( tlButton );
-		chamberButtons.Add( trButton );
-		chamberButtons.Add( blButton );
-		chamberButtons.Add( brButton );
-		for( int i = 0; i < chamberButtons.Count; i++ ) {
-			// Debug.Log(i);
-			// See https://docs.unity3d.com/ScriptReference/UI.Button-onClick.html
-			// chamberButtons[i].onClick.AddListener( (delegate {
-			// 	ButtonPressed( (chamberDirection) i ); 
-			// } ) );
-			chamberButtons[i].interactable = false;
-		}
+		chambers.Add( tlChamber );
+		chambers.Add( trChamber );
+		chambers.Add( blChamber );
+		chambers.Add( brChamber );
+		// for( int i = 0; i < chambers.Count; i++ ) {
+		// 	// Debug.Log(i);
+		// 	// See https://docs.unity3d.com/ScriptReference/UI.Button-onClick.html
+		// 	// chamberButtons[i].onClick.AddListener( (delegate {
+		// 	// 	ButtonPressed( (chamberDirection) i ); 
+		// 	// } ) );
+		// 	chambers[i].interactable = false;
+		// }
 	}
 
 	/// <summary>
@@ -53,9 +53,10 @@ public class HeartGameManager : MonoBehaviour {
 		buttonsPressedThisFrame.Clear();
 	}
 
+	/// <param name="thisDirection">Utilizes the order found in <see cref="ChamberDirection" /> </param>
 	public void ButtonPressed( int thisDirection ){
 		Debug.Log( thisDirection );
-		buttonsPressedThisFrame.Add( (chamberDirection) thisDirection );
+		buttonsPressedThisFrame.Add( (ChamberDirection) thisDirection );
 		// TODO: also animate the button being pressed?
 	}
 
@@ -67,7 +68,7 @@ public class HeartGameManager : MonoBehaviour {
 
 	void ResetCurrentPattern() {
 		currentPattern.Clear();
-		currentPattern.Add( (chamberDirection) Random.Range( 0, (int) chamberDirection.LAST ) );
+		currentPattern.Add( (ChamberDirection) Random.Range( 0, (int) ChamberDirection.LAST ) );
 	}
 
 	/// <summary>
@@ -76,14 +77,14 @@ public class HeartGameManager : MonoBehaviour {
 	IEnumerator TurnRoutine() {
 		minigameRunning = true;
 		// Generate new pattern item
-		currentPattern.Add( (chamberDirection) Random.Range( 0, (int)chamberDirection.LAST ) );
+		currentPattern.Add( (ChamberDirection) Random.Range( 0, (int)ChamberDirection.LAST ) );
 
 		// Display pattern
 		yield return StartCoroutine( DemoPatternRoutine( currentPattern ));
 
 		// Get user inputs
-		foreach( Button thisButton in chamberButtons ) {
-			thisButton.interactable = true;
+		foreach( HeartChamber thisChamber in chambers ) {
+			// thisChamber.interactable = true;
 		}
 		bool listening = true;
 		int currentStepInPattern = 0;
@@ -113,11 +114,12 @@ public class HeartGameManager : MonoBehaviour {
 	/// <summary>
 	/// Demonstrates the chamber pattern. User cannot click until the routine is done
 	/// </summary>
-	IEnumerator DemoPatternRoutine( List<chamberDirection> thisPattern ) {
-		foreach( chamberDirection thisDirection in thisPattern ) {
+	IEnumerator DemoPatternRoutine( List<ChamberDirection> thisPattern ) {
+		foreach( ChamberDirection thisDirection in thisPattern ) {
 			// change color of chamber?
-			// start camera shaking
-			yield return StartCoroutine( ShakeChamber( chamberButtons[(int)thisDirection] ));
+			// start chamber shaking
+			// yield return StartCoroutine( ShakeChamber( chambers[(int)thisDirection] ));
+			chambers[(int)thisDirection].Shake( .5f );
 			// short time between chamber shakes
 			yield return new WaitForSeconds( timeBetweenChamberShake );
 		}
@@ -139,8 +141,8 @@ public class HeartGameManager : MonoBehaviour {
 	}
 
 	void EndOfTurnCleanup() {
-		foreach( Button thisButton in chamberButtons ) {
-			thisButton.interactable = false;
+		foreach( HeartChamber thisChamber in chambers ) {
+			// thisChamber.interactable = false;
 		}
 		minigameRunning = false;
 	}

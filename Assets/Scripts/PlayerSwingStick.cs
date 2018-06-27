@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSwingStick : MonoBehaviour {
+	// public enum StickInteractionType{ Poke, Swing, LAST };
+
+
+	[Header("Current State")]
+	[SerializeField] bool isSwinging = false;
+	// public StickInteractionType currentStickInteraction;
+
+	[Header("Setup")]
 	public GameObject stick;
 	// private float stickExpandedSize;
 	public float swingTime;
-	private bool isSwinging = false;
 
 	void Start() {
 		isSwinging = false;
@@ -19,7 +26,7 @@ public class PlayerSwingStick : MonoBehaviour {
 		}
 	}
 
-	void SwingStick() {
+	public void SwingStick() {
 		if( !isSwinging ){
 			// Physics2D.CircleCast()
 			StartCoroutine( StickIsSwinging() );
