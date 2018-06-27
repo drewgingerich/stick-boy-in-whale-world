@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LungGame : MonoBehaviour {
 
-	public event System.Action OnMiniGameEnd = delegate { };
-
 	[SerializeField] Lung leftLung;
 	[SerializeField] Lung rightLung;
 	[SerializeField] float breathTimeVariationUnit = 0.25f;
@@ -115,7 +113,7 @@ public class LungGame : MonoBehaviour {
 
 	void EndMinigame() {
 		Debug.Log("Minigame success!");
-		OnMiniGameEnd();
+		EventManager.instance.FindNextEvent();
 		playingMinigame = false;
 		unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
 	}
