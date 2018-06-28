@@ -57,7 +57,7 @@ public class PlayerSwingStick : MonoBehaviour {
 	/// </summary>
 	/// <returns>Returns the raycast collision itself so that the position of contact can be preserved. Returns an empty `RaycastHit2D` if the object hit does not contain a `<see cref="StickInteractable" />`. You can evaluate a `RaycastHit2D` as a boolean to determine if this function succeeded or failed.</returns>
 	RaycastHit2D GetFirstObjHitByStick( Touch finger ) {
-		Vector2 tapLocation = TouchHelper.GetFingerWorldPosition(finger);
+		Vector2 tapLocation = TouchHelper.GetTouchWorldPosition(finger);
 		float radius = finger.radius + expandTouchRadiusBy;
 		Vector2 direction = tapLocation - (Vector2) transform.position;
 		RaycastHit2D hit = Physics2D.CircleCast( tapLocation, radius, direction.normalized, Mathf.Max( maxTapDistance, direction.magnitude ) ); 

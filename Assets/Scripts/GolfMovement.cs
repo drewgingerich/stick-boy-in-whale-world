@@ -15,6 +15,7 @@ public class GolfMovement : MonoBehaviour {
 	[SerializeField] InputMode currentMode;
 	LineRenderer lineRenderer;
 	Rigidbody2D rbod;
+	FingerObj fingerOfInterest;
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +25,7 @@ public class GolfMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if( currentMode == InputMode.Idle && Input.touchCount > 0 && TouchHelper.IsObjectUnderFinger(Input.touches[0], transform, .5f) ) {
+		if( currentMode == InputMode.Idle && Input.touchCount > 0 && TouchHelper.IsObjectUnderTouch(Input.touches[0], transform, .5f) ) {
 			StartCoroutine( GolfSwingRoutine() );
 		}
 	}
@@ -52,7 +53,7 @@ public class GolfMovement : MonoBehaviour {
 			playerPosition.z -= 2f;
 			lineRenderer.SetPosition(0, playerPosition );
 			// Debug.Log( TouchHelper.WhatIsUnderFinger( Input.touches[0] ) );
-			touchPos = TouchHelper.GetFingerWorldPosition(Input.touches[0]);
+			touchPos = TouchHelper.GetTouchWorldPosition(Input.touches[0]);
 			touchPos.z = transform.position.z - 2;
 			TouchHelper.RotateToFace2D(rbod, touchPos );
 			lineRenderer.SetPosition(1, touchPos );
