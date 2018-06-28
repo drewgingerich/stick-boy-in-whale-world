@@ -4,22 +4,26 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class StickInteractable : MonoBehaviour {
-
 	public UnityEvent OnPokedByStick;
-	// public bool requireSpecificStickInteraction = false;
-	// public PlayerSwingStick.StickInteractionType desiredStickInteraction = PlayerSwingStick.StickInteractionType.Poke;
+	public GameObject onHitSparks;
 
 	void OnCollisionEnter2D(Collision2D collision) {
 		if( collision.gameObject.CompareTag("Stick") ) {
-			// PlayerSwingStick.StickInteractionType thisStickInteraction = collision.transform.GetComponentInParent<PlayerSwingStick>().currentStickInteraction;
-			// if( thisStickInteraction == desiredStickInteraction ){
-			OnPokedByStick.Invoke();
-			SendMessage("Poked");
-			// } else {
-			// 	Debug.Log( "Player used wrong stick interaction type of " + thisStickInteraction + " instead of  " + desiredStickInteraction + " on " + gameObject);
-			// }
-			
+			HitByStick();
 		}
+	}
+
+	/// <summary>
+	/// Notifies that we've been hit! 🚢
+	/// </summary>
+	/// <param name="hit">Look at the documentation of <see cref="PlayerSwingStick.GetFirstObjHitByStick"/> for more details</param>
+	public void HitByStick( RaycastHit2D hit = new RaycastHit2D() ) {
+		OnPokedByStick.Invoke();
+		SendMessage("Poked");
+		if( onHitSparks != null ) {
+			Instantiate( onHitSparks, hit.point, onHitSparks.transform.rotation );
+		}
+		Debug.Log( "Yarr, " + gameObject + " has been hit by a stick!" );
 	}
 
 }

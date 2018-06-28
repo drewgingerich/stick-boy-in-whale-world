@@ -31,12 +31,12 @@ public class GolfMovement : MonoBehaviour {
 
 	void OnDrawGizmos() {
 		if( Input.touchCount > 0 ) {
-			string combinedDebug = "";
-			Gizmos.DrawSphere(Input.touches[0].position, Input.touches[0].radius);
-			foreach( GameObject thisObject in TouchHelper.WhatIsUnderFinger(Input.touches[0], null, .5f)) {
-				combinedDebug += thisObject.name + ", ";
-			}
-			Debug.Log( combinedDebug );
+			// string combinedDebug = "";
+			Gizmos.DrawWireSphere(Input.touches[0].position, Input.touches[0].radius);
+			// foreach( GameObject thisObject in TouchHelper.WhatIsUnderFinger(Input.touches[0], null, .5f)) {
+			// 	combinedDebug += thisObject.name + ", ";
+			// }
+			// Debug.Log( combinedDebug );
 		}
 	}
 
@@ -51,7 +51,7 @@ public class GolfMovement : MonoBehaviour {
 			Vector3 playerPosition = transform.position;
 			playerPosition.z -= 2f;
 			lineRenderer.SetPosition(0, playerPosition );
-			Debug.Log( TouchHelper.WhatIsUnderFinger( Input.touches[0] ) );
+			// Debug.Log( TouchHelper.WhatIsUnderFinger( Input.touches[0] ) );
 			touchPos = TouchHelper.GetFingerWorldPosition(Input.touches[0]);
 			touchPos.z = transform.position.z - 2;
 			TouchHelper.RotateToFace2D(rbod, touchPos );

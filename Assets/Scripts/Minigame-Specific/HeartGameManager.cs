@@ -18,17 +18,16 @@ public class HeartGameManager : MonoBehaviour {
 	/// <summary> The current simon-says pattern. Pattern is additive. </summary>
 	[SerializeField] List<ChamberDirection> currentPattern;
 	[SerializeField] List<ChamberDirection> buttonsPressedThisFrame;
-	bool minigameRunning = false;
+	[SerializeField] bool minigameRunning = false;
 
-	[Header("UISetup")]
+	[Header("UI Setup")]
 	[SerializeField] HeartChamber tlChamber;
 	[SerializeField] HeartChamber trChamber;
 	[SerializeField] HeartChamber blChamber;
 	[SerializeField] HeartChamber brChamber;
-	[SerializeField] ColorBlock highlightedButtonColors;
 
 	/// <summary> All four buttons in a list </summary>
-	[SerializeField] List<HeartChamber> chambers = new List<HeartChamber>();
+	List<HeartChamber> chambers = new List<HeartChamber>();
 
 	void Awake() {
 		chambers.Add( tlChamber );
@@ -54,7 +53,7 @@ public class HeartGameManager : MonoBehaviour {
 	}
 
 	/// <param name="thisDirection">Utilizes the order found in <see cref="ChamberDirection" /> </param>
-	public void ButtonPressed( int thisDirection ){
+	public void ChamberHit( int thisDirection ){
 		Debug.Log( thisDirection );
 		buttonsPressedThisFrame.Add( (ChamberDirection) thisDirection );
 		// TODO: also animate the button being pressed?
@@ -123,21 +122,6 @@ public class HeartGameManager : MonoBehaviour {
 			// short time between chamber shakes
 			yield return new WaitForSeconds( timeBetweenChamberShake );
 		}
-	}
-	
-	IEnumerator ShakeChamber( Button thisButton ) {
-		Quaternion originalRotation = thisButton.transform.rotation;
-		ColorBlock originalColors = thisButton.colors;
-		thisButton.colors = highlightedButtonColors;
-		for( float timeLeft = durationChamberShake; timeLeft > 0f; timeLeft -= Time.deltaTime ) {
-			// Stolen from http://wiki.unity3d.com/index.php/Camera_Shake
-			Vector3 rotationAmount = Random.insideUnitSphere * shakeAmount;
-			rotationAmount.x = rotationAmount.y = 0; // Only rotate on Z axis
-			thisButton.gameObject.transform.localRotation = Quaternion.Euler (rotationAmount);
-			yield return null;
-		}
-		thisButton.transform.rotation = originalRotation;
-		thisButton.colors = originalColors;
 	}
 
 	void EndOfTurnCleanup() {
