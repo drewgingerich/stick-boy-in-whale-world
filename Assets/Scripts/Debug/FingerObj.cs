@@ -44,18 +44,20 @@ public class FingerObj : MonoBehaviour {
 				Vector2 distance = touch.position - originTouch.position;
 				if( distance.magnitude > TouchManager.inst.dragDetectionDistPixels ) {
 					currentState = TouchState.Dragging;
-					OnStatusChange( this );
+					if( OnStatusChange != null)
+						OnStatusChange( this );
 				}
 			} 
 
 			// or are we to 💀 die
 			if ( IsFingerLeaving(this) ) {
 				currentState = TouchState.Ending;
-				OnStatusChange( this );
+				if( OnStatusChange != null)
+					OnStatusChange( this );
 				Destroy( this.gameObject );
 			}
-			
-
+			if( OnFingerUpdated != null )
+				OnFingerUpdated( this );
 		}
 	}
 

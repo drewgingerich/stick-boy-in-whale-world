@@ -25,12 +25,6 @@ public class TouchManager : MonoBehaviour {
 	/// Once all <see cref="FingerObj.UpdateFinger"/> functions have been called
 	/// </summary>
 	public event ManagerEvent FingersDoneUpdating;
-	/// <summary>
-	/// The moment _right before_ a finger is about to be destroyed. Delegate event must accept `FingerObj` as the argument
-	/// </summary>
-	// public event FingerEvent OnFingerUp;
-	// public event FingerEvent OnTapComplete;
-	// public event FingerEvent OnDragComplete;
 
 	[Header("Current State")]
 	[SerializeField] List<FingerObj> currentFingers = new List<FingerObj>();
@@ -58,17 +52,20 @@ public class TouchManager : MonoBehaviour {
 			if( thisTouch.phase == TouchPhase.Began ) {
 				// we must have a new baby finger!
 				FingerObj newFinger = Instantiate( fingerPrefab, TouchHelper.GetTouchWorldPosition( thisTouch ), Quaternion.identity );
+				// Instantiate all member variables the ugly way!
 				newFinger.fingerID = thisTouch.fingerId;
 				newFinger.transform.position = TouchHelper.GetTouchWorldPosition( thisTouch );
 				newFinger.touchLastFrame = newFinger.touch = newFinger.originTouch = thisTouch;
 				currentFingers.Add( newFinger );
-				OnNewFinger( newFinger );	
+				if( OnNewFinger != null )
+					OnNewFinger( newFinger );	
 			}
 		}
 		foreach( FingerObj thisFinger in currentFingers ) {
 			thisFinger.UpdateFinger();
 		}
-		// FingersDoneUpdating();
+		if( FingersDoneUpdating != null )
+			FingersDoneUpdating();
 	}
 
 	/// <summary>
