@@ -20,17 +20,17 @@ public class TouchManager : MonoBehaviour {
 	/// <summary>
 	/// Once a new finger is being tracked. Delegate event must accept `FingerObj` as the argument
 	/// </summary>
-	public static event FingerEvent OnNewFinger;
+	public event FingerEvent OnNewFinger;
 	/// <summary>
 	/// Once all <see cref="FingerObj.UpdateFinger"/> functions have been called
 	/// </summary>
-	public static event ManagerEvent FingersDoneUpdating;
+	public event ManagerEvent FingersDoneUpdating;
 	/// <summary>
 	/// The moment _right before_ a finger is about to be destroyed. Delegate event must accept `FingerObj` as the argument
 	/// </summary>
-	public static event FingerEvent OnFingerUp;
-	public static event FingerEvent OnTapComplete;
-	public static event FingerEvent OnDragComplete;
+	// public event FingerEvent OnFingerUp;
+	// public event FingerEvent OnTapComplete;
+	// public event FingerEvent OnDragComplete;
 
 	[Header("Current State")]
 	[SerializeField] List<FingerObj> currentFingers = new List<FingerObj>();
@@ -61,14 +61,14 @@ public class TouchManager : MonoBehaviour {
 				newFinger.fingerID = thisTouch.fingerId;
 				newFinger.transform.position = TouchHelper.GetTouchWorldPosition( thisTouch );
 				newFinger.touchLastFrame = newFinger.touch = newFinger.originTouch = thisTouch;
-				OnNewFinger( newFinger );
-				
+				currentFingers.Add( newFinger );
+				OnNewFinger( newFinger );	
 			}
 		}
 		foreach( FingerObj thisFinger in currentFingers ) {
 			thisFinger.UpdateFinger();
 		}
-		FingersDoneUpdating();
+		// FingersDoneUpdating();
 	}
 
 	/// <summary>
@@ -79,7 +79,7 @@ public class TouchManager : MonoBehaviour {
 	public void FingerDestroyed( int destroyedID ) {
 		for( int i = 0; i < currentFingers.Count; i++ ) {
 			if( currentFingers[i].fingerID == destroyedID ) {
-				OnFingerUp(currentFingers[i]);
+				// OnFingerUp(currentFingers[i]);
 				currentFingers.RemoveAt(i);
 				return;
 			}

@@ -10,6 +10,16 @@ public class FingerObj : MonoBehaviour {
 	/// Finger Touches start as a `Tap` and end as `Ending`, however they may become `Dragging` if the finger moves significantly.
 	/// </summary>
 	public enum TouchState{ Tap, Dragging, Ending, LAST }
+	public delegate void StatusChange(FingerObj callback);
+	/// <summary>
+	/// Subscribe to get updates when the touchstate changes. Takes `FingerObj` as the only argument. 
+	/// </summary>
+	public event StatusChange OnStatusChange;
+	/// <summary>
+	/// Fires every update so that order is preserved where necessary. Takes `FingerObj` as the only argument. 
+	/// </summary>
+	public event StatusChange OnFingerUpdated;
+
 	public TouchState currentState = TouchState.Tap;
 	public int fingerID;
 	public Touch touch;
@@ -20,10 +30,13 @@ public class FingerObj : MonoBehaviour {
 
 	public void UpdateFinger() {
 		if( !calledThisFrameYet ) {
+			gameObject.name = "Finger - " + fingerID;
 			calledThisFrameYet = true;
 			touchLastFrame = touch;
 			touch = TouchHelper.GetTouchByFingerID( fingerID );
-			transform.position = TouchHelper.GetTouchWorldPosition( touch );
+			Vector3 newPos = TouchHelper.GetTouchWorldPosition( touch );
+			newPos.z = 0f;
+			transform.position = newPos;
 
 			// determine the 🗾 state
 			if( currentState == TouchState.Tap ) {
@@ -31,15 +44,18 @@ public class FingerObj : MonoBehaviour {
 				Vector2 distance = touch.position - originTouch.position;
 				if( distance.magnitude > TouchManager.inst.dragDetectionDistPixels ) {
 					currentState = TouchState.Dragging;
+					OnStatusChange( this );
 				}
 			} 
 
 			// or are we to 💀 die
 			if ( IsFingerLeaving(this) ) {
 				currentState = TouchState.Ending;
+				OnStatusChange( this );
 				Destroy( this.gameObject );
 			}
 			
+
 		}
 	}
 
@@ -56,6 +72,7 @@ public class FingerObj : MonoBehaviour {
 	/// </summary>
 	void OnDestroy() {
 		TouchManager.inst.FingerDestroyed(fingerID);
+		// Debug.Log(gameObject.name + " is being destroyed.");
 	}
 
 	/// <summary>

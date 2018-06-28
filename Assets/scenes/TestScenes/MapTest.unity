@@ -1998,7 +1998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightedColor: {r: 0, g: 0, b: 0, a: 0}
+  shakeOnStart: 0
+  defaultShakeDuration: 1
   shakeAmountModifier: 1
   shakeCurve:
     serializedVersion: 2
@@ -2470,7 +2471,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468333386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cdb5b08393d2445e8280bbcb0d233b0, type: 3}
   m_Name: 
@@ -2605,6 +2606,7 @@ MonoBehaviour:
   movementForceModifier: 15
   useTapToMove: 0
   currentMode: 0
+  fingerOfInterest: {fileID: 0}
 --- !u!58 &1468333391
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2621,6 +2623,50 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!1 &1510489314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1510489316}
+  - component: {fileID: 1510489315}
+  m_Layer: 0
+  m_Name: TouchManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1510489315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510489314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe9fd816c00a194881cbf15edda355c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFingers: []
+  dragDetectionDistPixels: 20
+  fingerPrefab: {fileID: 114204280562005528, guid: c0c2da3e587d8704494323b4a02f0a8b,
+    type: 2}
+--- !u!4 &1510489316
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510489314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.169485, y: 1.4437323, z: -0.07128817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657495584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2702,7 +2748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightedColor: {r: 0, g: 0, b: 0, a: 0}
+  shakeOnStart: 0
+  defaultShakeDuration: 1
   shakeAmountModifier: 1
   shakeCurve:
     serializedVersion: 2
@@ -2924,7 +2971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightedColor: {r: 0, g: 0, b: 0, a: 0}
+  shakeOnStart: 0
+  defaultShakeDuration: 1
   shakeAmountModifier: 1
   shakeCurve:
     serializedVersion: 2
@@ -3174,7 +3222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightedColor: {r: 0, g: 0, b: 0, a: 0}
+  shakeOnStart: 0
+  defaultShakeDuration: 1
   shakeAmountModifier: 1
   shakeCurve:
     serializedVersion: 2
