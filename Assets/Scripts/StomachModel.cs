@@ -12,7 +12,7 @@ using UnityEngine;
 public class StomachModel : MonoBehaviour {
 	public const int N_WALLS = 5;
 	public const int N_OBSTACLES = 20;
-	public const int BUFFERFROMBOTTOM = 307;//(75/*height of vehicle*/ + 20/*buffer*/);
+	public const int BUFFER = 10;
 
 	public GameObject PollutionPrefab;
 	public GameObject WallPrefab;
@@ -26,13 +26,25 @@ public class StomachModel : MonoBehaviour {
 
 	public enum State { Play, Paused, GameOver, Won };
 
+	#region Transform Shortcuts
+	private float x { get {return transform.position.x;} set {transform.position = new Vector3(value, transform.position.y, transform.position.z);} }
+	private float y { get {return transform.position.y;} set {transform.position = new Vector3(transform.position.x, value, transform.position.z);} }
+	private float z { get {return transform.position.z;} set {transform.position = new Vector3(transform.position.x, transform.position.y, value);} }
+	private float xo{ get {return transform.rotation.x;} /*set {transform.Rotate(value, transform.rotation.y, transform.rotation.z);}*/ }
+	private float yo{ get {return transform.rotation.y;} /*set {transform.Rotate(transform.rotation.x, value, transform.rotation.z);}*/ }
+	private float zo{ get {return transform.rotation.z;} /*set {transform.Rotate(transform.rotation.x, transform.rotation.y, value);}*/ }
+	private float xl{ get {return transform.localScale.x;} set {transform.localScale = new Vector3(value, transform.localScale.y, transform.localScale.z);} }
+	private float yl{ get {return transform.localScale.y;} set {transform.localScale = new Vector3(transform.localScale.x, value, transform.localScale.z);} }
+	private float zl{ get {return transform.localScale.z;} set {transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, value);} }
+	#endregion
+
 	public float Roof {get{ return ASB_roof.transform.position.y - ASB_roof.GetComponent<Collider2D>().bounds.extents.y; }}
 
 	public float Floor{get{ return ASBfloor.transform.position.y + ASBfloor.GetComponent<Collider2D>().bounds.extents.y; }}
 		
-	public float Left {get{ return -ASB_roof.GetComponent<Collider2D>().bounds.extents.x; }}
+	public float Left {get{ return ASB_roof.GetComponent<Collider2D>().bounds.min.x + BUFFER; }}
 
-	public float Right{get{ return  ASB_roof.GetComponent<Collider2D>().bounds.extents.x; }}
+	public float Right{get{ return ASB_roof.GetComponent<Collider2D>().bounds.max.x - BUFFER; }}
 
 	void Start ()
 	{	ASB_roof = transform.GetChild(0);
@@ -55,8 +67,8 @@ public class StomachModel : MonoBehaviour {
 		{	Instantiate
 			(	PollutionPrefab,
 				loc = new Vector2
-				(	UnityEngine.Random.Range(Left, Right),
-					UnityEngine.Random.Range(Floor, Roof)
+				(	x + UnityEngine.Random.Range(Left, Right),
+					y + UnityEngine.Random.Range(Floor, Roof)
 				),
 				transform.rotation
 			).transform.parent = transform;
@@ -68,7 +80,7 @@ public class StomachModel : MonoBehaviour {
 			else /*-------------------------------*/ wall_y = Roof;
 			Instantiate
 			(	WallPrefab,
-				loc = new Vector2(UnityEngine.Random.Range(Left, Right), wall_y),
+				loc = new Vector2(x + UnityEngine.Random.Range(Left, Right), y + wall_y),
 				transform.rotation
 			).transform.parent = transform;
 		}
