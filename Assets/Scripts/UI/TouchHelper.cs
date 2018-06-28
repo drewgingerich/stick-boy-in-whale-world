@@ -38,10 +38,10 @@ public class TouchHelper {
 	}
 
 	/// <summary>
-	/// Sends a ray from the finger to see what gameobjects are underneath.
+	/// Returns what objects are underneath the finger.
 	/// </summary>
 	/// <param name="tag">Optionally only return objects with specified Unity Tag</param>
-	/// <param name="expandRadiusBy">Optionally expand the effective search size of the finger</param>
+	/// <param name="expandRadiusBy">Optionally expand the effective search size of the finger by this radius value</param>
 	/// <returns>List of all objects if `tag` is not specified or only the objects with the `tag` specified</returns>
 	public static List<GameObject> WhatIsUnderFinger( Touch finger, string tag = null, float expandRadiusBy = 0f) {
 
