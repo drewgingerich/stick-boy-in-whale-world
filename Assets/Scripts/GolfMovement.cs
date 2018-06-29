@@ -53,7 +53,7 @@ public class GolfMovement : MonoBehaviour {
 	/// </summary>
 	void FingerStatusChange( FingerObj foi ) {
 		Debug.Log( foi.name + " state's changed to " + foi.currentState );
-		if( fingerOfInterest.currentState == FingerObj.TouchState.Ending ) {
+		if( foi.currentState == FingerObj.TouchState.Ending ) {
 			if( currentMode == InputMode.ReceivingInput ) {
 				Shoot();
 				fingerOfInterest = null;
@@ -61,7 +61,7 @@ public class GolfMovement : MonoBehaviour {
 			} else {
 				fingerOfInterest = null;
 			}
-		} else if ( fingerOfInterest.currentState == FingerObj.TouchState.Dragging ) {
+		} else if ( foi.currentState == FingerObj.TouchState.Dragging ) {
 			StartCoroutine( GolfSwingRoutine() );
 		}
 	}
