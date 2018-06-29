@@ -25,9 +25,13 @@ public class PlayerSwingStick : MonoBehaviour {
 	void OnEnable() {
 		swingState = StickStatus.Idle;
 		stick.SetActive(false);
-		TouchManager.inst.OnNewFinger += OnNewFinger;
+		if( TouchManager.inst != null )
+			TouchManager.inst.OnNewFinger += OnNewFinger;
 	}
 
+	void OnStart() {
+		TouchManager.inst.OnNewFinger += OnNewFinger;
+	}
 	void OnDisable() {
 		TouchManager.inst.OnNewFinger -= OnNewFinger;
 	}

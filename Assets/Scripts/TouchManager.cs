@@ -39,6 +39,7 @@ public class TouchManager : MonoBehaviour {
 		if( inst != null)
 			Destroy( inst );
 		inst = this;
+		// Debug.Log("I am single, I am whole.");
 	}
 
 	// Use this for initialization
