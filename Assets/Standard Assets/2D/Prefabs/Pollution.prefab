@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 50972942540706182}
   - component: {fileID: 114348695853692680}
   - component: {fileID: 60490712104831906}
+  - component: {fileID: 114121046777509660}
+  - component: {fileID: 114174490979420344}
   m_Layer: 0
   m_Name: Pollution
   m_TagString: Untagged
@@ -147,6 +149,31 @@ PolygonCollider2D:
       - {x: 0.42999998, y: -3.58}
       - {x: 0.62, y: -3.54}
       - {x: 0.77, y: -3.48}
+--- !u!114 &114121046777509660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242569588323616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f4214660fed54f738f35bab43f8ab00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToDestroy: 2
+  chainPokeMinimumTime: 0.2
+--- !u!114 &114174490979420344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242569588323616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fef47e50c9c44bbadca0e5d47cd4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitsToDestroy: 3
 --- !u!114 &114348695853692680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glanceMultiplier: 2
   bounceMultiplier: 1.5
+  rb2d: {fileID: 0}
+  velocity: {x: 0, y: 0}
 --- !u!212 &212196321662995478
 SpriteRenderer:
   m_ObjectHideFlags: 1
