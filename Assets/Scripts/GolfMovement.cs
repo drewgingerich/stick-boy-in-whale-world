@@ -18,7 +18,6 @@ public class GolfMovement : MonoBehaviour {
 	Rigidbody2D rbod;
 	[SerializeField] FingerObj fingerOfInterest;
 
-	// Use this for initialization
 	/// <summary>
 	/// This function is called when the object becomes enabled and active.
 	/// </summary>
@@ -26,6 +25,12 @@ public class GolfMovement : MonoBehaviour {
 		lineRenderer = GetComponent<LineRenderer>();
 		rbod = GetComponent<Rigidbody2D>();
 		shakeOnCommand = GetComponent<ShakeOnCommand>();
+		// Debug.Log( TouchManager.inst );
+		if( TouchManager.inst != null )
+			TouchManager.inst.OnNewFinger += OnNewFinger;
+	}
+
+	void Start() {
 		TouchManager.inst.OnNewFinger += OnNewFinger;
 	}
 
