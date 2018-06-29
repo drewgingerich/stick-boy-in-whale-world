@@ -14,60 +14,83 @@ public class GolfMovement : MonoBehaviour {
 	[Header("Current State")]
 	[SerializeField] InputMode currentMode;
 	LineRenderer lineRenderer;
+	ShakeOnCommand shakeOnCommand;
 	Rigidbody2D rbod;
+	[SerializeField] FingerObj fingerOfInterest;
 
 	// Use this for initialization
-	void Start () {
+	/// <summary>
+	/// This function is called when the object becomes enabled and active.
+	/// </summary>
+	void OnEnable() {
 		lineRenderer = GetComponent<LineRenderer>();
 		rbod = GetComponent<Rigidbody2D>();
+		shakeOnCommand = GetComponent<ShakeOnCommand>();
+		TouchManager.inst.OnNewFinger += OnNewFinger;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if( currentMode == InputMode.Idle && Input.touchCount > 0 && TouchHelper.IsObjectUnderFinger(Input.touches[0], transform, .5f) ) {
+
+	/// <summary>
+	/// This function is called when the MonoBehaviour will be destroyed.
+	/// </summary>
+	void OnDisable() {
+		TouchManager.inst.OnNewFinger -= OnNewFinger;
+	}
+
+	void OnNewFinger(FingerObj newFinger) {
+		if( TouchHelper.IsObjectUnderTouch(newFinger.originTouch, transform, .5f) ) {
+			fingerOfInterest = newFinger;
+			fingerOfInterest.OnStatusChange += FingerStatusChange;
+		}
+	}
+
+	/// <summary>
+	/// Check out <see cref="TouchManager.FingersDoneUpdating"/>. Only calls when the status changes, not every frame.
+	/// </summary>
+	void FingerStatusChange( FingerObj foi ) {
+		Debug.Log( foi.name + " state's changed to " + foi.currentState );
+		if( fingerOfInterest.currentState == FingerObj.TouchState.Ending ) {
+			if( currentMode == InputMode.ReceivingInput ) {
+				Shoot();
+				fingerOfInterest = null;
+				currentMode = InputMode.Idle;
+			} else {
+				fingerOfInterest = null;
+			}
+		} else if ( fingerOfInterest.currentState == FingerObj.TouchState.Dragging ) {
 			StartCoroutine( GolfSwingRoutine() );
 		}
 	}
 
-	void OnDrawGizmos() {
-		if( Input.touchCount > 0 ) {
-			string combinedDebug = "";
-			Gizmos.DrawSphere(Input.touches[0].position, Input.touches[0].radius);
-			foreach( GameObject thisObject in TouchHelper.WhatIsUnderFinger(Input.touches[0], null, .5f)) {
-				combinedDebug += thisObject.name + ", ";
-			}
-			Debug.Log( combinedDebug );
-		}
-	}
-
 	IEnumerator GolfSwingRoutine() {
-		Debug.Log("Touch Down");
+		// Debug.Log("Touch Down");
 		lineRenderer.enabled = true;
 		currentMode = InputMode.ReceivingInput;
-		
 		Vector3 touchPos = Vector3.zero;
-		while( Input.touches[0].phase != TouchPhase.Ended && Input.touches[0].phase != TouchPhase.Canceled ) {
+		while( currentMode == InputMode.ReceivingInput) {
 			// Debug.Log(Input.touches[0].phase);
 			Vector3 playerPosition = transform.position;
 			playerPosition.z -= 2f;
 			lineRenderer.SetPosition(0, playerPosition );
-			Debug.Log( TouchHelper.WhatIsUnderFinger( Input.touches[0] ) );
-			touchPos = TouchHelper.GetFingerWorldPosition(Input.touches[0]);
+			// Debug.Log( TouchHelper.WhatIsUnderFinger( Input.touches[0] ) );
+			touchPos = fingerOfInterest.transform.position;
 			touchPos.z = transform.position.z - 2;
-			TouchHelper.RotateToFace2D(rbod, touchPos );
+			// TouchHelper.RotateToFace2D(rbod, touchPos );
 			lineRenderer.SetPosition(1, touchPos );
+			if( shakeOnCommand != null )
+				shakeOnCommand.ShakeOnce();
 			yield return null;
 		}
 		yield return null;
-		if( touchPos != Vector3.zero ) {
-			//shoot boi
-			// because we're already facing `+X` we can just shoot ourselves in that direction
-			Vector2 force = (Vector2) touchPos - (Vector2) transform.position; 
-			rbod.AddForce( force * movementForceModifier, ForceMode2D.Impulse );
-		}
-		
-		Debug.Log("Touch Up");
+		// Debug.Log("Touch Up");
 		currentMode = InputMode.Idle;
 		lineRenderer.enabled = false;
+		if( shakeOnCommand != null )
+			shakeOnCommand.Reset();
+	}
+
+	void Shoot() {
+		// because we're already facing `+X` we can just shoot ourselves in that direction
+		Vector2 force = (Vector2)fingerOfInterest.transform.position - (Vector2)transform.position; 
+		rbod.AddForce( force * movementForceModifier, ForceMode2D.Impulse );
 	}
 }
