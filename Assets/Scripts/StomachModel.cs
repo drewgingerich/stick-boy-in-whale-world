@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class StomachModel : MonoBehaviour {
 	public const int N_WALLS = 5;
-	public const int N_OBSTACLES = 20;
+	public const int N_OBSTACLES = 8;
 	public const int BUFFER = 10;
 
 	public GameObject PollutionPrefab;
@@ -74,15 +74,15 @@ public class StomachModel : MonoBehaviour {
 			).transform.parent = transform;
 		}
 
-		for (int i=0; i < N_WALLS; ++i)
-		{	float wall_y;
-			if (1 == UnityEngine.Random.Range(0, 1)) wall_y = Floor;
-			else /*-------------------------------*/ wall_y = Roof;
-			Instantiate
-			(	WallPrefab,
-				loc = new Vector2(x + UnityEngine.Random.Range(Left, Right), y + wall_y),
-				transform.rotation
-			).transform.parent = transform;
-		}
+		//for (int i=0; i < N_WALLS; ++i)
+		//{	float wall_y;
+		//	if (1 == UnityEngine.Random.Range(0, 1)) wall_y = Floor;
+		//	else /*-------------------------------*/ wall_y = Roof;
+		//	Instantiate
+		//	(	WallPrefab,
+		//		loc = new Vector2(x + UnityEngine.Random.Range(Left, Right), y + wall_y),
+		//		transform.rotation
+		//	).transform.parent = transform;
+		//}
 	}
 }
