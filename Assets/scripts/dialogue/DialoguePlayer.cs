@@ -39,9 +39,11 @@ public class DialoguePlayer : MonoBehaviour {
 	public void Interrupt() {
 		if (lingering) {
 			StopCoroutine(lingerRoutine);
+			lingering = false;
 			PlayNextLine();
 		} else if (playing) {
 			StopCoroutine(playLineRoutine);
+			playing = false;
 			lineText.text = currentLine;
 			lingerRoutine = StartCoroutine(LingerRoutine());
 		}
