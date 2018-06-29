@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300018, guid: feda0c18015b3284cabbc0da85254f9a, type: 3}
   name: Whale
-  bgColor: {r: 0.1254902, g: 0.019607844, b: 0.078431375, a: 0}
+  bgColor: {r: 0.1254902, g: 1, b: 0.078431375, a: 1}
+  textColor: {r: 1, g: 1, b: 1, a: 1}

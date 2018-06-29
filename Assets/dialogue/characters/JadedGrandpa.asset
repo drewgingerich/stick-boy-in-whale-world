@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d40c191aa46654db7a426d6a1fa3aa30, type: 3}
   name: Grandpa
-  bgColor: {r: 0.34901962, g: 0.18431373, b: 0.86666673, a: 0}
+  bgColor: {r: 0.34901962, g: 0.18431373, b: 0.86666673, a: 1}
+  textColor: {r: 1, g: 1, b: 1, a: 1}

@@ -10,6 +10,7 @@ public class DialoguePlayer : MonoBehaviour {
 	[SerializeField] Image characterSprite;
 	[SerializeField] Text nameText;
 	[SerializeField] Text lineText;
+	[SerializeField] List<RawImage> panelImages;
 	[SerializeField] float lingerTime = 2f;
 
 	public static DialoguePlayer instance;
@@ -67,11 +68,20 @@ public class DialoguePlayer : MonoBehaviour {
 			FinishDialogue();
 			return;
 		}
+		UpdateUI();
+		PlayNextLine();
+		pieceIndex++;
+	}
+
+	void UpdateUI() {
 		currentPiece = dialogue.pieces[pieceIndex];
 		characterSprite.sprite = currentPiece.character.sprite;
 		nameText.text = currentPiece.character.name;
-		PlayNextLine();
-		pieceIndex++;
+		nameText.color = currentPiece.character.textColor;
+		lineText.color = currentPiece.character.textColor;
+		foreach (RawImage rImage in panelImages) {
+			rImage.color = currentPiece.character.bgColor;
+		}
 	}
 
 	void PlayNextLine() {

@@ -8,4 +8,5 @@ public class DialogueCharacter : ScriptableObject {
 	public Sprite sprite;
 	public new string name;
 	public Color bgColor;
+	public Color textColor;
 }
