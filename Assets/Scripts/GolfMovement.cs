@@ -19,11 +19,21 @@ public class GolfMovement : MonoBehaviour {
 	[SerializeField] FingerObj fingerOfInterest;
 
 	// Use this for initialization
-	void Start () {
+	/// <summary>
+	/// This function is called when the object becomes enabled and active.
+	/// </summary>
+	void OnEnable() {
 		lineRenderer = GetComponent<LineRenderer>();
 		rbod = GetComponent<Rigidbody2D>();
 		shakeOnCommand = GetComponent<ShakeOnCommand>();
 		TouchManager.inst.OnNewFinger += OnNewFinger;
+	}
+
+	/// <summary>
+	/// This function is called when the MonoBehaviour will be destroyed.
+	/// </summary>
+	void OnDisable() {
+		TouchManager.inst.OnNewFinger -= OnNewFinger;
 	}
 
 	void OnNewFinger(FingerObj newFinger) {

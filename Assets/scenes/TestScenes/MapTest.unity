@@ -1716,7 +1716,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 887104904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2054518529}
+        m_MethodName: StartMinigame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &887104904
@@ -2000,7 +2011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeOnStart: 0
   defaultShakeDuration: 1
-  shakeAmountModifier: 1
+  shakeAmountModifier: 30
   shakeCurve:
     serializedVersion: 2
     m_Curve:
@@ -2471,14 +2482,15 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468333386}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cdb5b08393d2445e8280bbcb0d233b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxTapDistance: 2.31
   expandTouchRadiusBy: 0.5
-  isSwinging: 0
+  swingState: 0
+  fingerOfInterest: {fileID: 0}
   stick: {fileID: 1955616880}
   swingTime: 1
 --- !u!50 &1468333388
@@ -2517,7 +2529,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4b6171a3d64b24a44ac47c5352a11962, type: 2}
+  - {fileID: 2100000, guid: 94ecb370d04d2234d9e19712d95de581, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2542,7 +2554,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2651,7 +2663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentFingers: []
-  dragDetectionDistPixels: 20
+  dragDetectionDistPixels: 50
   fingerPrefab: {fileID: 114204280562005528, guid: c0c2da3e587d8704494323b4a02f0a8b,
     type: 2}
 --- !u!4 &1510489316
@@ -2750,7 +2762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeOnStart: 0
   defaultShakeDuration: 1
-  shakeAmountModifier: 1
+  shakeAmountModifier: 30
   shakeCurve:
     serializedVersion: 2
     m_Curve:
@@ -2973,7 +2985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeOnStart: 0
   defaultShakeDuration: 1
-  shakeAmountModifier: 1
+  shakeAmountModifier: 30
   shakeCurve:
     serializedVersion: 2
     m_Curve:
@@ -3224,7 +3236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeOnStart: 0
   defaultShakeDuration: 1
-  shakeAmountModifier: 1
+  shakeAmountModifier: 30
   shakeCurve:
     serializedVersion: 2
     m_Curve:

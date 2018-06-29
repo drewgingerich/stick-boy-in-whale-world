@@ -54,7 +54,7 @@ public class HeartGameManager : MonoBehaviour {
 
 	/// <param name="thisDirection">Utilizes the order found in <see cref="ChamberDirection" /> </param>
 	public void ChamberHit( int thisDirection ){
-		Debug.Log( thisDirection );
+		// Debug.Log( "Chamber " + thisDirection + " was poked" );
 		buttonsPressedThisFrame.Add( (ChamberDirection) thisDirection );
 		// TODO: also animate the button being pressed?
 	}
