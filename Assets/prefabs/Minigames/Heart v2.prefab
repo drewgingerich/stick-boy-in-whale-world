@@ -99,7 +99,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4086972636367622}
-  - component: {fileID: 114248294188401982}
   - component: {fileID: 114084448819312474}
   m_Layer: 0
   m_Name: Heart v2
@@ -115,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999838452945620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.06, y: 0.1, z: 0}
+  m_LocalPosition: {x: -11.622786, y: 0.11236763, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4260279692691344}
@@ -288,7 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf6198fdaef4bb47b9f5ee94418c2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heart: {fileID: 114248294188401982}
   timeBetweenChamberShake: 0.25
   durationChamberShake: 1
   shakeAmount: 0.5
@@ -389,23 +387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 0
---- !u!114 &114248294188401982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1999838452945620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2a326c12e2e4240948adfa3f6f8a68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeBetweenHeartAttacks: 20
-  isRunning: 1
-  healthLostPerSecond: 2
-  heartRbody: {fileID: 0}
-  healthLeft: 20
-  heartHealthSlider: {fileID: 0}
 --- !u!114 &114257707027847364
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class EventTracker : MonoBehaviour {
 
 	public UnityEvent OnStartEvent;
+	public UnityEvent OnEndEvent;
 
 	public void StartEvent() {
 		OnStartEvent.Invoke();
@@ -16,6 +17,7 @@ public class EventTracker : MonoBehaviour {
 	}
 
 	public void FinishEvent() {
-		EventManager.instance.FindNextEvent();
+		// EventManager.instance.FindNextEvent();
+		OnEndEvent.Invoke();
 	}
 }
