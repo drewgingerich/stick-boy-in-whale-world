@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu()]
 public class Dialogue : ScriptableObject {
 
-	public string name;
-	public string[] lines;
+	public List<DialoguePiece> pieces;
 }
