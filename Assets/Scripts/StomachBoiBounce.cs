@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BoiBounce : MonoBehaviour {
+public class StomachBoiBounce : MonoBehaviour {
 
 	[Header("What up?")]
 	[SerializeField] float glanceMultiplier = 2;
