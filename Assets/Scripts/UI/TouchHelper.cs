@@ -15,6 +15,8 @@ public class TouchHelper {
 		return processed;
 	}
 
+	public
+
 	/// <summary>
 	/// Rotates the original GameObject to face the target world position.
 	/// </summary>
@@ -94,4 +96,11 @@ public class TouchHelper {
 		Debug.LogWarning("Finger of ID " + fingerID + " was not found.");
 		return new Touch();
 	}
+
+	// public static Touch GetFakeMouseFinger(int button) {
+	// 	Touch theTouch = new Touch();
+	// 	theTouch.fingerId = 99;
+	// 	theTouch.position = Input.mousePosition(button);
+	// 	theTouch.position = Input 
+	// }
 }

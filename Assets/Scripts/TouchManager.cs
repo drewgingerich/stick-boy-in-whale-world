@@ -49,6 +49,7 @@ public class TouchManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log(Input.simulateto)
 		foreach( Touch thisTouch in Input.touches ) {
 			if( thisTouch.phase == TouchPhase.Began ) {
 				// we must have a new baby finger!
@@ -62,11 +63,28 @@ public class TouchManager : MonoBehaviour {
 					OnNewFinger( newFinger );	
 			}
 		}
-		foreach( FingerObj thisFinger in currentFingers ) {
+		// if( !Input.multiTouchEnabled ) {
+		// 	if( Input.GetMouseButtonDown ) {
+		// 		// Create a mouse finger
+		// 		FingerObj newFinger = Instantiate( fingerPrefab, TouchHelper.GetTouchWorldPosition( thisTouch ), Quaternion.identity );
+		// 		// Instantiate all member variables the ugly way!
+		// 		newFinger.fingerID = thisTouch.fingerId;
+		// 		newFinger.transform.position = TouchHelper.GetTouchWorldPosition( thisTouch );
+		// 		newFinger.touchLastFrame = newFinger.touch = newFinger.originTouch = thisTouch;
+		// 		currentFingers.Add( newFinger );
+		// 		if( OnNewFinger != null )
+		// 			OnNewFinger( newFinger );	
+		// 	}
+		// }
+		// foreach( FingerObj thisFinger  in currentFingers ) {
 			thisFinger.UpdateFinger();
 		}
 		if( FingersDoneUpdating != null )
 			FingersDoneUpdating();
+	}
+
+	void MakeNewFinger() {
+		
 	}
 
 	/// <summary>
