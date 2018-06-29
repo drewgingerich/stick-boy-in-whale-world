@@ -6,6 +6,8 @@ using UnityEngine;
 /// Helpers made by Matthew Conto for use in multitouch Unity environments. Make sure to check out my _sick_ XML documentation.
 /// </summary>
 public class TouchHelper {
+
+	public static int FAKE_FINGER_ID = 99;
 	/// <summary>
 	/// Returns the World Position of the finger touch. Note, if there is no background, the touch will be pointed to the max render distance of the camera, leading to strange results.
 	/// </summary>
@@ -14,8 +16,6 @@ public class TouchHelper {
 		Vector3 processed = Camera.main.ScreenToWorldPoint( touch.position );
 		return processed;
 	}
-
-	public
 
 	/// <summary>
 	/// Rotates the original GameObject to face the target world position.
@@ -88,6 +88,10 @@ public class TouchHelper {
 	/// <param name="fingerID">Given by Unity's <see cref="Touch.fingerID" /></param>
 	/// <returns>Returns the struct that contains the information held in this frame's touch.</returns>
 	public static Touch GetTouchByFingerID( int fingerID ) {
+		if( fingerID == FAKE_FINGER_ID ) {
+			// it's our fake mouse!
+			return GetFakeMouseTouch();
+		}
 		foreach( Touch thisTouch in Input.touches ) {
 			if( thisTouch.fingerId == fingerID ) {
 				return thisTouch;
@@ -97,10 +101,22 @@ public class TouchHelper {
 		return new Touch();
 	}
 
-	// public static Touch GetFakeMouseFinger(int button) {
-	// 	Touch theTouch = new Touch();
-	// 	theTouch.fingerId = 99;
-	// 	theTouch.position = Input.mousePosition(button);
-	// 	theTouch.position = Input 
-	// }
+	public static Touch GetFakeMouseTouch(int button = 0) {
+		Touch theTouch = new Touch();
+		theTouch.fingerId = FAKE_FINGER_ID;
+		theTouch.position = Input.mousePosition;
+		theTouch.radius = .01f;
+		theTouch.deltaPosition = Vector2.zero;
+		if( Input.GetMouseButtonDown( button ) ) {
+			theTouch.phase = TouchPhase.Began;
+		} else if( Input.GetMouseButtonUp( button ) ) {
+			theTouch.phase = TouchPhase.Ended;
+		} else if( Input.GetAxis("Mouse X")== 0 && Input.GetAxis("Mouse Y")>0 ){
+			theTouch.phase = TouchPhase.Moved;
+			theTouch.deltaPosition = new Vector2( Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") );
+		} else {
+			theTouch.phase = TouchPhase.Stationary;
+		}
+		return theTouch;
+	}
 }
