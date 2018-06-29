@@ -22,7 +22,7 @@ public class StickInteractable : MonoBehaviour {
 		if( onHitSparks != null ) {
 			Instantiate( onHitSparks, hit.point, onHitSparks.transform.rotation );
 		}
-		Debug.Log( "Yarr, " + gameObject + " has been hit by a stick!" );
+		Debug.Log( gameObject + " has been hit by a stick!" );
 	}
 
 }

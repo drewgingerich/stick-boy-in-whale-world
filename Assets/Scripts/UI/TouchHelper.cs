@@ -101,6 +101,10 @@ public class TouchHelper {
 		return new Touch();
 	}
 
+	/// <summary>
+	/// Creates a fake <see cref="Touch" /> struct for what the mouse is doing. Uses <see cref="Touch.fingerId" /> of <see cref="FAKE_FINGER_ID" /> to differentiate itself.
+	/// </summary>
+	/// <param name="button">The index for the mouse button</param>
 	public static Touch GetFakeMouseTouch(int button = 0) {
 		Touch theTouch = new Touch();
 		theTouch.fingerId = FAKE_FINGER_ID;
@@ -111,11 +115,11 @@ public class TouchHelper {
 			theTouch.phase = TouchPhase.Began;
 		} else if( Input.GetMouseButtonUp( button ) ) {
 			theTouch.phase = TouchPhase.Ended;
-		} else if( Input.GetAxis("Mouse X")== 0 && Input.GetAxis("Mouse Y")>0 ){
+		} else if( Input.GetAxis("Mouse X") == 0 && Input.GetAxis("Mouse Y") == 0 ){
 			theTouch.phase = TouchPhase.Moved;
-			theTouch.deltaPosition = new Vector2( Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") );
 		} else {
 			theTouch.phase = TouchPhase.Stationary;
+			theTouch.deltaPosition = new Vector2( Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") );
 		}
 		return theTouch;
 	}
