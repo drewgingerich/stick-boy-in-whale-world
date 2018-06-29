@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class BoiGo : MonoBehaviour {
+public class StomachBoiGo : MonoBehaviour {
 
 	[Header("Oh shit!")]
-	[SerializeField] float acceleration = 40;
+	[SerializeField] float acceleration = 30;
 	[SerializeField] float maxVelocity = 20;
 	[SerializeField] float friction = 2;
 
