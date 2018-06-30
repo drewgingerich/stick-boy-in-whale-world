@@ -55,9 +55,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4160356488886684}
   - component: {fileID: 114736044595107428}
-  - component: {fileID: 114413397358765328}
+  - component: {fileID: 114924343672961674}
   m_Layer: 0
-  m_Name: POW-Text
+  m_Name: Whack-text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POW!
+  m_Text: WHACK
 --- !u!114 &114368910766333644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,38 +143,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114413397358765328
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1788076779154248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeOnStart: 1
-  defaultShakeDuration: 1
-  shakeAmountModifier: 30
-  shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: -0.0034561157
-      value: 0.99835724
-      inSlope: 0.099168986
-      outSlope: 0.099168986
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1.003479
-      value: -0.008171082
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &114565095980581416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POW!
+  m_Text: WHACK
 --- !u!114 &114723210278854110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -241,6 +209,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 1
+--- !u!114 &114924343672961674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788076779154248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeOnStart: 1
+  defaultShakeDuration: 1
+  shakeAmountModifier: 40
+  shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!222 &222203482059157474
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -289,7 +295,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.000008583069, y: -1.9}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 33.62, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224714220702802648
 RectTransform:
@@ -307,7 +313,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 33.62, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224743303008455840
 RectTransform:

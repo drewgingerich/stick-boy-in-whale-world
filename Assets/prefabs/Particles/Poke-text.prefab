@@ -55,9 +55,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4160356488886684}
   - component: {fileID: 114736044595107428}
-  - component: {fileID: 114413397358765328}
+  - component: {fileID: 114519691874776756}
   m_Layer: 0
-  m_Name: POW-Text
+  m_Name: Poke-text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POW!
+  m_Text: POKE!
 --- !u!114 &114368910766333644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114413397358765328
+--- !u!114 &114519691874776756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,21 +154,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeOnStart: 1
+  shakeOnStart: 0
   defaultShakeDuration: 1
-  shakeAmountModifier: 30
+  shakeAmountModifier: 1
   shakeCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: -0.0034561157
-      value: 0.99835724
-      inSlope: 0.099168986
-      outSlope: 0.099168986
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1.003479
-      value: -0.008171082
+      time: 0.099090576
+      value: 0.027778625
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -207,7 +213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POW!
+  m_Text: POKE!
 --- !u!114 &114723210278854110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81e3e9624c9e3b4da59304457fb738a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 1
+  lifespan: 0.5
 --- !u!222 &222203482059157474
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -280,7 +286,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939008169451102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.6}
+  m_LocalPosition: {x: 0, y: 0, z: 1.69}
   m_LocalScale: {x: 1.000065, y: 1.000066, z: 0.23}
   m_Children: []
   m_Father: {fileID: 224743303008455840}
@@ -288,8 +294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000008583069, y: -1.9}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2.01}
+  m_SizeDelta: {x: 11.21, y: 11.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224714220702802648
 RectTransform:
@@ -298,7 +304,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274799523610722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224743303008455840}
@@ -306,8 +312,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.11}
+  m_SizeDelta: {x: 11.21, y: 11.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224743303008455840
 RectTransform:
