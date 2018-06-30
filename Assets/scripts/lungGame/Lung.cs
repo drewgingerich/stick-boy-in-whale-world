@@ -17,6 +17,7 @@ public class Lung : MonoBehaviour {
 	}
 
 	public void Poke() {
+		Debug.Log("Poked");
 		OnPoke();
 	}
 
