@@ -17,6 +17,7 @@ public class GolfMovement : MonoBehaviour {
 	LineRenderer lineRenderer;
 	ShakeOnCommand shakeOnCommand;
 	Rigidbody2D rbod;
+	bool lateStartTouchManager = false;
 	[SerializeField] FingerObj fingerOfInterest;
 	[Header("Setup")]
 	[SerializeField] Collider2D tapToMoveTarget;
@@ -30,12 +31,16 @@ public class GolfMovement : MonoBehaviour {
 		rbod = GetComponent<Rigidbody2D>();
 		shakeOnCommand = GetComponent<ShakeOnCommand>();
 		// Debug.Log( TouchManager.inst );
-		if( TouchManager.inst != null )
+		if( TouchManager.inst != null ) {
 			TouchManager.inst.OnNewFinger += OnNewFinger;
+		} else {
+			lateStartTouchManager = true;
+		}
 	}
 
 	void Start() {
-		TouchManager.inst.OnNewFinger += OnNewFinger;
+		if( lateStartTouchManager )
+			TouchManager.inst.OnNewFinger += OnNewFinger;
 	}
 
 	/// <summary>

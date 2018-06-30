@@ -14,6 +14,7 @@ public class PlayerSwingStick : MonoBehaviour {
 	[SerializeField] StickStatus swingState = StickStatus.Idle;
 	// public StickInteractionType currentStickInteraction;
 	[SerializeField] FingerObj fingerOfInterest;
+	bool lateStartTouchManager = false;
 
 	[Header("Setup")]
 	public GameObject stick;
@@ -25,8 +26,17 @@ public class PlayerSwingStick : MonoBehaviour {
 	void OnEnable() {
 		swingState = StickStatus.Idle;
 		stick.SetActive(false);
-		if( TouchManager.inst != null )
+		if( TouchManager.inst != null ) {
 			TouchManager.inst.OnNewFinger += OnNewFinger;
+		} else {
+			lateStartTouchManager = true;
+		}
+	}
+
+	void Start() {
+		if( lateStartTouchManager ) {
+			TouchManager.inst.OnNewFinger += OnNewFinger;
+		}
 	}
 
 	void OnStart() {
@@ -45,7 +55,7 @@ public class PlayerSwingStick : MonoBehaviour {
 	}
 
 	void FingerStatusChange( FingerObj foi ) {
-		// Debug.Log( foi.name + " state's changed to " + foi.currentState );
+		Debug.Log( foi.name + " state's changed to " + foi.currentState );
 		if( foi.currentState == FingerObj.TouchState.Ending ) {
 			// Swing on finger up
 			SwingStick();

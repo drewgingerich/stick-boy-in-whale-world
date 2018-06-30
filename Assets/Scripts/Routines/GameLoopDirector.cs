@@ -35,8 +35,8 @@ public class GameLoopDirector : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if( countdownSlider != null) {
-			countdownSlider.value = countdown;
 			countdownSlider.maxValue = maxCountdown;
+			countdownSlider.value = countdown;
 		}
 	}
 
