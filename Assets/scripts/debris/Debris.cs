@@ -31,7 +31,7 @@ public class Debris : MonoBehaviour {
 	public void Spawn() {
 		gameObject.SetActive(true);
 		timeSinceLastHit = 0;
-		animator.SetTrigger(spawnHash);
+		// animator.SetTrigger(spawnHash);
 	}
 	
 	public void Poke() {
@@ -47,7 +47,7 @@ public class Debris : MonoBehaviour {
 	}
 
 	IEnumerator BreakRoutine() {
-		animator.SetTrigger(breakHash);
+		// animator.SetTrigger(breakHash);
 		yield return new WaitForSeconds(2);
 		gameObject.SetActive(false);
 	}
