@@ -6,6 +6,7 @@ using UnityEngine;
 public class Debris : MonoBehaviour {
 
 	public event System.Action OnBreak;
+
 	[SerializeField] float secondsToDestroy = 2f;
 	[SerializeField] float chainPokeMinimumTime = 0.2f;
 
@@ -41,18 +42,13 @@ public class Debris : MonoBehaviour {
 			animator.SetTrigger(wobbleHash);
 		}
 		if (timeChainPoked >= secondsToDestroy)
-			Break();
+			StartCoroutine(BreakRoutine());
 		timeSinceLastHit = 0;
 	}
 
-	public void Break() {
-		animator.SetTrigger(breakHash);
-		StartCoroutine(BreakRoutine());
-	}
-
 	IEnumerator BreakRoutine() {
+		animator.SetTrigger(breakHash);
 		yield return new WaitForSeconds(2);
 		gameObject.SetActive(false);
-		EventManager.instance.FindNextEvent();
 	}
 }
