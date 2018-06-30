@@ -38,4 +38,11 @@ public class CameraFollow : MonoBehaviour {
 	public void ResetZoom() {
 		targetCameraZoom = originalCameraZoom;
 	}
+
+	public void ForceRecenter() {
+		Vector3 targetCleaned = target.position;
+		targetCleaned.z = transform.position.z;
+		transform.position = targetCleaned;
+		cam.orthographicSize = targetCameraZoom;
+	}
 }

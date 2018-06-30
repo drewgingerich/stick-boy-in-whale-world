@@ -62,11 +62,26 @@ public class TouchManager : MonoBehaviour {
 					OnNewFinger( newFinger );	
 			}
 		}
-		foreach( FingerObj thisFinger in currentFingers ) {
-			thisFinger.UpdateFinger();
+		if( Input.mousePresent ) {
+			if( Input.GetMouseButtonDown(0) ) {
+				// Debug.Log( "we got a mouse click");
+				// Create a new baby mouse finger 🐁
+				Touch thisTouch = TouchHelper.GetFakeMouseTouch();
+				FingerObj newFinger = Instantiate( fingerPrefab, TouchHelper.GetTouchWorldPosition( thisTouch ), Quaternion.identity );
+				// Instantiate all member variables the ugly way!
+				newFinger.fingerID = thisTouch.fingerId;
+				newFinger.transform.position = TouchHelper.GetTouchWorldPosition( thisTouch );
+				newFinger.touchLastFrame = newFinger.touch = newFinger.originTouch = thisTouch;
+				currentFingers.Add( newFinger );
+				if( OnNewFinger != null )
+					OnNewFinger( newFinger );	
+			}
 		}
-		if( FingersDoneUpdating != null )
-			FingersDoneUpdating();
+		foreach( FingerObj thisFinger  in currentFingers ) {
+			thisFinger.UpdateFinger();
+			if( FingersDoneUpdating != null )
+				FingersDoneUpdating();
+		}
 	}
 
 	/// <summary>

@@ -33,8 +33,8 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetMouseButtonDown(0))
-			Interrupt();
+		// if (Input.GetMouseButtonDown(0))
+		// 	Interrupt();
 	}
 
 	public void Interrupt() {

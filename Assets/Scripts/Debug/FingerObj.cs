@@ -82,7 +82,7 @@ public class FingerObj : MonoBehaviour {
 	/// </summary>
 	void OnDrawGizmos() {
 		if( fingerID != 0 )
-			Gizmos.DrawSphere( transform.position, TouchHelper.GetTouchByFingerID(fingerID).radius );
+			Gizmos.DrawWireSphere( transform.position, TouchHelper.GetTouchByFingerID(fingerID).radius );
 	}
 
 	public static bool IsFingerLeaving( FingerObj finger ) {
