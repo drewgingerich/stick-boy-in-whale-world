@@ -1111,6 +1111,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   debrisList: []
+--- !u!212 &750559004 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212017667077631176, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1837300460}
 --- !u!4 &791803523 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4671384155845850, guid: 7d04f7e5997db4e4ca0361912c05dd14,
@@ -1296,6 +1301,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4671384155845850, guid: 7d04f7e5997db4e4ca0361912c05dd14,
     type: 2}
   m_PrefabInternal: {fileID: 337467251}
+--- !u!1 &930002082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 930002084}
+  - component: {fileID: 930002083}
+  m_Layer: 0
+  m_Name: DimLights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &930002083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930002082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757ddae866d4946d8b674b18bfd964c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whaleFloorSprite: {fileID: 278677860}
+  whaleWallTopSprite: {fileID: 429908387}
+--- !u!4 &930002084
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930002082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064817853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1783,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114405410077714446, guid: 55f486329ae974c62911e704563881fc,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1837300461}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f486329ae974c62911e704563881fc, type: 2}
   m_IsPrefabParent: 0
@@ -2065,6 +2117,31 @@ Prefab:
       propertyPath: tapToMoveTarget
       value: 
       objectReference: {fileID: 1288568250}
+    - target: {fileID: 114559430565182036, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+        type: 2}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 750559004}
+    - target: {fileID: 114559430565182036, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+        type: 2}
+      propertyPath: actLikeJoystick
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50733630019441464, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50733630019441464, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114559430565182036, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+        type: 2}
+      propertyPath: movementForceModifier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
   m_IsPrefabParent: 0
