@@ -32,6 +32,8 @@ public class WhaleDirector : MonoBehaviour {
 	}
 
 	void Start() {
+		// StartCoroutine( GameLoop() );
+		ForceSetStage(GameStage.GameLoop); // FOR DEBUGGING ONLY
 	}
 
 	public void SetPlayerState(PlayerState newState ) {
@@ -47,10 +49,14 @@ public class WhaleDirector : MonoBehaviour {
 		
 	}
 
+	/// <summary>
+	/// Automatically disables player movement when changing scene
+	/// </summary>
 	public void AdvanceStage() {
 		gameStage++;
 		if( gameStage == GameStage.LAST )
 			gameStage = GameStage.MainMenu;
+		SetPlayerState(PlayerState.Paused);
 		sceneList[ (int)gameStage ].StartEvent();
 	}
 
