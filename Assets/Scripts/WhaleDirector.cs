@@ -11,9 +11,11 @@ public class WhaleDirector : MonoBehaviour {
 	public enum PlayerState{ Playing, Paused };
 	public enum GameStage{ MainMenu, Introduction, Tutorial, PreGame, GameLoop, GameOver, Exit, LAST };
 	public static WhaleDirector inst;
+
 	[Header("Current State")]
 	public PlayerState playerState;
 	public GameStage gameStage;
+
 	[Header("Setup")]
 	public Transform player;
 	// [SerializeField] EventTracker mainMenuScene;
@@ -49,9 +51,7 @@ public class WhaleDirector : MonoBehaviour {
 		
 	}
 
-	/// <summary>
-	/// Automatically disables player movement when changing scene
-	/// </summary>
+	/// <summary> Automatically disables player movement when changing scene </summary>
 	public void AdvanceStage() {
 		gameStage++;
 		if( gameStage == GameStage.LAST )

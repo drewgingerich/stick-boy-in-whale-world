@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class GameEndingPhase : MonoBehaviour {
 
-	
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public GameObject blockade;
+	public float waitToCallOut;
+	public EventTracker oldPersonCallout;
 
 	public void StartEnding() {
 		//darken the whale
-		// start calling out to the player
-			// after x seconds, give a direct command
 		// open the blockade
+		blockade.SetActive(false);
+		// start calling out to the player
+		StartCoroutine( CallOutToPlayerRoutine() );
+			// after x seconds, give a direct command
+		
+	}
+
+	IEnumerator CallOutToPlayerRoutine() {
+		yield return new WaitForSeconds( waitToCallOut );
+		oldPersonCallout.StartEvent();
 	}
 }
