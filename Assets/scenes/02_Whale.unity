@@ -2349,6 +2349,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
+        type: 2}
+      propertyPath: hideOnStart
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d04f7e5997db4e4ca0361912c05dd14, type: 2}
   m_IsPrefabParent: 0
@@ -2357,12 +2362,17 @@ GameObject:
   m_PrefabParentObject: {fileID: 1855432142649016, guid: 7d04f7e5997db4e4ca0361912c05dd14,
     type: 2}
   m_PrefabInternal: {fileID: 1151830385}
---- !u!114 &1151830387 stripped
+--- !u!114 &1151830387
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
-    type: 2}
-  m_PrefabInternal: {fileID: 1151830385}
-  m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151830386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4284316c3e68b43d8853d0b944d15b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1151830388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,11 +2388,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1151830387}
-        m_MethodName: 
+        m_MethodName: MakeBreakable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
