@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdb5b08393d2445e8280bbcb0d233b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTapDistance: 2.31
+  maxTapDistance: 3
   expandTouchRadiusBy: 0.5
   swingState: 0
   fingerOfInterest: {fileID: 0}
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementForceModifier: 1
-  actLikeJoystick: 1
+  actLikeJoystick: 0
   currentMode: 0
   fingerOfInterest: {fileID: 0}
   tapToMoveTarget: {fileID: 70620203588665794}
