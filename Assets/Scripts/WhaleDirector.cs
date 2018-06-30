@@ -9,7 +9,7 @@ using UnityEngine;
 /// </summary>
 public class WhaleDirector : MonoBehaviour {
 	public enum PlayerState{ Playing, Paused };
-	public enum GameStage{ MainMenu, Introduction, Tutorial, PreGame, GameLoop, GameOver, Exit, LAST };
+	public enum GameStage{ Introduction, Tutorial, PreGame, GameLoop, GameOver, Exit, LAST };
 	public static WhaleDirector inst;
 
 	[Header("Current State")]
@@ -55,7 +55,7 @@ public class WhaleDirector : MonoBehaviour {
 	public void AdvanceStage() {
 		gameStage++;
 		if( gameStage == GameStage.LAST )
-			gameStage = GameStage.MainMenu;
+			gameStage = (GameStage) 0;
 		SetPlayerState(PlayerState.Paused);
 		sceneList[ (int)gameStage ].StartEvent();
 	}

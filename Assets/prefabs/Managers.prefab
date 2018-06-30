@@ -156,11 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6584b87fb073b4e4b833fbb32284ab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
+  playerState: 1
   gameStage: 0
   player: {fileID: 0}
   sceneList:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -230,6 +229,8 @@ MonoBehaviour:
   maxCountdown: 20
   countdownPenalty: 5
   allMinigames:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   countdownSlider: {fileID: 0}

@@ -11,6 +11,7 @@ public class DialoguePlayer : MonoBehaviour {
 	[SerializeField] Text nameText;
 	[SerializeField] Text lineText;
 	[SerializeField] List<RawImage> panelImages;
+	[SerializeField] bool autoProgress = false;
 	[SerializeField] float lingerTime = 2f;
 
 	public static DialoguePlayer instance;
@@ -110,8 +111,10 @@ public class DialoguePlayer : MonoBehaviour {
 
 	IEnumerator LingerRoutine() {
 		lingering = true;
-		yield return new WaitForSeconds(lingerTime);
+		if( autoProgress )
+			yield return new WaitForSeconds(lingerTime);
 		lingering = false;
+		yield return null;
 		PlayNextLine();
 	}
 
