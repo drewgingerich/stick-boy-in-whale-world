@@ -72,13 +72,6 @@ public class StomachBoiGo : MonoBehaviour {
 				Vector2 perpendicularComponent = collisionReflection - parallelComponent;
 				Vector2 bounceForce = perpendicularComponent * glanceMultiplier + parallelComponent * bounceMultiplier;
 				rb2d.AddForce(bounceForce, ForceMode2D.Impulse);
-				print(Stomach.Roof);
-				print("\n");
-				print(Stomach.Floor);
-				print("\n");
-				print(Stomach.Right);
-				print("\n");
-				print(Stomach.Left);
 			}
 			else rb2d.velocity = maxVelocity * rb2d.velocity.normalized;
 		}

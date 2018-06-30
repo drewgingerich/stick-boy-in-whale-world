@@ -38,13 +38,13 @@ public class StomachModel : MonoBehaviour {
 	private float zl{ get {return transform.localScale.z;} set {transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, value);} }
 	#endregion
 
-	public float Roof {get{ return ASB_roof.GetComponent<Collider2D>().bounds.min.y; }}
+	public float Roof {get{ return /*ASB_roof.GetComponent<Collider2D>().bounds.min.y*/ -8.170828f; }}
 
-	public float Floor{get{ return ASBfloor.GetComponent<Collider2D>().bounds.max.y; }}
+	public float Floor{get{ return /*ASBfloor.GetComponent<Collider2D>().bounds.max.y*/ -14.93873f; }}
 		
-	public float Left {get{ return ASB_roof.GetComponent<Collider2D>().bounds.min.x + BUFFER; }}
+	public float Left {get{ return /*ASB_roof.GetComponent<Collider2D>().bounds.min.x + BUFFER*/ -9.591734f; }}
 
-	public float Right{get{ return ASB_roof.GetComponent<Collider2D>().bounds.max.x - BUFFER; }}
+	public float Right{get{ return /*ASB_roof.GetComponent<Collider2D>().bounds.max.x - BUFFER*/ 5.816973f; }}
 
 
 	void Start ()
