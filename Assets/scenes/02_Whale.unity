@@ -2556,7 +2556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondsToDestroy: 2
   chainPokeMinimumTime: 0.2
-  hideOnStart: 1
+  hideOnStart: 0
 --- !u!114 &1151830388
 MonoBehaviour:
   m_ObjectHideFlags: 0
