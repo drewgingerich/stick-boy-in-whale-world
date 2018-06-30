@@ -15,7 +15,7 @@ public class DialogueSequence : MonoBehaviour {
 
 	public void Play() {
 		selectedDialogue = dialogues[index];
-		DialoguePlayer.instance.PlayMainDialogue(selectedDialogue);
+		DialoguePlayer.instance.PlayDialogue(selectedDialogue);
 		selectedDialogue.OnDialogueFinish += FinishDialogue;
 		index++;
 		if (index == dialogues.Count)
