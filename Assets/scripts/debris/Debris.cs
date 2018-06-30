@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ChainPokeToDestroy : MonoBehaviour {
+public class Debris : MonoBehaviour {
 
+	public event System.Action OnBreak;
 	[SerializeField] float secondsToDestroy = 2f;
 	[SerializeField] float chainPokeMinimumTime = 0.2f;
 
@@ -26,7 +27,7 @@ public class ChainPokeToDestroy : MonoBehaviour {
 		timeSinceLastHit += Time.deltaTime;
 	}
 
-	public void StartMinigame() {
+	public void Spawn() {
 		gameObject.SetActive(true);
 		timeSinceLastHit = 0;
 		animator.SetTrigger(spawnHash);
