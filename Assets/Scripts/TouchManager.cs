@@ -64,7 +64,7 @@ public class TouchManager : MonoBehaviour {
 		}
 		if( Input.mousePresent ) {
 			if( Input.GetMouseButtonDown(0) ) {
-				Debug.Log( "we got a mouse click");
+				// Debug.Log( "we got a mouse click");
 				// Create a new baby mouse finger 🐁
 				Touch thisTouch = TouchHelper.GetFakeMouseTouch();
 				FingerObj newFinger = Instantiate( fingerPrefab, TouchHelper.GetTouchWorldPosition( thisTouch ), Quaternion.identity );

@@ -45,7 +45,7 @@ public class PlayerSwingStick : MonoBehaviour {
 	}
 
 	void FingerStatusChange( FingerObj foi ) {
-		Debug.Log( foi.name + " state's changed to " + foi.currentState );
+		// Debug.Log( foi.name + " state's changed to " + foi.currentState );
 		if( foi.currentState == FingerObj.TouchState.Ending ) {
 			// Swing on finger up
 			SwingStick();
