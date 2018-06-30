@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
+  character: {fileID: 11400000, guid: 6fd4abccc9e6c47ddb9672575044edc8, type: 2}
   lines:
-  - Oh yeah, Stick Boy, you remember how to move right?
-  - Look at that little phone you're holding and drag your icon to move
+  - ~~~STIIIICK BOOOY~~~
+  - ~~~YOUR TIME HAS COME~~~
+  - COME TO THE TAIL OF THE WHALE

@@ -29,7 +29,9 @@ public class GameLoopDirector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		if( countdownSlider != null) {
+			countdownSlider.gameObject.SetActive(false);
+		}
 	}
 	
 	// Update is called once per frame
@@ -41,6 +43,9 @@ public class GameLoopDirector : MonoBehaviour {
 	}
 
 	public void Begin( EventTracker newCallback ) {
+		if( countdownSlider != null) {
+			countdownSlider.gameObject.SetActive(true);
+		}
 		WhaleDirector.inst.SetPlayerState( WhaleDirector.PlayerState.Playing );
 		loopStartCallback = newCallback;
 		organsReady.Clear();
@@ -113,17 +118,17 @@ public class GameLoopDirector : MonoBehaviour {
 		if( type == MinigameType.LAST ) 
 			type = organsReady[ Random.Range(0, organsReady.Count) ];
 		Debug.Log("New problem will occur in the " + type);
-		if( !tutorialDone[(int) type] ) {
-			if( allTutorials[(int) type] != null ) {
+		// if( !tutorialDone[(int) type] ) {
+		// 	if( allTutorials[(int) type] != null ) {
 				allTutorials[(int) type].StartEvent();
 				PauseCountdown();
-			} else {
-				Debug.LogWarning("No tutorial found for " + type );
-			}
-			tutorialDone[(int) type] = true;
-		}
-		organsWithProblems.Add( type );
-		organsReady.Remove( type );
+		// 	} else {
+		// 		Debug.LogWarning("No tutorial found for " + type );
+		// 	}
+		// 	tutorialDone[(int) type] = true;
+		// }
+		// organsWithProblems.Add( type );
+		// organsReady.Remove( type );
 		allMinigames[(int) type].StartEvent();
 		Debug.Log("Created at problem in the " + type );
 		return true;
@@ -134,16 +139,21 @@ public class GameLoopDirector : MonoBehaviour {
 	/// </summary>
 	void Loss() {
 		Debug.Log("Player has lost");
+		if( countdownSlider != null) {
+			countdownSlider.gameObject.SetActive(false);
+		}
 		StopAllCoroutines();
 		loopStartCallback.EventFail();
 	}
 
 	public void PauseCountdown() {
 		pauseCountdownFlag = true;
+		WhaleDirector.inst.SetPlayerState( WhaleDirector.PlayerState.Paused );
 	}
 
 	public void ResumeCountdown() {
 		pauseCountdownFlag = false;
+		WhaleDirector.inst.SetPlayerState( WhaleDirector.PlayerState.Playing );
 	}
 
 }
