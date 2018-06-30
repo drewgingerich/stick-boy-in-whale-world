@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameLoopDirector : MonoBehaviour {
 
@@ -14,11 +15,15 @@ public class GameLoopDirector : MonoBehaviour {
 	[SerializeField] List<MinigameType> organsWithProblems;
 	[SerializeField] List<MinigameType> organsReady;
 	bool problemSolvedFlag = false;
-	EventTracker callback;
+	EventTracker loopStartCallback;
+	Coroutine currentCountdownRoutine;
 
 	[Header("Setup")]
+	// public EventTracker eventTracker;
 	/// <summary>Use <see cref="MinigameType" /> for the order of scenes</summary>
 	public List<EventTracker> allMinigames;
+	[Header("Debug UI")]
+	[SerializeField] Slider countdownSlider;
 
 
 	// Use this for initialization
@@ -28,11 +33,14 @@ public class GameLoopDirector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if( countdownSlider != null) {
+			countdownSlider.value = countdown;
+			countdownSlider.maxValue = maxCountdown;
+		}
 	}
 
 	public void Begin( EventTracker newCallback ) {
-		callback = newCallback;
+		loopStartCallback = newCallback;
 		organsReady.Clear();
 		for( int i = 0; i < allMinigames.Count; i++) {
 			if( allMinigames[i] != null ){
@@ -41,7 +49,9 @@ public class GameLoopDirector : MonoBehaviour {
 				organsReady.Add( MinigameType.LAST );
 			}
 		}
+		currentCountdownRoutine = StartCoroutine(CountdownRoutine());
 	}
+
 
 	public void MinigameFailedButAlive(EventTracker callback) {
 		// who heck'd up
@@ -59,21 +69,34 @@ public class GameLoopDirector : MonoBehaviour {
 		maxCountdown -= countdownPenalty;
 	}
 
-	// public void 
+	public void MinigameWon( EventTracker callback ) {
+		MinigameType offender = MinigameType.LAST;
+		for( int i = 0; i < allMinigames.Count; i++ ) {
+			if( allMinigames[i] == callback ) {
+				offender = (MinigameType) i;
+			}
+		}
+		if( offender == MinigameType.LAST )
+			Debug.LogError("Couldn't find minigame associated with " + callback);
+		organsWithProblems.Remove( offender );
+		organsReady.Add( offender );
+		StopCoroutine( currentCountdownRoutine );
+		currentCountdownRoutine = StartCoroutine( CountdownRoutine() );
+	}
 
 	IEnumerator CountdownRoutine() {
-		yield return null;
+		// yield return null;
 		while( WhaleDirector.inst.gameStage == WhaleDirector.GameStage.GameLoop ) {
 			//main game loop
+			// This will create the new problem
+			if( !TryCreateNewProblem() ) {
+				//YOU LOSE 💀
+				Loss(); // this will break out of the coroutine
+			}
 			//start countdown
 			for( countdown = maxCountdown; countdown > 0f; countdown -= Time.deltaTime ) {
 				yield return null;
 			}
-
-			if( !TryCreateNewProblem() ) {
-				//YOU LOSE 💀
-			}
-			
 		}
 	}
 
@@ -89,9 +112,10 @@ public class GameLoopDirector : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// :̶.̶|̶:̶;̶
+	/// :̶.̶|̶:̶;̶ haha its loss.jpg
 	/// </summary>
 	void Loss() {
-		callback.EventSucceed();
+		StopAllCoroutines();
+		loopStartCallback.EventFail();
 	}
 }
