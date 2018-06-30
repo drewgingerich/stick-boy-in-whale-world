@@ -12,7 +12,7 @@ using UnityEngine;
 public class StomachModel : MonoBehaviour {
 	public const int N_WALLS = 5;
 	public const int N_OBSTACLES = 8;
-	public const int BUFFER = 0;
+	public const int BUFFER = 10;
 
 	public GameObject PollutionPrefab;
 	public GameObject WallPrefab;
@@ -38,9 +38,9 @@ public class StomachModel : MonoBehaviour {
 	private float zl{ get {return transform.localScale.z;} set {transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, value);} }
 	#endregion
 
-	public float Roof {get{ return ASB_roof.GetComponent<Collider2D>().bounds.min.y; }}
+	public float Roof {get{ return ASB_roof.transform.position.y - ASB_roof.GetComponent<Collider2D>().bounds.extents.y; }}
 
-	public float Floor{get{ return ASBfloor.GetComponent<Collider2D>().bounds.max.y; }}
+	public float Floor{get{ return ASBfloor.transform.position.y + ASBfloor.GetComponent<Collider2D>().bounds.extents.y; }}
 		
 	public float Left {get{ return ASB_roof.GetComponent<Collider2D>().bounds.min.x + BUFFER; }}
 
@@ -67,8 +67,8 @@ public class StomachModel : MonoBehaviour {
 		{	Instantiate
 			(	PollutionPrefab,
 				loc = new Vector2
-				(	/*x + */UnityEngine.Random.Range(Left, Right),
-					/*y + */UnityEngine.Random.Range(Floor, Roof)
+				(	x + UnityEngine.Random.Range(Left, Right),
+					y + UnityEngine.Random.Range(Floor, Roof)
 				),
 				transform.rotation
 			).transform.parent = transform;
