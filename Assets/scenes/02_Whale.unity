@@ -2180,6 +2180,11 @@ Prefab:
       propertyPath: movementForceModifier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 50733630019441464, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: f4c5be2f45dd9944a92ad7a0cd23abb9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
   m_IsPrefabParent: 0
