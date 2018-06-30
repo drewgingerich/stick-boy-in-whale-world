@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515522913484658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -24.26, y: -11.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4577712244706914}
@@ -297,7 +297,7 @@ MonoBehaviour:
   swingState: 0
   fingerOfInterest: {fileID: 0}
   stick: {fileID: 1617739027390324}
-  swingTime: 1
+  swingTime: 0.2
 --- !u!114 &114559430565182036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementForceModifier: 1
-  actLikeJoystick: 0
+  actLikeJoystick: 1
   currentMode: 0
   fingerOfInterest: {fileID: 0}
   tapToMoveTarget: {fileID: 70620203588665794}
