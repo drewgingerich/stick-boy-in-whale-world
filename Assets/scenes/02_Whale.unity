@@ -450,6 +450,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d04f7e5997db4e4ca0361912c05dd14, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &221683341 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1515522913484658, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1837300460}
+--- !u!114 &221683342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221683341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4168b7698ffa024e88e9f5c80abea6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &278677859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,17 +2208,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1082389385}
         m_MethodName: StartEnding
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1082389387}
-        m_MethodName: DimLights
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4638,7 +4643,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onHitSparks: {fileID: 0}
+  onHitSparks: {fileID: 1788076779154248, guid: 1de21d4251875164faaf4113f8f24e86,
+    type: 2}
 --- !u!135 &1924984936
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4932,6 +4938,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &2083297096 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1365328737174416, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1837300460}
+--- !u!95 &2083297100
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083297096}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 268543f7277a9e94ea8c643310b94ed2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2085914460
 GameObject:
   m_ObjectHideFlags: 0

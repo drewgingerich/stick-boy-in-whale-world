@@ -20,6 +20,7 @@ public class PlayerSwingStick : MonoBehaviour {
 	public GameObject stick;
 	// private float stickExpandedSize;
 	public float swingTime;
+	[SerializeField] Animator animator;
 	// [SerializeField] GameObject stickHitParticles;
 	// [SerializeField] AnimationCurve debugStickAnimation;
 
@@ -71,6 +72,7 @@ public class PlayerSwingStick : MonoBehaviour {
 
 	public void SwingStick() {
 		if( swingState == StickStatus.Idle ){
+			animator.SetTrigger("swing");
 			Debug.Log("Trying to swing stick!");
 			RaycastHit2D hit = GetFirstObjHitByStick( fingerOfInterest.touch );
 			if( hit ) {
