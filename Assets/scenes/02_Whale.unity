@@ -552,7 +552,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &337467251
 Prefab:
@@ -1194,6 +1194,12 @@ Prefab:
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114510374033587100, guid: cc5a3536dfa024dac8acf1c153fe2d09,
+        type: 2}
+      propertyPath: onHitSparks
+      value: 
+      objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: cc5a3536dfa024dac8acf1c153fe2d09, type: 2}
@@ -1601,11 +1607,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114251809750960934, guid: 7d04f7e5997db4e4ca0361912c05dd14,
-        type: 2}
-      propertyPath: OnPokedByStick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 447510715}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d04f7e5997db4e4ca0361912c05dd14, type: 2}
   m_IsPrefabParent: 0
@@ -2510,6 +2511,45 @@ Prefab:
       propertyPath: hideOnStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114608390281680212, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: OnStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608390281680212, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: OnStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: EventTracker, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 114087472918128676, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: onHitSparks
+      value: 
+      objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
+        type: 2}
+    - target: {fileID: 114708415434810594, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: onHitSparks
+      value: 
+      objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
+        type: 2}
+    - target: {fileID: 114901521913035854, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: onHitSparks
+      value: 
+      objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
+        type: 2}
+    - target: {fileID: 114959298836824520, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: onHitSparks
+      value: 
+      objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
+        type: 2}
+    - target: {fileID: 114608390281680212, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: OnStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1148353146}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7, type: 2}
   m_IsPrefabParent: 0
@@ -3522,7 +3562,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4356464066874210, guid: 55f486329ae974c62911e704563881fc, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114405410077714446, guid: 55f486329ae974c62911e704563881fc,
         type: 2}
@@ -3576,23 +3616,6 @@ Prefab:
       objectReference: {fileID: 645420021}
     - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
         type: 2}
-      propertyPath: countdownSlider
-      value: 
-      objectReference: {fileID: 1716831393}
-    - target: {fileID: 4389434458755426, guid: 55f486329ae974c62911e704563881fc, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4618480014811028, guid: 55f486329ae974c62911e704563881fc, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4924630463228754, guid: 55f486329ae974c62911e704563881fc, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
-        type: 2}
       propertyPath: allTutorials.Array.data[0]
       value: 
       objectReference: {fileID: 542124832}
@@ -3613,19 +3636,9 @@ Prefab:
       objectReference: {fileID: 1831775650}
     - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
         type: 2}
-      propertyPath: maxCountdown
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
-        type: 2}
-      propertyPath: countdown
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
-        type: 2}
-      propertyPath: countdownPenalty
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: countdownSlider
+      value: 
+      objectReference: {fileID: 1716831393}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f486329ae974c62911e704563881fc, type: 2}
   m_IsPrefabParent: 0
@@ -3937,6 +3950,12 @@ Prefab:
       propertyPath: m_Name
       value: LeftLung
       objectReference: {fileID: 0}
+    - target: {fileID: 114510374033587100, guid: cc5a3536dfa024dac8acf1c153fe2d09,
+        type: 2}
+      propertyPath: onHitSparks
+      value: 
+      objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc5a3536dfa024dac8acf1c153fe2d09, type: 2}
   m_IsPrefabParent: 0
@@ -4139,11 +4158,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4759606635965786, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -18.2
+      value: -24.26
       objectReference: {fileID: 0}
     - target: {fileID: 4759606635965786, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.71
+      value: -11.19
       objectReference: {fileID: 0}
     - target: {fileID: 4759606635965786, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4167,16 +4186,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759606635965786, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
       propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114559430565182036, guid: 0667fd92e31184bcf8fc8eca2efa202e,
-        type: 2}
-      propertyPath: actLikeJoystick
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114313654009383440, guid: 0667fd92e31184bcf8fc8eca2efa202e,
-        type: 2}
-      propertyPath: maxTapDistance
       value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5006,7 +5015,7 @@ RectTransform:
   - {fileID: 1716831392}
   - {fileID: 519858777}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

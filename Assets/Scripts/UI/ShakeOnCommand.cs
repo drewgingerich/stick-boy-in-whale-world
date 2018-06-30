@@ -12,13 +12,13 @@ public class ShakeOnCommand : MonoBehaviour {
 	public float shakeAmountModifier = 1f;
 	public AnimationCurve shakeCurve;
 	bool shaking = false;
-	SpriteRenderer spriteRenderer;
+	// SpriteRenderer spriteRenderer;
 	Quaternion originalLocalRotation;
 	// Color originalColor;
 
 	// Use this for initialization
 	void Start () {
-		spriteRenderer = GetComponent<SpriteRenderer>();
+		// spriteRenderer = GetComponent<SpriteRenderer>();
 		if( shakeOnStart ) 
 			Shake( defaultShakeDuration );
 	}
@@ -60,7 +60,7 @@ public class ShakeOnCommand : MonoBehaviour {
 	IEnumerator ShakeRoutine( float duration ) {
 		shaking = true;
 		Quaternion originalRotation = transform.localRotation;
-		Color originalColor = spriteRenderer.color;
+		// Color originalColor = spriteRenderer.color;
 		// spriteRenderer.color = highlightedColor;
 		for( float timeLeft = duration; timeLeft > 0f; timeLeft -= Time.deltaTime ) {
 			float currentShakeAmount = shakeCurve.Evaluate( (duration - timeLeft) / duration ) * shakeAmountModifier;
