@@ -9,6 +9,7 @@ public class Debris : MonoBehaviour {
 
 	[SerializeField] float secondsToDestroy = 2f;
 	[SerializeField] float chainPokeMinimumTime = 0.2f;
+	[SerializeField] bool hideOnStart = true;
 
 	float timeSinceLastHit;
 	bool chainPoke;
@@ -21,7 +22,8 @@ public class Debris : MonoBehaviour {
 	int breakHash = Animator.StringToHash("Break");
 
 	void Awake() {
-		gameObject.SetActive(false);
+		if (hideOnStart)
+			gameObject.SetActive(false);
 	}
 
 	void Update() {
