@@ -2545,6 +2545,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
         type: 2}
+    - target: {fileID: 114608390281680212, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: OnStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1148353146}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7, type: 2}
   m_IsPrefabParent: 0
