@@ -1578,7 +1578,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  debrisList: []
+  debrisList:
+  - {fileID: 1275526499}
+  - {fileID: 1420295948}
+  - {fileID: 968821304}
+  - {fileID: 1400393633}
 --- !u!4 &791803523 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4671384155845850, guid: 7d04f7e5997db4e4ca0361912c05dd14,
@@ -1770,6 +1774,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1652898240}
   m_Script: {fileID: 11500000, guid: 3ba1c76bbf05ad242b2ef1923622dece, type: 3}
+--- !u!114 &968821304 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
+    type: 2}
+  m_PrefabInternal: {fileID: 390931214}
+  m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
 --- !u!1 &993761399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +1943,7 @@ GameObject:
   - component: {fileID: 1082389386}
   - component: {fileID: 1082389385}
   - component: {fileID: 1082389384}
+  - component: {fileID: 1082389387}
   m_Layer: 0
   m_Name: Game Ending Routine
   m_TagString: Untagged
@@ -1956,6 +1967,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1082389385}
         m_MethodName: StartEnding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1082389387}
+        m_MethodName: DimLights
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2015,6 +2037,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1082389387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1082389383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757ddae866d4946d8b674b18bfd964c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whaleFloorSprite: {fileID: 278677860}
+  whaleWallTopSprite: {fileID: 429908387}
 --- !u!1001 &1148353145
 Prefab:
   m_ObjectHideFlags: 0
@@ -2402,6 +2437,12 @@ MonoBehaviour:
   dialogues:
   - {fileID: 11400000, guid: 4ae2139e64cfb4e1cbf22aaec182240c, type: 2}
   index: 0
+--- !u!114 &1275526499 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
+    type: 2}
+  m_PrefabInternal: {fileID: 204351787}
+  m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
 --- !u!1 &1287033653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2505,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400393633 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
+    type: 2}
+  m_PrefabInternal: {fileID: 337467251}
+  m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
 --- !u!1 &1412918787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2578,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1412918787}
+--- !u!114 &1420295948 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
+    type: 2}
+  m_PrefabInternal: {fileID: 571073116}
+  m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
 --- !u!1 &1444406869
 GameObject:
   m_ObjectHideFlags: 0
