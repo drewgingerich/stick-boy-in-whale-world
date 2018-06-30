@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LungGame : MonoBehaviour {
+
+	public UnityEvent OnSucceed;
 
 	[SerializeField] Lung leftLung;
 	[SerializeField] Lung rightLung;
@@ -37,7 +40,6 @@ public class LungGame : MonoBehaviour {
 		breathTimes.Clear();
 		for (int i = 0; i < numberOfBreaths; i++) {
 			breathTimes.Add(0.75f + Random.Range(0, 2) * breathTimeVariationUnit);
-			Debug.Log(breathTimes[i]);
 		}
 	}
 
@@ -98,7 +100,6 @@ public class LungGame : MonoBehaviour {
 	}
 
 	void OnGoodPoke() {
-		Debug.Log("Good poke!");
 		unhealthyLung.WeakBreath();
 		successchain++;
 		if (successchain >= breathTimes.Count)
@@ -106,14 +107,12 @@ public class LungGame : MonoBehaviour {
 	}
 
 	void OnBadPoke() {
-		Debug.Log("Bad poke!");
 		unhealthyLung.Struggle();
 		successchain = 0;
 	}
 
 	void EndMinigame() {
-		Debug.Log("Minigame success!");
-		EventManager.instance.FindNextEvent();
+		OnSucceed.Invoke();
 		playingMinigame = false;
 		unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
 	}

@@ -116,6 +116,7 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	void FinishDialogue() {
+		dialogue.Finish();
 		dialogueVeil.SetActive(false);
 		dialogueUI.SetActive(false);
 	}

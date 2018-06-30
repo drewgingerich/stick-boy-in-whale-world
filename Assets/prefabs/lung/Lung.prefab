@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114277029833678546}
   - component: {fileID: 95412211828366210}
   - component: {fileID: 61065613832165530}
+  - component: {fileID: 114510374033587100}
   m_Layer: 0
   m_Name: Lung
   m_TagString: Untagged
@@ -138,3 +139,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb786ebeb66c4b8d896104c55ad9371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114510374033587100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396093174550042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f8aae95d9236e4c8d3475d9c9eaa11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPokedByStick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114277029833678546}
+        m_MethodName: Poke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onHitSparks: {fileID: 0}
