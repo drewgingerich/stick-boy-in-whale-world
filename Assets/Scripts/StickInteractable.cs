@@ -19,11 +19,10 @@ public class StickInteractable : MonoBehaviour {
 	/// <param name="hit">Look at the documentation of <see cref="PlayerSwingStick.GetFirstObjHitByStick"/> for more details</param>
 	public void HitByStick( RaycastHit2D hit = new RaycastHit2D() ) {
 		OnPokedByStick.Invoke();
-		// SendMessage("Poked");
 		if( onHitSparks != null ) {
 			Instantiate( onHitSparks, hit.point, onHitSparks.transform.rotation );
 		}
-		Debug.Log( "Yarr, " + gameObject + " has been hit by a stick!" );
+		Debug.Log( gameObject + " has been hit by a stick!" );
 	}
 
 }

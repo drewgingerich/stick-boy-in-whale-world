@@ -9,7 +9,8 @@ public class GolfMovement : MonoBehaviour {
 	
 	[Header("Balance")]
 	public float movementForceModifier = .1f;
-	public bool useTapToMove = false;
+	// public bool useTapToMove = false;
+	public bool actLikeJoystick = false;
 	
 	[Header("Current State")]
 	[SerializeField] InputMode currentMode;
@@ -17,6 +18,9 @@ public class GolfMovement : MonoBehaviour {
 	ShakeOnCommand shakeOnCommand;
 	Rigidbody2D rbod;
 	[SerializeField] FingerObj fingerOfInterest;
+	[Header("Setup")]
+	[SerializeField] Collider2D tapToMoveTarget;
+	[SerializeField] SpriteRenderer spriteRenderer;
 
 	/// <summary>
 	/// This function is called when the object becomes enabled and active.
@@ -42,7 +46,7 @@ public class GolfMovement : MonoBehaviour {
 	}
 
 	void OnNewFinger(FingerObj newFinger) {
-		if( TouchHelper.IsObjectUnderTouch(newFinger.originTouch, transform, .5f) ) {
+		if( TouchHelper.IsObjectUnderTouch(newFinger.originTouch, tapToMoveTarget.transform, .5f) ) {
 			fingerOfInterest = newFinger;
 			fingerOfInterest.OnStatusChange += FingerStatusChange;
 		}
@@ -52,16 +56,17 @@ public class GolfMovement : MonoBehaviour {
 	/// Check out <see cref="TouchManager.FingersDoneUpdating"/>. Only calls when the status changes, not every frame.
 	/// </summary>
 	void FingerStatusChange( FingerObj foi ) {
-		Debug.Log( foi.name + " state's changed to " + foi.currentState );
-		if( fingerOfInterest.currentState == FingerObj.TouchState.Ending ) {
+		// Debug.Log( foi.name + " state's changed to " + foi.currentState );
+		if( foi.currentState == FingerObj.TouchState.Ending ) {
 			if( currentMode == InputMode.ReceivingInput ) {
-				Shoot();
+				if( !actLikeJoystick )
+					Shoot();
 				fingerOfInterest = null;
 				currentMode = InputMode.Idle;
 			} else {
 				fingerOfInterest = null;
 			}
-		} else if ( fingerOfInterest.currentState == FingerObj.TouchState.Dragging ) {
+		} else if ( foi.currentState == FingerObj.TouchState.Dragging ) {
 			StartCoroutine( GolfSwingRoutine() );
 		}
 	}
@@ -83,6 +88,8 @@ public class GolfMovement : MonoBehaviour {
 			lineRenderer.SetPosition(1, touchPos );
 			if( shakeOnCommand != null )
 				shakeOnCommand.ShakeOnce();
+			if( actLikeJoystick )
+			Shoot();
 			yield return null;
 		}
 		yield return null;
@@ -96,6 +103,12 @@ public class GolfMovement : MonoBehaviour {
 	void Shoot() {
 		// because we're already facing `+X` we can just shoot ourselves in that direction
 		Vector2 force = (Vector2)fingerOfInterest.transform.position - (Vector2)transform.position; 
+		// determine if facing left or right
+		if(force.x < 0) {
+			spriteRenderer.flipX = true;
+		} else {
+			spriteRenderer.flipX = false;
+		}
 		rbod.AddForce( force * movementForceModifier, ForceMode2D.Impulse );
 	}
 }

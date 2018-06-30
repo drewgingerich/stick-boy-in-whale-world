@@ -45,11 +45,11 @@ public class PlayerSwingStick : MonoBehaviour {
 	}
 
 	void FingerStatusChange( FingerObj foi ) {
-		Debug.Log( foi.name + " state's changed to " + foi.currentState );
-		if( fingerOfInterest.currentState == FingerObj.TouchState.Ending ) {
+		// Debug.Log( foi.name + " state's changed to " + foi.currentState );
+		if( foi.currentState == FingerObj.TouchState.Ending ) {
 			// Swing on finger up
 			SwingStick();
-		} else if ( fingerOfInterest.currentState == FingerObj.TouchState.Dragging ) {
+		} else if ( foi.currentState == FingerObj.TouchState.Dragging ) {
 			// We don't care about fingers being dragged
 			fingerOfInterest.OnStatusChange -= FingerStatusChange;
 			fingerOfInterest = null;

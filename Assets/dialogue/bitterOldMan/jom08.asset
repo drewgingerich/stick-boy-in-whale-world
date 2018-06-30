@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
+  m_Name: jom08
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: 9010d61e93212496f9dbb739fce96026, type: 2}
+  lines:
+  - (lady gets up! Turns toward crowd of peers and begins to preach)
+  - (Skeletons look back with empty stares)
+  - (she's too zonked out to see they've been dead for a long while.)

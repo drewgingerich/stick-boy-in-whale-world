@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
+  m_Name: jom07
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: 6fd4abccc9e6c47ddb9672575044edc8, type: 2}
+  lines:
+  - He knows that we don't have a choice. He knows this because he's the one that
+    told us, over and over again. CHRIST, just look around and you'll know.
+  - But it's all we've ever known. The whale gives us food, gives us shelter, pretends
+    to be our friend and tells us this is just how it is. So we strap on our boots
+    and tell ourselves that we like it. Actually??? He's doing us a favor. How caring
+    is this would-be god of ours?
+  - Maybe you tell yourself that it'll be over one day. You'll wake up on your farm
+    with three cats and a cow named Daisy and you'll never have to worry about looking
+    up and realizing you're still in this FUCKING whale. Because otherwise...
+  - WHAT'S THE FUCKING POINT?!
+  - WHY HAVE WE BEEN KEEPING THIS THING ALIVE???
+  - The whale doesn't fuckng care. There's no shortage of us to keep it alive. It
+    could give a shit about how the sausage is made as long as it can swim free in
+    that BIG ASS FUCKING OCEAN of HIS! One of us slows down, throw them under! Trample
+    them into the mud!
+  - 

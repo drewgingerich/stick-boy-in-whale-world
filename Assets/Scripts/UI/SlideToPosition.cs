@@ -20,28 +20,40 @@ public class SlideToPosition : MonoBehaviour {
 	void Start () {
 		originalPosition = transform.position;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void Toggle() {
 		StopAllCoroutines();
 		StartCoroutine(AnimateToDestination());
 	}
 
+	/// <summary>
+	/// Callback to draw gizmos that are pickable and always drawn.
+	/// </summary>
+	void OnDrawGizmos() {
+		Gizmos.DrawLine( transform.position, originalPosition + localTargetTranslation );
+		Gizmos.DrawWireCube( originalPosition + localTargetTranslation, Vector3.one * .2f );
+	}
+
 	IEnumerator AnimateToDestination() {
-		Vector3 start = transform.position; // Worldspace
+		Vector3 start = transform.localPosition; // Worldspace
 		Vector3 destination; // Worldspace
+		isMoving = true;
 		if( headingToDestination ) {
 			destination = originalPosition + localTargetTranslation;
 		} else {
 			destination = originalPosition;
 		}
 		for( float time = 0f; time < duration; time += Time.deltaTime ) {
-			
+			// added support for "overshooting" your target
+			Vector3 newPosition = Vector3.LerpUnclamped(
+				start,
+				destination,
+				animationCurve.Evaluate( time / duration )
+			);
+			transform.localPosition = newPosition;
 			yield return null;
 		}
+		transform.localPosition = destination;
+		isMoving = false;
 	}
 }

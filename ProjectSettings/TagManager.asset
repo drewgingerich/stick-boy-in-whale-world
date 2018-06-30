@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Stick
+  - Tap Target
   layers:
   - Default
   - TransparentFX

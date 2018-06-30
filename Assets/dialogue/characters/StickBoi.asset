@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: StickBoi
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300024, guid: 8fb98a6035269e64a998f9b56828fc4f, type: 3}
-  name: Boy
-  bgColor: {r: 0.8431373, g: 0.2784314, b: 0.59607846, a: 1}
+  name: Stick Boy
+  bgColor: {r: 0.050980397, g: 0.19607845, b: 0.40000004, a: 1}
   textColor: {r: 1, g: 1, b: 1, a: 1}

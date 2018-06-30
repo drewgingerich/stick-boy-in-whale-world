@@ -11,6 +11,7 @@ public class DialoguePlayer : MonoBehaviour {
 	[SerializeField] Text nameText;
 	[SerializeField] Text lineText;
 	[SerializeField] List<RawImage> panelImages;
+	[SerializeField] bool autoProgress = false;
 	[SerializeField] float lingerTime = 2f;
 
 	public static DialoguePlayer instance;
@@ -33,8 +34,8 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetMouseButtonDown(0))
-			Interrupt();
+		// if (Input.GetMouseButtonDown(0))
+		// 	Interrupt();
 	}
 
 	public void Interrupt() {
@@ -110,12 +111,15 @@ public class DialoguePlayer : MonoBehaviour {
 
 	IEnumerator LingerRoutine() {
 		lingering = true;
-		yield return new WaitForSeconds(lingerTime);
+		if( autoProgress )
+			yield return new WaitForSeconds(lingerTime);
 		lingering = false;
+		yield return null;
 		PlayNextLine();
 	}
 
 	void FinishDialogue() {
+		dialogue.Finish();
 		dialogueVeil.SetActive(false);
 		dialogueUI.SetActive(false);
 	}

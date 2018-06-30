@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HeartGameManager : MonoBehaviour {
 	public enum ChamberDirection { TopLeft, TopRight, BottomLeft, BottomRight, LAST };
-	[SerializeField] Heart heart;
+	// [SerializeField] Heart heart;
 
 	[Header("Balance")]
 	[SerializeField] float timeBetweenChamberShake = .25f;
@@ -95,7 +95,7 @@ public class HeartGameManager : MonoBehaviour {
 				} else {
 					Debug.Log("You failed! You pressed " + buttonsPressedThisFrame[0] + " instead of " + currentPattern[currentStepInPattern]);
 					// TODO: Add penalty to loosing.
-					heart.TakeDamage(10f);
+					// heart.TakeDamage(10f);
 					EndOfTurnCleanup();
 					yield break;
 				}
