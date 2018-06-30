@@ -18,7 +18,6 @@ public class EventTracker : MonoBehaviour {
 	}
 
 	public void EventSucceed() {
-		// EventManager.instance.FindNextEvent();
 		OnEventSucceed.Invoke();
 	}
 

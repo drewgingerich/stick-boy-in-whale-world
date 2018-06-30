@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1515522913484658}
   m_IsPrefabParent: 1
+--- !u!1 &1254945420650374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4577712244706914}
+  - component: {fileID: 70620203588665794}
+  m_Layer: 0
+  m_Name: TouchControlCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1365328737174416
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +123,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4759606635965786}
-  m_RootOrder: 1
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4577712244706914
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254945420650374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4759606635965786}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4759606635965786
 Transform:
@@ -119,6 +148,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4577712244706914}
   - {fileID: 4787740197106174}
   - {fileID: 4324419329506144}
   - {fileID: 4819743767142864}
@@ -137,7 +167,7 @@ Transform:
   m_Children:
   - {fileID: 4943379939338518}
   m_Father: {fileID: 4759606635965786}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4819743767142864
 Transform:
@@ -150,7 +180,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4759606635965786}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4943379939338518
 Transform:
@@ -180,10 +210,10 @@ Rigidbody2D:
   m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Material: {fileID: 6200000, guid: f4c5be2f45dd9944a92ad7a0cd23abb9, type: 2}
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &70107196156018716
 CapsuleCollider2D:
@@ -200,6 +230,21 @@ CapsuleCollider2D:
   m_Offset: {x: -0.27, y: -0.7}
   m_Size: {x: 0.6057938, y: 0.10011245}
   m_Direction: 1
+--- !u!70 &70620203588665794
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1254945420650374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.33, y: 0}
+  m_Size: {x: 1.22, y: 1.81}
+  m_Direction: 0
 --- !u!108 &108181468522335648
 Light:
   m_ObjectHideFlags: 1
@@ -264,10 +309,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13899414a92107f4ba99569e2b7c0dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementForceModifier: 15
-  useTapToMove: 0
+  movementForceModifier: 1
+  actLikeJoystick: 1
   currentMode: 0
   fingerOfInterest: {fileID: 0}
+  tapToMoveTarget: {fileID: 70620203588665794}
+  spriteRenderer: {fileID: 212017667077631176}
 --- !u!114 &114973731066009908
 MonoBehaviour:
   m_ObjectHideFlags: 1
