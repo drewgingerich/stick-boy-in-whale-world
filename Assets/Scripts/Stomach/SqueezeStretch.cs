@@ -21,11 +21,9 @@ public class SqueezeStretch : MonoBehaviour {
 	}
 	
 	void Update () {
-		const int MAG = 3; //magnitude
-		int sign = 1;
-		if ( (yl >= MAG && sign < 0) || (xl >= MAG && sign > 0) ) sign *= -1;  //switch the sign whenever the extents are reached
+		const float magnitude = 0.96f;
 		
-		xl += 0.2f*sign*Time.deltaTime;
-		yl -= 0.2f*sign*Time.deltaTime;
+		xl += magnitude * Mathf.Sin(Time.time - Mathf.PI/2) * Time.deltaTime;
+		yl += magnitude * Mathf.Sin(Time.time + Mathf.PI/2) * Time.deltaTime;
 	}
 }
