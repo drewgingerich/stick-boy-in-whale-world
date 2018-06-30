@@ -17,6 +17,8 @@ public class GolfMovement : MonoBehaviour {
 	ShakeOnCommand shakeOnCommand;
 	Rigidbody2D rbod;
 	[SerializeField] FingerObj fingerOfInterest;
+	[Header("Setup")]
+	[SerializeField] Collider2D tapToMoveTarget;
 
 	/// <summary>
 	/// This function is called when the object becomes enabled and active.
@@ -42,7 +44,7 @@ public class GolfMovement : MonoBehaviour {
 	}
 
 	void OnNewFinger(FingerObj newFinger) {
-		if( TouchHelper.IsObjectUnderTouch(newFinger.originTouch, transform, .5f) ) {
+		if( TouchHelper.IsObjectUnderTouch(newFinger.originTouch, tapToMoveTarget.transform, .5f) ) {
 			fingerOfInterest = newFinger;
 			fingerOfInterest.OnStatusChange += FingerStatusChange;
 		}
