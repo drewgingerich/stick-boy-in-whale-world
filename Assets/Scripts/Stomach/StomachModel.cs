@@ -46,6 +46,7 @@ public class StomachModel : MonoBehaviour {
 
 	public float Right{get{ return ASB_roof.GetComponent<Collider2D>().bounds.max.x - BUFFER; }}
 
+
 	void Start ()
 	{	ASB_roof = transform.GetChild(0);
 		ASBfloor = transform.GetChild(1);
@@ -57,7 +58,6 @@ public class StomachModel : MonoBehaviour {
 	
 	void Update ()
 	{	timer_time += Time.deltaTime/1000.0;
-		//if (Player.bottom <= 0) GenerateObstacles();
 	}
 
 	public void GenerateObstacles()
@@ -67,22 +67,11 @@ public class StomachModel : MonoBehaviour {
 		{	Instantiate
 			(	PollutionPrefab,
 				loc = new Vector2
-				(	/*x + */UnityEngine.Random.Range(Left, Right),
-					/*y + */UnityEngine.Random.Range(Floor, Roof)
+				(	UnityEngine.Random.Range(Left, Right),
+					UnityEngine.Random.Range(Floor, Roof)
 				),
 				transform.rotation
 			).transform.parent = transform;
 		}
-
-		//for (int i=0; i < N_WALLS; ++i)
-		//{	float wall_y;
-		//	if (1 == UnityEngine.Random.Range(0, 1)) wall_y = Floor;
-		//	else /*-------------------------------*/ wall_y = Roof;
-		//	Instantiate
-		//	(	WallPrefab,
-		//		loc = new Vector2(x + UnityEngine.Random.Range(Left, Right), y + wall_y),
-		//		transform.rotation
-		//	).transform.parent = transform;
-		//}
 	}
 }
