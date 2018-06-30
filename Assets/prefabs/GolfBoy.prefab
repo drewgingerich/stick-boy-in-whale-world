@@ -36,11 +36,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4759606635965786}
-  - component: {fileID: 58504376575399690}
   - component: {fileID: 114559430565182036}
   - component: {fileID: 120686702179122768}
   - component: {fileID: 50733630019441464}
   - component: {fileID: 114313654009383440}
+  - component: {fileID: 70107196156018716}
   m_Layer: 0
   m_Name: GolfBoy
   m_TagString: Player
@@ -103,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802671201654616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.009692885, y: 0.13611089, z: -0.9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4759606635965786}
@@ -116,7 +116,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515522913484658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.996, y: 0.401, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4787740197106174}
@@ -132,8 +132,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365328737174416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19, y: 0.409, z: 0}
-  m_LocalScale: {x: 0.70015866, y: 0.70015866, z: 0.70015866}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4943379939338518}
   m_Father: {fileID: 4759606635965786}
@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 1697033671366554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4282478, y: 1.4282478, z: 1.4282478}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4787740197106174}
   m_RootOrder: 0
@@ -185,21 +185,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58504376575399690
-CircleCollider2D:
+--- !u!70 &70107196156018716
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1515522913484658}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: f4c5be2f45dd9944a92ad7a0cd23abb9, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
+  m_Offset: {x: -0.27, y: -0.7}
+  m_Size: {x: 0.6057938, y: 0.10011245}
+  m_Direction: 1
 --- !u!108 &108181468522335648
 Light:
   m_ObjectHideFlags: 1

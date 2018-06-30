@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class ChainPokeToDestroy : MonoBehaviour {
+public class Debris : MonoBehaviour {
+
+	public event System.Action OnBreak;
 
 	[SerializeField] float secondsToDestroy = 2f;
 	[SerializeField] float chainPokeMinimumTime = 0.2f;
@@ -26,7 +28,7 @@ public class ChainPokeToDestroy : MonoBehaviour {
 		timeSinceLastHit += Time.deltaTime;
 	}
 
-	public void StartMinigame() {
+	public void Spawn() {
 		gameObject.SetActive(true);
 		timeSinceLastHit = 0;
 		animator.SetTrigger(spawnHash);
@@ -40,18 +42,13 @@ public class ChainPokeToDestroy : MonoBehaviour {
 			animator.SetTrigger(wobbleHash);
 		}
 		if (timeChainPoked >= secondsToDestroy)
-			Break();
+			StartCoroutine(BreakRoutine());
 		timeSinceLastHit = 0;
 	}
 
-	public void Break() {
-		animator.SetTrigger(breakHash);
-		StartCoroutine(BreakRoutine());
-	}
-
 	IEnumerator BreakRoutine() {
+		animator.SetTrigger(breakHash);
 		yield return new WaitForSeconds(2);
 		gameObject.SetActive(false);
-		EventManager.instance.FindNextEvent();
 	}
 }
