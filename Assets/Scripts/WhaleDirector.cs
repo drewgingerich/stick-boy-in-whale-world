@@ -69,5 +69,9 @@ public class WhaleDirector : MonoBehaviour {
 	IEnumerator GameLoop() {
 		yield return null;
 	}
+
+	public void DebugMe( string say = "Yo." ) {
+		Debug.Log( say );
+	}
 	
 }

@@ -17,6 +17,10 @@ public class SlideToPosition : MonoBehaviour {
 	[SerializeField] bool headingToDestination = false;
 
 	// Use this for initialization
+	void Awake() {
+		originalPosition = transform.position;
+	}
+
 	void Start () {
 		originalPosition = transform.position;
 	}
