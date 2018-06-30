@@ -8,9 +8,13 @@ public class HeartChamber : MonoBehaviour {
 
 	ShakeOnCommand shaker;
 	public bool interactable;
+	// public AnimationState
+	// public string chamberHighlightStateName;
+	// [HideInInspector] public int highlightAnimHash;
 
 	void Start() {
 		shaker = GetComponent<ShakeOnCommand>();
+		// highlightAnimHash = 
 	}
 	 
 	public void Shake(float duration ) {

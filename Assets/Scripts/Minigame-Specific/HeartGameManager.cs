@@ -19,8 +19,10 @@ public class HeartGameManager : MonoBehaviour {
 	[SerializeField] List<ChamberDirection> currentPattern;
 	[SerializeField] List<ChamberDirection> buttonsPressedThisFrame;
 	[SerializeField] bool minigameRunning = false;
+	bool demoDoneFlag = false;
 
 	[Header("UI Setup")]
+	[SerializeField] Animator heartAnimator;
 	[SerializeField] HeartChamber tlChamber;
 	[SerializeField] HeartChamber trChamber;
 	[SerializeField] HeartChamber blChamber;
@@ -28,6 +30,7 @@ public class HeartGameManager : MonoBehaviour {
 
 	/// <summary> All four buttons in a list </summary>
 	List<HeartChamber> chambers = new List<HeartChamber>();
+	private EventTracker callback;
 
 	void Awake() {
 		chambers.Add( tlChamber );
@@ -56,12 +59,12 @@ public class HeartGameManager : MonoBehaviour {
 	public void ChamberHit( int thisDirection ){
 		// Debug.Log( "Chamber " + thisDirection + " was poked" );
 		buttonsPressedThisFrame.Add( (ChamberDirection) thisDirection );
-		// TODO: also animate the button being pressed?
 	}
 
-	public void StartMinigame() {
+	public void StartMinigame( EventTracker callMe ) {
 		if( !minigameRunning ) {
 			StartCoroutine( TurnRoutine() );
+			callback = callMe;
 		}
 	}
 
@@ -75,18 +78,30 @@ public class HeartGameManager : MonoBehaviour {
 	/// </summary>
 	IEnumerator TurnRoutine() {
 		minigameRunning = true;
+		heartAnimator.SetBool("heartStopped", true);
 		// Generate new pattern item
 		currentPattern.Add( (ChamberDirection) Random.Range( 0, (int)ChamberDirection.LAST ) );
 
 		// Display pattern
 		yield return StartCoroutine( DemoPatternRoutine( currentPattern ));
 
-		// Get user inputs
-		foreach( HeartChamber thisChamber in chambers ) {
-			// thisChamber.interactable = true;
-		}
+
 		bool listening = true;
 		int currentStepInPattern = 0;
+
+		// attract mode
+		while( buttonsPressedThisFrame.Count == 0 ) {
+			yield return new WaitForSeconds( timeBetweenChamberShake * 3 );
+			Coroutine currentDemo = StartCoroutine( DemoPatternRoutine( currentPattern ));
+			while ( !demoDoneFlag ) {
+				if( buttonsPressedThisFrame.Count > 0 ) {
+					StopCoroutine( currentDemo );
+					break;
+				}
+				yield return null;
+			}
+
+		}
 		while( listening ) {
 			if( buttonsPressedThisFrame.Count > 0 ) {
 				if( buttonsPressedThisFrame[0] == currentPattern[currentStepInPattern] ){
@@ -94,14 +109,15 @@ public class HeartGameManager : MonoBehaviour {
 					Debug.Log("Correct button of " + buttonsPressedThisFrame[0]);
 				} else {
 					Debug.Log("You failed! You pressed " + buttonsPressedThisFrame[0] + " instead of " + currentPattern[currentStepInPattern]);
-					// TODO: Add penalty to loosing.
 					// heart.TakeDamage(10f);
 					EndOfTurnCleanup();
+					callback.EventFail();
 					yield break;
 				}
 				if( currentStepInPattern >= currentPattern.Count ) {
 					// Victory, end turn
 					Debug.Log("You won!");
+					callback.EventSucceed();
 					EndOfTurnCleanup();
 					yield break;
 				}
@@ -114,20 +130,30 @@ public class HeartGameManager : MonoBehaviour {
 	/// Demonstrates the chamber pattern. User cannot click until the routine is done
 	/// </summary>
 	IEnumerator DemoPatternRoutine( List<ChamberDirection> thisPattern ) {
+		demoDoneFlag = false;
+		int idleState = Animator.StringToHash("Stopped");
 		foreach( ChamberDirection thisDirection in thisPattern ) {
 			// change color of chamber?
 			// start chamber shaking
 			// yield return StartCoroutine( ShakeChamber( chambers[(int)thisDirection] ));
-			chambers[(int)thisDirection].Shake( .5f );
+			// chambers[(int)thisDirection].Shake( .5f );
 			// short time between chamber shakes
+			heartAnimator.SetInteger("highlightChamber", (int)thisDirection);
+			heartAnimator.SetTrigger("doHighlightChamber");
+			while( heartAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != idleState ) {
+				Debug.Log("wait");
+				yield return null;
+			}
 			yield return new WaitForSeconds( timeBetweenChamberShake );
 		}
+		demoDoneFlag = true;
 	}
 
 	void EndOfTurnCleanup() {
 		foreach( HeartChamber thisChamber in chambers ) {
 			// thisChamber.interactable = false;
 		}
+		heartAnimator.SetBool("heartStopped", false);
 		minigameRunning = false;
 	}
 }
