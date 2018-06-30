@@ -5,15 +5,13 @@ using UnityEngine.UI;
 
 public class GameLoopDirector : MonoBehaviour {
 
-	public enum MinigameType{ Lung, Heart, LAST }
-	[Header("Balance")]
-	public float countdownPenalty;
-
+	public enum MinigameType{ Lung, Heart, LungDebris, IntestineDebris, LAST };
 	[Header("Current State")]
 	public float countdown;
 	public float maxCountdown;
-	[SerializeField] List<MinigameType> organsWithProblems;
-	[SerializeField] List<MinigameType> organsReady;
+	public float countdownPenalty;
+	List<MinigameType> organsWithProblems  = new List<MinigameType>();
+	List<MinigameType> organsReady = new List<MinigameType>();
 	bool problemSolvedFlag = false;
 	EventTracker loopStartCallback;
 	Coroutine currentCountdownRoutine;
@@ -40,6 +38,7 @@ public class GameLoopDirector : MonoBehaviour {
 	}
 
 	public void Begin( EventTracker newCallback ) {
+		WhaleDirector.inst.SetPlayerState( WhaleDirector.PlayerState.Playing );
 		loopStartCallback = newCallback;
 		organsReady.Clear();
 		for( int i = 0; i < allMinigames.Count; i++) {
@@ -101,13 +100,16 @@ public class GameLoopDirector : MonoBehaviour {
 	}
 
 	bool TryCreateNewProblem(MinigameType type = MinigameType.LAST){
+		Debug.Log("Trying to create new problem");
 		if( organsReady.Count == 0 )
 			return false;
-		if( type == MinigameType.LAST )
+		if( type == MinigameType.LAST ) 
 			type = organsReady[ Random.Range(0, organsReady.Count) ];
+		Debug.Log("New problem will occur in the " + type);
 		organsWithProblems.Add( type );
 		organsReady.Remove( type );
 		allMinigames[(int) type].StartEvent();
+		Debug.Log("Created at problem in the " + type );
 		return true;
 	}
 
@@ -115,6 +117,7 @@ public class GameLoopDirector : MonoBehaviour {
 	/// :̶.̶|̶:̶;̶ haha its loss.jpg
 	/// </summary>
 	void Loss() {
+		Debug.Log("Player has lost");
 		StopAllCoroutines();
 		loopStartCallback.EventFail();
 	}
