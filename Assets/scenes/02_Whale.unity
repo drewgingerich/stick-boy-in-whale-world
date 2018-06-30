@@ -1453,6 +1453,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 447510715}
+        m_MethodName: DebugMe
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LTS
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnEventSucceed:
@@ -2256,7 +2267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8041c72b0955b480696b310e47af1394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockade: {fileID: 7304026}
+  blockade: {fileID: 0}
   waitToCallOut: 0
   oldPersonCallout: {fileID: 0}
 --- !u!1001 &1148353145
@@ -2469,6 +2480,26 @@ Prefab:
       propertyPath: OnEventFail.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1148353146}
+    - target: {fileID: 212353527827771770, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212652626450993070, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212723765967770724, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212564379759382916, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7, type: 2}
   m_IsPrefabParent: 0
@@ -2711,6 +2742,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 447510715}
+        m_MethodName: DebugMe
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TTS
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -3451,6 +3493,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
+        type: 2}
+      propertyPath: allTutorials.Array.data[0]
+      value: 
+      objectReference: {fileID: 542124832}
+    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
+        type: 2}
+      propertyPath: allTutorials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2006493812}
+    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
+        type: 2}
+      propertyPath: allTutorials.Array.data[2]
+      value: 
+      objectReference: {fileID: 1266255282}
+    - target: {fileID: 114465318728415306, guid: 55f486329ae974c62911e704563881fc,
+        type: 2}
+      propertyPath: allTutorials.Array.data[3]
+      value: 
+      objectReference: {fileID: 1831775650}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55f486329ae974c62911e704563881fc, type: 2}
   m_IsPrefabParent: 0
@@ -3900,6 +3962,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 447510715}
+        m_MethodName: DebugMe
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GTS
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -4477,15 +4550,15 @@ MonoBehaviour:
   OnStartEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2006493813}
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 447510715}
+        m_MethodName: DebugMe
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: HTS
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
