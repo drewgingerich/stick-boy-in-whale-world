@@ -11,6 +11,7 @@ public class GolfMovement : MonoBehaviour {
 	public float movementForceModifier = .1f;
 	// public bool useTapToMove = false;
 	public bool actLikeJoystick = false;
+	[SerializeField] float speedToUseWalkAnim = .01f;
 	
 	[Header("Current State")]
 	[SerializeField] InputMode currentMode;
@@ -45,7 +46,11 @@ public class GolfMovement : MonoBehaviour {
 	}
 
 	void Update() {
-		
+		if( rbod.velocity.magnitude >= speedToUseWalkAnim ) {
+			animator.SetBool("moving", true);
+		} else {
+			animator.SetBool("moving", false);
+		}
 	}
 
 	/// <summary>

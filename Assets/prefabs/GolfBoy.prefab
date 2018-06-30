@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4787740197106174}
   - component: {fileID: 212017667077631176}
   - component: {fileID: 114973731066009908}
+  - component: {fileID: 95946188930025366}
   m_Layer: 0
   m_Name: GolfBoySprite
   m_TagString: Untagged
@@ -57,6 +58,7 @@ GameObject:
   - component: {fileID: 50733630019441464}
   - component: {fileID: 114313654009383440}
   - component: {fileID: 70107196156018716}
+  - component: {fileID: 114602569274542258}
   m_Layer: 0
   m_Name: GolfBoy
   m_TagString: Player
@@ -245,6 +247,23 @@ CapsuleCollider2D:
   m_Offset: {x: -0.33, y: 0}
   m_Size: {x: 1.22, y: 1.81}
   m_Direction: 0
+--- !u!95 &95946188930025366
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1365328737174416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 268543f7277a9e94ea8c643310b94ed2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108181468522335648
 Light:
   m_ObjectHideFlags: 1
@@ -298,6 +317,9 @@ MonoBehaviour:
   fingerOfInterest: {fileID: 0}
   stick: {fileID: 1617739027390324}
   swingTime: 0.2
+  animator: {fileID: 95946188930025366}
+  missSparks: {fileID: 114736044595107428, guid: 4dd41d6f38e439b4787d10e773fc2358,
+    type: 2}
 --- !u!114 &114559430565182036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,10 +333,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementForceModifier: 1
   actLikeJoystick: 1
+  speedToUseWalkAnim: 0.22
   currentMode: 0
   fingerOfInterest: {fileID: 0}
+  animator: {fileID: 95946188930025366}
   tapToMoveTarget: {fileID: 70620203588665794}
   spriteRenderer: {fileID: 212017667077631176}
+--- !u!114 &114602569274542258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515522913484658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4168b7698ffa024e88e9f5c80abea6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114973731066009908
 MonoBehaviour:
   m_ObjectHideFlags: 1

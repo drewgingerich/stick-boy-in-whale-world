@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class DialogueSequence : MonoBehaviour {
 
+	public bool useVeil = false;
+	public bool hideDialogueUIAtEnd = false;
 	public UnityEvent OnDialogueFinish;
 
 	public List<Dialogue> dialogues;
@@ -15,7 +17,13 @@ public class DialogueSequence : MonoBehaviour {
 
 	public void Play() {
 		selectedDialogue = dialogues[index];
-		DialoguePlayer.instance.PlayDialogue(selectedDialogue);
+		DialoguePlayer.instance.hideDialogAtEndFlag = hideDialogueUIAtEnd;
+		DialoguePlayer.instance.usingVeil = useVeil;
+		if( useVeil ) {
+			DialoguePlayer.instance.PlayMainDialogue(selectedDialogue);
+		} else {
+			DialoguePlayer.instance.PlayDialogue(selectedDialogue);
+		}
 		selectedDialogue.OnDialogueFinish += FinishDialogue;
 		index++;
 		if (index == dialogues.Count)

@@ -21,6 +21,7 @@ public class PlayerSwingStick : MonoBehaviour {
 	// private float stickExpandedSize;
 	public float swingTime;
 	[SerializeField] Animator animator;
+	[SerializeField] PlaySparks missSparks;
 	// [SerializeField] GameObject stickHitParticles;
 	// [SerializeField] AnimationCurve debugStickAnimation;
 
@@ -80,6 +81,9 @@ public class PlayerSwingStick : MonoBehaviour {
 				Debug.DrawLine(transform.position, fingerOfInterest.transform.position, Color.green, 2f );
 			} else {
 				Debug.DrawLine(transform.position, fingerOfInterest.transform.position, Color.red, 2f );
+				// display swish for miss
+				Instantiate( missSparks.gameObject, fingerOfInterest.transform.position, Quaternion.identity
+				);
 			}
 			
 			StartCoroutine( StickSwingRoutine() );

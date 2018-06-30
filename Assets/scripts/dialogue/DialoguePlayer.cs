@@ -25,6 +25,8 @@ public class DialoguePlayer : MonoBehaviour {
 	Coroutine lingerRoutine;
 	bool lingering;
 	bool playing;
+	[HideInInspector] public bool hideDialogAtEndFlag = true;
+	[HideInInspector] public bool usingVeil = false;
 
 	void Awake() {
 		Debug.Assert(instance == null);
@@ -61,6 +63,7 @@ public class DialoguePlayer : MonoBehaviour {
 
 	public void PlayMainDialogue(Dialogue dialogue) {
 		dialogueVeil.SetActive(true);
+		usingVeil = true;
 		PlayDialogue(dialogue);
 	}
 
@@ -102,6 +105,9 @@ public class DialoguePlayer : MonoBehaviour {
 		playing = true;
 		lineText.text = "";
 		foreach(char c in line.ToCharArray()) {
+			dialogueUI.SetActive(true);
+			if( usingVeil )
+				dialogueVeil.SetActive(true);
 			lineText.text += c;
 			yield return new WaitForSeconds(0.03f);
 		}
@@ -119,8 +125,10 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	void FinishDialogue() {
+		// Debug.Log("Dialogue Player has finished!");
 		dialogue.Finish();
 		dialogueVeil.SetActive(false);
-		dialogueUI.SetActive(false);
+		if( hideDialogAtEndFlag)
+			dialogueUI.SetActive(false);
 	}
 }
