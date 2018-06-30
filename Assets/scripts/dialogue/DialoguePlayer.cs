@@ -30,7 +30,7 @@ public class DialoguePlayer : MonoBehaviour {
 		Debug.Assert(instance == null);
 		instance = this;
 		dialogueVeil.SetActive(false);
-		dialogueUI.SetActive(false);
+		// dialogueUI.SetActive(false);
 	}
 
 	void Update() {
@@ -121,6 +121,6 @@ public class DialoguePlayer : MonoBehaviour {
 	void FinishDialogue() {
 		dialogue.Finish();
 		dialogueVeil.SetActive(false);
-		dialogueUI.SetActive(false);
+		// dialogueUI.SetActive(false);
 	}
 }
