@@ -9,6 +9,7 @@ public class LungGame : MonoBehaviour {
 
 	[SerializeField] Lung leftLung;
 	[SerializeField] Lung rightLung;
+	[SerializeField] float baseBreathTime = 0.75f;
 	[SerializeField] float breathTimeVariationUnit = 0.25f;
 	[SerializeField] int numberOfBreaths = 3;
 	[SerializeField] float pokeGracePeriod = 0.1f;
@@ -39,7 +40,7 @@ public class LungGame : MonoBehaviour {
 	void GenerateBreathTimes() {
 		breathTimes.Clear();
 		for (int i = 0; i < numberOfBreaths; i++) {
-			breathTimes.Add(0.75f + Random.Range(0, 2) * breathTimeVariationUnit);
+			breathTimes.Add(baseBreathTime + Random.Range(0, 2) * breathTimeVariationUnit);
 		}
 	}
 
