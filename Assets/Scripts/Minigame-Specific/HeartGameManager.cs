@@ -59,6 +59,11 @@ public class HeartGameManager : MonoBehaviour {
 	public void ChamberHit( int thisDirection ){
 		// Debug.Log( "Chamber " + thisDirection + " was poked" );
 		buttonsPressedThisFrame.Add( (ChamberDirection) thisDirection );
+		if( minigameRunning) {
+			heartAnimator.SetInteger("highlightChamber", (int)thisDirection);
+			heartAnimator.SetTrigger("doHighlightChamber");
+		}
+
 	}
 
 	public void StartMinigame( EventTracker callMe ) {
@@ -87,6 +92,7 @@ public class HeartGameManager : MonoBehaviour {
 
 
 		bool listening = true;
+		bool entering = false;
 		int currentStepInPattern = 0;
 
 		// attract mode
@@ -100,9 +106,15 @@ public class HeartGameManager : MonoBehaviour {
 				}
 				yield return null;
 			}
+			if( buttonsPressedThisFrame.Count > 0 ) {
+				StopCoroutine( currentDemo );
+				entering = true;
+				break;
+			}
 
 		}
-		while( listening ) {
+		while( entering ) {
+			// entering = true;
 			if( buttonsPressedThisFrame.Count > 0 ) {
 				if( buttonsPressedThisFrame[0] == currentPattern[currentStepInPattern] ){
 					currentStepInPattern++;
@@ -110,9 +122,10 @@ public class HeartGameManager : MonoBehaviour {
 				} else {
 					Debug.Log("You failed! You pressed " + buttonsPressedThisFrame[0] + " instead of " + currentPattern[currentStepInPattern]);
 					// heart.TakeDamage(10f);
-					EndOfTurnCleanup();
-					callback.EventFail();
-					yield break;
+					// EndOfTurnCleanup();
+					// callback.EventFail();
+					StartCoroutine( TurnRoutine() );
+					// yield break;
 				}
 				if( currentStepInPattern >= currentPattern.Count ) {
 					// Victory, end turn
@@ -140,10 +153,10 @@ public class HeartGameManager : MonoBehaviour {
 			// short time between chamber shakes
 			heartAnimator.SetInteger("highlightChamber", (int)thisDirection);
 			heartAnimator.SetTrigger("doHighlightChamber");
-			while( heartAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != idleState ) {
-				Debug.Log("wait");
-				yield return null;
-			}
+			// while( heartAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != idleState ) {
+			// 	Debug.Log("wait");
+			// 	yield return null;
+			// }
 			yield return new WaitForSeconds( timeBetweenChamberShake );
 		}
 		demoDoneFlag = true;
