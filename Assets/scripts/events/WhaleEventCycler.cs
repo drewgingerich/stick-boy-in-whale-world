@@ -1,27 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WhaleEventCycler : MonoBehaviour {
 
 	public static WhaleEventCycler instance;
 
-	[SerializeField] List<WhaleEvent> trackers;
+	[SerializeField] List<WhaleEvent> whaleEvents;
 
-	WhaleEvent activeEventTracker;
+	List<WhaleEvent> readyEvents;
+	List<WhaleEvent> usedEvents;
+
+	WhaleEvent activeEvent;
 
 	void Awake() {
-		if (instance != null)
-			Debug.LogError("Mulitple event manager instances.");
+		Debug.Assert(instance == null);
 		instance = this;
+		readyEvents = whaleEvents;
+		usedEvents = new List<WhaleEvent>();
+	}
+
+	void Start () {
+		foreach (WhaleEvent whaleEvent in whaleEvents) {
+			whaleEvent.OnSucceed.AddListener(FindNextEvent);
+		}
 	}
 
 	public void FindNextEvent() {
-		while (activeEventTracker == null) {
-			int randIndex = Random.Range(0, trackers.Count);
-			if (trackers[randIndex].IsReady())
-				activeEventTracker = trackers[randIndex];
+		int randIndex = Random.Range(0, whaleEvents.Count);
+		activeEvent = whaleEvents[randIndex];
+		UpdateEventTracking();
+		activeEvent.StartEvent();
+	}
+
+	void UpdateEventTracking() {
+		usedEvents.Add(activeEvent);
+		readyEvents.Remove(activeEvent);
+		if (readyEvents.Count == 0) {
+			List<WhaleEvent> temp = readyEvents;
+			readyEvents = usedEvents;
+			usedEvents = temp;
 		}
-		activeEventTracker.StartEvent();
 	}
 }
