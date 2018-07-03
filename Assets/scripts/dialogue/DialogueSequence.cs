@@ -11,7 +11,7 @@ public class DialogueSequence : MonoBehaviour {
 
 	Dialogue selectedDialogue;
 	
-	public int index = 0;
+	int index = 0;
 
 	public void Play() {
 		selectedDialogue = dialogues[index];
