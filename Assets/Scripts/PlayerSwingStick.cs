@@ -20,6 +20,8 @@ public class PlayerSwingStick : MonoBehaviour {
 	public GameObject stick;
 	// private float stickExpandedSize;
 	public float swingTime;
+	[SerializeField] Animator animator;
+	[SerializeField] PlaySparks missSparks;
 	// [SerializeField] GameObject stickHitParticles;
 	// [SerializeField] AnimationCurve debugStickAnimation;
 
@@ -71,6 +73,7 @@ public class PlayerSwingStick : MonoBehaviour {
 
 	public void SwingStick() {
 		if( swingState == StickStatus.Idle ){
+			animator.SetTrigger("swing");
 			Debug.Log("Trying to swing stick!");
 			RaycastHit2D hit = GetFirstObjHitByStick( fingerOfInterest.touch );
 			if( hit ) {
@@ -78,6 +81,9 @@ public class PlayerSwingStick : MonoBehaviour {
 				Debug.DrawLine(transform.position, fingerOfInterest.transform.position, Color.green, 2f );
 			} else {
 				Debug.DrawLine(transform.position, fingerOfInterest.transform.position, Color.red, 2f );
+				// display swish for miss
+				Instantiate( missSparks.gameObject, fingerOfInterest.transform.position, Quaternion.identity
+				);
 			}
 			
 			StartCoroutine( StickSwingRoutine() );

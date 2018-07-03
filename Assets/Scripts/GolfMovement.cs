@@ -11,6 +11,7 @@ public class GolfMovement : MonoBehaviour {
 	public float movementForceModifier = .1f;
 	// public bool useTapToMove = false;
 	public bool actLikeJoystick = false;
+	[SerializeField] float speedToUseWalkAnim = .01f;
 	
 	[Header("Current State")]
 	[SerializeField] InputMode currentMode;
@@ -20,6 +21,7 @@ public class GolfMovement : MonoBehaviour {
 	bool lateStartTouchManager = false;
 	[SerializeField] FingerObj fingerOfInterest;
 	[Header("Setup")]
+	[SerializeField] Animator animator;
 	[SerializeField] Collider2D tapToMoveTarget;
 	[SerializeField] SpriteRenderer spriteRenderer;
 
@@ -41,6 +43,14 @@ public class GolfMovement : MonoBehaviour {
 	void Start() {
 		if( lateStartTouchManager )
 			TouchManager.inst.OnNewFinger += OnNewFinger;
+	}
+
+	void Update() {
+		if( rbod.velocity.magnitude >= speedToUseWalkAnim ) {
+			animator.SetBool("moving", true);
+		} else {
+			animator.SetBool("moving", false);
+		}
 	}
 
 	/// <summary>
@@ -93,13 +103,15 @@ public class GolfMovement : MonoBehaviour {
 			lineRenderer.SetPosition(1, touchPos );
 			if( shakeOnCommand != null )
 				shakeOnCommand.ShakeOnce();
-			if( actLikeJoystick )
-			Shoot();
+			if( actLikeJoystick ) {
+				Shoot();
+			}
 			yield return null;
 		}
 		yield return null;
 		// Debug.Log("Touch Up");
 		currentMode = InputMode.Idle;
+
 		lineRenderer.enabled = false;
 		if( shakeOnCommand != null )
 			shakeOnCommand.Reset();

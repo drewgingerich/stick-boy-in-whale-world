@@ -14,9 +14,10 @@ public class WhaleDirector : MonoBehaviour {
 
 	[Header("Current State")]
 	public PlayerState playerState;
-	public GameStage gameStage;
+	[HideInInspector] public GameStage gameStage;
 
 	[Header("Setup")]
+	public GameStage startingStage = GameStage.Introduction;
 	public Transform player;
 	// [SerializeField] EventTracker mainMenuScene;
 	// [SerializeField] EventTracker introductionScene;
@@ -35,7 +36,7 @@ public class WhaleDirector : MonoBehaviour {
 
 	void Start() {
 		// StartCoroutine( GameLoop() );
-		ForceSetStage(GameStage.Introduction);
+		ForceSetStage(startingStage);
 		
 	}
 

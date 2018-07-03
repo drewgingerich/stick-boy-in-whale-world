@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -53,7 +53,7 @@ public class DialoguePlayer : MonoBehaviour {
 
 	public void PlayDialogue(Dialogue dialogue) {
 		this.dialogue = dialogue;
-		if (dialogue.cutscene)
+		if (dialogue.isCutscene)
 			dialogueVeil.SetActive(true);
 		dialogueUI.SetActive(true);
 		pieceIndex = 0;
