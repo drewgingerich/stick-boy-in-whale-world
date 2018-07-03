@@ -8,6 +8,7 @@ public class Dialogue : ScriptableObject {
 
 	public event System.Action OnDialogueFinish = delegate { };
 	public List<DialoguePiece> pieces;
+	public bool cutscene;
 
 	public void Finish() {
 		OnDialogueFinish();

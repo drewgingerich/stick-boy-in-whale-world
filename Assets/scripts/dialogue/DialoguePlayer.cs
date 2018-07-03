@@ -52,16 +52,13 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	public void PlayDialogue(Dialogue dialogue) {
-		dialogueUI.SetActive(true);
 		this.dialogue = dialogue;
+		if (dialogue.cutscene)
+			dialogueVeil.SetActive(true);
+		dialogueUI.SetActive(true);
 		pieceIndex = 0;
 		lineIndex = 0;
 		PlayNextPiece();
-	}
-
-	public void PlayMainDialogue(Dialogue dialogue) {
-		dialogueVeil.SetActive(true);
-		PlayDialogue(dialogue);
 	}
 
 	void PlayNextPiece() {
