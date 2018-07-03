@@ -143,7 +143,7 @@ public class GameLoopDirector : MonoBehaviour {
 			countdownSlider.gameObject.SetActive(false);
 		}
 		StopAllCoroutines();
-		loopStartCallback.EventFail();
+		loopStartCallback.Fail();
 	}
 
 	public void PauseCountdown() {

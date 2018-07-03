@@ -5,23 +5,19 @@ using UnityEngine.Events;
 
 public class WhaleEvent : MonoBehaviour {
 
-	public UnityEvent OnStartEvent;
-	public UnityEvent OnEventSucceed;
-	public UnityEvent OnEventFail;
+	public UnityEvent OnStart;
+	public UnityEvent OnSucceed;
+	public UnityEvent OnFail;
 
 	public void StartEvent() {
-		OnStartEvent.Invoke();
+		OnStart.Invoke();
 	}
 
-	public bool IsReady() {
-		return true;
+	public void Succeed() {
+		OnSucceed.Invoke();
 	}
 
-	public void EventSucceed() {
-		OnEventSucceed.Invoke();
-	}
-
-	public void EventFail() {
-		OnEventFail.Invoke();
+	public void Fail() {
+		OnFail.Invoke();
 	}
 }

@@ -130,7 +130,7 @@ public class HeartGameManager : MonoBehaviour {
 				if( currentStepInPattern >= currentPattern.Count ) {
 					// Victory, end turn
 					Debug.Log("You won!");
-					callback.EventSucceed();
+					callback.Succeed();
 					EndOfTurnCleanup();
 					yield break;
 				}
