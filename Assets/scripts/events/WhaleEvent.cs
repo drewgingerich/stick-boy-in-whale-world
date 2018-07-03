@@ -5,9 +5,15 @@ using UnityEngine.Events;
 
 public class WhaleEvent : MonoBehaviour {
 
+	[SerializeField] bool playOnStart = false;
 	public UnityEvent OnStart;
 	public UnityEvent OnSucceed;
 	public UnityEvent OnFail;
+
+	void Start() {
+		if (playOnStart)
+			StartEvent();
+	}
 
 	public void StartEvent() {
 		OnStart.Invoke();
