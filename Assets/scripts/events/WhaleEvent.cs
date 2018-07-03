@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventTracker : MonoBehaviour {
+public class WhaleEvent : MonoBehaviour {
 
 	public UnityEvent OnStartEvent;
 	public UnityEvent OnEventSucceed;

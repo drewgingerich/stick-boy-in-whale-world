@@ -1677,8 +1677,8 @@ MonoBehaviour:
   OnEventSucceed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1277657455}
-        m_MethodName: StartEvent
+      - m_Target: {fileID: 1277657453}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2163,8 +2163,6 @@ MonoBehaviour:
   - {fileID: 1816849766}
   autoProgress: 1
   lingerTime: 20
-  hideDialogAtEndFlag: 1
-  usingVeil: 0
 --- !u!1 &1082389383
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour {
+public class WhaleEventCycler : MonoBehaviour {
 
-	public static EventManager instance;
+	public static WhaleEventCycler instance;
 
-	[SerializeField] List<EventTracker> trackers;
+	[SerializeField] List<WhaleEvent> trackers;
 
-	EventTracker activeEventTracker;
+	WhaleEvent activeEventTracker;
 
 	void Awake() {
 		if (instance != null)

@@ -27,7 +27,7 @@ public class WhaleDirector : MonoBehaviour {
 	// [SerializeField] EventTracker gameOverScene;
 	// [SerializeField] EventTracker exitScene;
 	/// <summary>Use <see cref="GameStage" /> for the order of scenes</summary>
-	[Tooltip("Look at the WhaleDirector.GameStage enum for the order of scenes")] public List<EventTracker> sceneList = new List<EventTracker>();
+	[Tooltip("Look at the WhaleDirector.GameStage enum for the order of scenes")] public List<WhaleEvent> sceneList = new List<WhaleEvent>();
 	// [SerializeField] EventTracker optionalTransitionEvent;
 
 	void Awake() {

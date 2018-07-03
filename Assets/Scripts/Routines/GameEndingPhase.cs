@@ -6,7 +6,7 @@ public class GameEndingPhase : MonoBehaviour {
 
 	public GameObject blockade;
 	public float waitToCallOut;
-	public EventTracker oldPersonCallout;
+	public WhaleEvent oldPersonCallout;
 
 	public void StartEnding() {
 		//darken the whale

@@ -30,7 +30,7 @@ public class HeartGameManager : MonoBehaviour {
 
 	/// <summary> All four buttons in a list </summary>
 	List<HeartChamber> chambers = new List<HeartChamber>();
-	private EventTracker callback;
+	private WhaleEvent callback;
 
 	void Awake() {
 		chambers.Add( tlChamber );
@@ -66,7 +66,7 @@ public class HeartGameManager : MonoBehaviour {
 
 	}
 
-	public void StartMinigame( EventTracker callMe ) {
+	public void StartMinigame( WhaleEvent callMe ) {
 		if( !minigameRunning ) {
 			StartCoroutine( TurnRoutine() );
 			callback = callMe;

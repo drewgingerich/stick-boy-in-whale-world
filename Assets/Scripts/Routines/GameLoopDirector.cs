@@ -14,15 +14,15 @@ public class GameLoopDirector : MonoBehaviour {
 	List<MinigameType> organsReady = new List<MinigameType>();
 	List<bool> tutorialDone = new List<bool>();
 	bool problemSolvedFlag = false;
-	EventTracker loopStartCallback;
+	WhaleEvent loopStartCallback;
 	Coroutine currentCountdownRoutine;
 	bool pauseCountdownFlag = false;
 
 	[Header("Setup")]
 	// public EventTracker eventTracker;
 	/// <summary>Use <see cref="MinigameType" /> for the order of scenes</summary>
-	public List<EventTracker> allMinigames;
-	public List<EventTracker> allTutorials;
+	public List<WhaleEvent> allMinigames;
+	public List<WhaleEvent> allTutorials;
 	[Header("Debug UI")]
 	[SerializeField] Slider countdownSlider;
 
@@ -42,7 +42,7 @@ public class GameLoopDirector : MonoBehaviour {
 		}
 	}
 
-	public void Begin( EventTracker newCallback ) {
+	public void Begin( WhaleEvent newCallback ) {
 		if( countdownSlider != null) {
 			countdownSlider.gameObject.SetActive(true);
 		}
@@ -61,7 +61,7 @@ public class GameLoopDirector : MonoBehaviour {
 	}
 
 
-	public void MinigameFailedButAlive(EventTracker callback) {
+	public void MinigameFailedButAlive(WhaleEvent callback) {
 		// who heck'd up
 		MinigameType offender = MinigameType.LAST;
 		for( int i = 0; i < allMinigames.Count; i++ ) {
@@ -77,7 +77,7 @@ public class GameLoopDirector : MonoBehaviour {
 		maxCountdown -= countdownPenalty;
 	}
 
-	public void MinigameWon( EventTracker callback ) {
+	public void MinigameWon( WhaleEvent callback ) {
 		MinigameType offender = MinigameType.LAST;
 		for( int i = 0; i < allMinigames.Count; i++ ) {
 			if( allMinigames[i] == callback ) {
