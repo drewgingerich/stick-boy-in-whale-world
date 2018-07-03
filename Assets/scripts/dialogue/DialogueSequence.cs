@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class DialogueSequence : MonoBehaviour {
 
+	public bool useVeil = false;
+	public bool hideDialogueUIAtEnd = false;
 	public UnityEvent OnDialogueFinish;
 
 	public List<Dialogue> dialogues;

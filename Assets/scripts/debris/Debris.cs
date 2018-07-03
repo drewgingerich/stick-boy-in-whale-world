@@ -37,20 +37,21 @@ public class Debris : MonoBehaviour {
 	}
 	
 	public void Poke() {
-		if (timeSinceLastHit <= chainPokeMinimumTime)
-			chainPoke = true;
-		if (chainPoke) {
-			timeChainPoked += Time.deltaTime;
-			animator.SetTrigger(wobbleHash);
-		}
-		if (timeChainPoked >= secondsToDestroy)
+		// if (timeSinceLastHit <= chainPokeMinimumTime)
+		// 	chainPoke = true;
+		// if (chainPoke) {
+		// 	timeChainPoked += Time.deltaTime;
+		// 	animator.SetTrigger(wobbleHash);
+		// }
+		// if (timeChainPoked >= secondsToDestroy)
 			StartCoroutine(BreakRoutine());
 		timeSinceLastHit = 0;
 	}
 
 	IEnumerator BreakRoutine() {
 		// animator.SetTrigger(breakHash);
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds( .01f );
+		OnBreak();
 		gameObject.SetActive(false);
 	}
 }

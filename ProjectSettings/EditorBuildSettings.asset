@@ -5,12 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/scenes/TestScenes/matt-test-scene.unity
-    guid: e386a68a25503466bab47216d72a45de
-  - enabled: 0
-    path: Assets/scenes/TestScenes/GolfMovementTest.unity
-    guid: 7f501c436d4af034caf928a6df7459d2
   - enabled: 1
-    path: Assets/scenes/TestScenes/MapTest.unity
-    guid: f2e4119002e984edbb43a302b9c1c4eb
+    path: Assets/scenes/00_StartScene.unity
+    guid: c7e5cfac2e39f4b58a64a03a963bff33
+  - enabled: 1
+    path: Assets/scenes/01_OpeningCutscene.unity
+    guid: c23f8cffdc0754bf2ad751dfac49ea47
+  - enabled: 1
+    path: Assets/scenes/02_Whale.unity
+    guid: 5966a282b1248439797d1486957ba909
+  - enabled: 1
+    path: Assets/scenes/03_EndingCutscene.unity
+    guid: 57cf7b091039b4788acf4fce76ac276f
+  - enabled: 1
+    path: Assets/scenes/04_Credits.unity
+    guid: 4e9ecaf28d6f84aabb9173b9be6ec3d6
