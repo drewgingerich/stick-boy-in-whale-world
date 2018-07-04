@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class HeartGameManager : MonoBehaviour {
+
+	public UnityEvent OnSucceed;
+
 	public enum ChamberDirection { TopLeft, TopRight, BottomLeft, BottomRight, LAST };
 	// [SerializeField] Heart heart;
 
@@ -30,7 +34,6 @@ public class HeartGameManager : MonoBehaviour {
 
 	/// <summary> All four buttons in a list </summary>
 	List<HeartChamber> chambers = new List<HeartChamber>();
-	private WhaleEvent callback;
 
 	void Awake() {
 		chambers.Add( tlChamber );
@@ -66,10 +69,9 @@ public class HeartGameManager : MonoBehaviour {
 
 	}
 
-	public void StartMinigame( WhaleEvent callMe ) {
+	public void StartMinigame() {
 		if( !minigameRunning ) {
 			StartCoroutine( TurnRoutine() );
-			callback = callMe;
 		}
 	}
 
@@ -130,7 +132,7 @@ public class HeartGameManager : MonoBehaviour {
 				if( currentStepInPattern >= currentPattern.Count ) {
 					// Victory, end turn
 					Debug.Log("You won!");
-					callback.Succeed();
+					OnSucceed.Invoke();
 					EndOfTurnCleanup();
 					yield break;
 				}
