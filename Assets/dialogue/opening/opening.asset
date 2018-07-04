@@ -35,3 +35,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3013a459f7a064b8785a5168bc72de2f, type: 2}
   - {fileID: 11400000, guid: b9c9b01025ed04f88ac9907bc62e645f, type: 2}
   - {fileID: 11400000, guid: d05d5e91c5ab3490687f1b40b0aed6c2, type: 2}
+  isCutscene: 1
