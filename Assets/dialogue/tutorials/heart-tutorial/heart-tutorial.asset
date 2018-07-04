@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieces:
   - {fileID: 11400000, guid: 9b716dac85f433e4290242bad17bb862, type: 2}
+  isCutscene: 1
