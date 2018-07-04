@@ -33,11 +33,6 @@ public class DialoguePlayer : MonoBehaviour {
 		dialogueUI.SetActive(false);
 	}
 
-	void Update() {
-		// if (Input.GetMouseButtonDown(0))
-		// 	Interrupt();
-	}
-
 	public void Interrupt() {
 		if (lingering) {
 			StopCoroutine(lingerRoutine);
@@ -52,6 +47,7 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	public void PlayDialogue(Dialogue dialogue) {
+		StopAllCoroutines();
 		this.dialogue = dialogue;
 		if (dialogue.isCutscene)
 			dialogueVeil.SetActive(true);
@@ -116,8 +112,8 @@ public class DialoguePlayer : MonoBehaviour {
 	}
 
 	void FinishDialogue() {
-		dialogue.Finish();
 		dialogueVeil.SetActive(false);
 		dialogueUI.SetActive(false);
+		dialogue.Finish();
 	}
 }
