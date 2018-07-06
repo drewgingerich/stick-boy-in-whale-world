@@ -154,13 +154,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 87954658}
-  - component: {fileID: 87954657}
   - component: {fileID: 87954656}
-  - component: {fileID: 87954655}
   - component: {fileID: 87954653}
   - component: {fileID: 87954654}
   m_Layer: 0
-  m_Name: Chamber (4)
+  m_Name: Chamber1
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,12 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a527a36c856139488433670e6026902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 0
---- !u!61 &87954654
-BoxCollider2D:
+  position: 0
+--- !u!60 &87954654
+PolygonCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61229154378536222, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87954652}
   m_Enabled: 1
@@ -192,7 +189,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.25, y: 1.25}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -202,48 +199,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
-  m_EdgeRadius: 0
---- !u!114 &87954655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114971016930522582, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 87954652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeOnStart: 0
-  defaultShakeDuration: 1
-  shakeAmountModifier: 30
-  shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.030589, y: 0.09794818}
+      - {x: 1.8228788, y: 0.7941682}
+      - {x: 1.4134254, y: 1.2495662}
+      - {x: 0.99495125, y: 1.4029799}
+      - {x: 0.093465805, y: 1.3815585}
+      - {x: -0.11922455, y: 1.2279932}
+      - {x: 1.1116543, y: 0.11604333}
+      - {x: 1.9812756, y: -0.23844981}
 --- !u!114 &87954656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,9 +224,9 @@ MonoBehaviour:
   OnPokedByStick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChamberHit
-        m_Mode: 3
+      - m_Target: {fileID: 87954653}
+        m_MethodName: Hit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -274,51 +239,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHitSparks: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
     type: 2}
---- !u!212 &87954657
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212564379759382916, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 87954652}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbbabe9e292f5604897926494bb38fef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &87954658
 Transform:
   m_ObjectHideFlags: 0
@@ -326,12 +246,12 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87954652}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.99, y: -2.051, z: 0}
-  m_LocalScale: {x: 0.73923826, y: 0.7874841, z: 0.81505305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2008085188}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99969400
 GameObject:
@@ -1026,13 +946,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 419139576}
-  - component: {fileID: 419139575}
   - component: {fileID: 419139574}
-  - component: {fileID: 419139573}
   - component: {fileID: 419139571}
   - component: {fileID: 419139572}
   m_Layer: 0
-  m_Name: Chamber (1)
+  m_Name: Chamber4
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,12 +968,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a527a36c856139488433670e6026902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 0
---- !u!61 &419139572
-BoxCollider2D:
+  position: 3
+--- !u!60 &419139572
+PolygonCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61670816982412506, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419139570}
   m_Enabled: 1
@@ -1064,7 +981,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.25, y: 1.25}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1074,48 +991,22 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
-  m_EdgeRadius: 0
---- !u!114 &419139573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114296585857261292, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 419139570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeOnStart: 0
-  defaultShakeDuration: 1
-  shakeAmountModifier: 30
-  shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.2186365, y: 1.3425113}
+      - {x: -1.5932436, y: 1.2246145}
+      - {x: -1.9696655, y: 0.9315202}
+      - {x: -2.2053242, y: 0.39166135}
+      - {x: -2.293723, y: -0.23010522}
+      - {x: -2.1448812, y: -0.97220576}
+      - {x: -1.756506, y: -1.3499017}
+      - {x: -1.2501364, y: -1.4645315}
+      - {x: -1.2049141, y: -0.7220112}
+      - {x: -0.8768501, y: -0.26632568}
+      - {x: -0.27643585, y: 0.26402673}
+      - {x: 0.72206974, y: 0.3729453}
+      - {x: 0.037405968, y: 1.1152345}
+      - {x: -0.47093487, y: 1.3490595}
 --- !u!114 &419139574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,9 +1022,9 @@ MonoBehaviour:
   OnPokedByStick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChamberHit
-        m_Mode: 3
+      - m_Target: {fileID: 419139571}
+        m_MethodName: Hit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1146,51 +1037,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHitSparks: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
     type: 2}
---- !u!212 &419139575
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212723765967770724, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 419139570}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbbabe9e292f5604897926494bb38fef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &419139576
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,13 +1044,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419139570}
-  m_LocalRotation: {x: -0, y: -0, z: 0.25548074, w: -0.9668142}
-  m_LocalPosition: {x: -3.071, y: -0.484, z: 0}
-  m_LocalScale: {x: 0.7723879, y: 1.156128, z: 0.71723753}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2008085188}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -29.604002}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &424175664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1682,7 @@ Transform:
   m_LocalScale: {x: 1.549767, y: 1.549767, z: 1.549767}
   m_Children: []
   m_Father: {fileID: 2008085188}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &484749359
 SpriteRenderer:
@@ -2006,13 +1852,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 533450223}
-  - component: {fileID: 533450222}
   - component: {fileID: 533450221}
-  - component: {fileID: 533450220}
   - component: {fileID: 533450218}
   - component: {fileID: 533450219}
   m_Layer: 0
-  m_Name: Chamber (2)
+  m_Name: Chamber2
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2030,12 +1874,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a527a36c856139488433670e6026902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 0
---- !u!61 &533450219
-BoxCollider2D:
+  position: 1
+--- !u!60 &533450219
+PolygonCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61164426104161676, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 533450217}
   m_Enabled: 1
@@ -2044,58 +1887,27 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.25, y: 1.25}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
-    oldSize: {x: 2.5, y: 2.5}
-    newSize: {x: 2.56, y: 2.56}
-    adaptiveTilingThreshold: 0.5
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
-  m_EdgeRadius: 0
---- !u!114 &533450220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114192275033140580, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533450217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeOnStart: 1
-  defaultShakeDuration: 1
-  shakeAmountModifier: 30
-  shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8737679, y: -1.8921947}
+      - {x: 2.1948624, y: -1.4763602}
+      - {x: 2.29383, y: -0.89765966}
+      - {x: 2.179717, y: -0.47042835}
+      - {x: 1.9287748, y: -0.19871944}
+      - {x: 0.7827654, y: 0.21557623}
+      - {x: 1.1553764, y: -0.5946539}
+      - {x: 1.3739862, y: -1.3310546}
+      - {x: 1.3802786, y: -1.9637605}
 --- !u!114 &533450221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2111,9 +1923,9 @@ MonoBehaviour:
   OnPokedByStick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChamberHit
-        m_Mode: 3
+      - m_Target: {fileID: 533450218}
+        m_MethodName: Hit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2126,51 +1938,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHitSparks: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
     type: 2}
---- !u!212 &533450222
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212353527827771770, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533450217}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbbabe9e292f5604897926494bb38fef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &533450223
 Transform:
   m_ObjectHideFlags: 0
@@ -2178,13 +1945,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 533450217}
-  m_LocalRotation: {x: -0, y: -0, z: 0.48328805, w: 0.87546146}
-  m_LocalPosition: {x: 1.891, y: -0.47, z: 0}
-  m_LocalScale: {x: 0.54073334, y: 1.0635544, z: 0.81505}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2008085188}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 57.801003}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &571073116
 Prefab:
   m_ObjectHideFlags: 0
@@ -2994,7 +2761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5199f353430248578c8a2efd3962ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOnStart: 0
+  playOnStart: 1
   OnStart:
     m_PersistentCalls:
       m_Calls:
@@ -3378,7 +3145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5199f353430248578c8a2efd3962ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playOnStart: 1
+  playOnStart: 0
   OnStart:
     m_PersistentCalls:
       m_Calls:
@@ -3627,13 +3394,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1417215848}
-  - component: {fileID: 1417215847}
   - component: {fileID: 1417215846}
-  - component: {fileID: 1417215845}
   - component: {fileID: 1417215843}
   - component: {fileID: 1417215844}
   m_Layer: 0
-  m_Name: Chamber (3)
+  m_Name: Chamber3
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3651,12 +3416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a527a36c856139488433670e6026902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 0
---- !u!61 &1417215844
-BoxCollider2D:
+  position: 2
+--- !u!60 &1417215844
+PolygonCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61775388630993750, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1417215842}
   m_Enabled: 1
@@ -3665,7 +3429,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.25, y: 1.25}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3675,48 +3439,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
-  m_EdgeRadius: 0
---- !u!114 &1417215845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114803339398439356, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1417215842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fb9f65181792294b9a05950e6781885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeOnStart: 0
-  defaultShakeDuration: 1
-  shakeAmountModifier: 30
-  shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.3062296, y: 0.20300376}
+      - {x: -1.195528, y: -0.7143}
+      - {x: -1.1789589, y: -1.3820528}
+      - {x: -0.75955296, y: -1.8117325}
+      - {x: 0.14919853, y: -2.020079}
+      - {x: 1.2549086, y: -2.0257342}
+      - {x: 1.3190727, y: -1.363964}
+      - {x: 1.1871939, y: -0.5883738}
+      - {x: 0.78137875, y: 0.1864194}
 --- !u!114 &1417215846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3732,9 +3465,9 @@ MonoBehaviour:
   OnPokedByStick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ChamberHit
-        m_Mode: 3
+      - m_Target: {fileID: 1417215843}
+        m_MethodName: Hit
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3747,51 +3480,6 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onHitSparks: {fileID: 1788076779154248, guid: 516f4af873313de4d89cc1b9264e4bf8,
     type: 2}
---- !u!212 &1417215847
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212652626450993070, guid: 9a3c8d80b2a0d484aabf58e549ddfaa7,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1417215842}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbbabe9e292f5604897926494bb38fef, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!4 &1417215848
 Transform:
   m_ObjectHideFlags: 0
@@ -3799,13 +3487,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1417215842}
-  m_LocalRotation: {x: -0, y: -0, z: 0.06921833, w: -0.99760157}
-  m_LocalPosition: {x: -1.359, y: -2.168, z: 0}
-  m_LocalScale: {x: 1.0817055, y: 0.5450547, z: 0.81505}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2008085188}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.938}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1420295948 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
@@ -5119,17 +4807,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  timeBetweenChamberShake: 0.25
-  durationChamberShake: 1
-  shakeAmount: 0.5
-  currentPattern: 
-  buttonsPressedThisFrame: 
-  minigameRunning: 0
+  OnFail:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  patternLength: 3
+  blinkTime: 0.25
+  betweenBlinkTime: 0.1
+  timeLimit: 30
   heartAnimator: {fileID: 484749360}
-  tlChamber: {fileID: 419139571}
-  trChamber: {fileID: 533450218}
-  blChamber: {fileID: 1417215843}
-  brChamber: {fileID: 87954653}
+  heartChambers:
+  - {fileID: 87954653}
+  - {fileID: 533450218}
+  - {fileID: 1417215843}
+  - {fileID: 419139571}
 --- !u!4 &2008085188
 Transform:
   m_ObjectHideFlags: 0
@@ -5140,11 +4832,11 @@ Transform:
   m_LocalPosition: {x: -11.59, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 419139576}
+  - {fileID: 484749358}
+  - {fileID: 87954658}
   - {fileID: 533450223}
   - {fileID: 1417215848}
-  - {fileID: 87954658}
-  - {fileID: 484749358}
+  - {fileID: 419139576}
   m_Father: {fileID: 157555120}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
