@@ -109,6 +109,7 @@ public class HeartGameManager : MonoBehaviour {
 	}
 
 	void Fail() {
+		readyForHit = false;
 		OnFail.Invoke();
 	}
 }
