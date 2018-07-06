@@ -29,7 +29,7 @@ public class WhaleEventCycler : MonoBehaviour {
 
 	public void FindNextEvent() {
 		int randIndex = Random.Range(0, whaleEvents.Count);
-		activeEvent = whaleEvents[randIndex];
+		activeEvent = readyEvents[randIndex];
 		UpdateEventTracking();
 		activeEvent.StartEvent();
 	}
