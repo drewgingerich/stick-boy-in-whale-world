@@ -19,16 +19,16 @@ public class WhaleEventCycler : MonoBehaviour {
 		usedEvents = new List<WhaleEvent>();
 	}
 
-	void Start () {
-		foreach (WhaleEvent whaleEvent in availableEvents) {
-			whaleEvent.OnSucceed.AddListener(FindNextEvent);
-		}
+	public void StartRandomEvent() {
+		int randIndex = Random.Range(0, availableEvents.Count);
+		WhaleEvent whaleEvent = availableEvents[randIndex];
+		StartEvent(whaleEvent);
 	}
 
-	public void FindNextEvent() {
-		int randIndex = Random.Range(0, availableEvents.Count);
-		activeEvent = availableEvents[randIndex];
-		UpdateEventTracking();
+	public void StartEvent(WhaleEvent whaleEvent) {
+		activeEvent = whaleEvent;
+		if (availableEvents.Contains(whaleEvent))
+			UpdateEventTracking();
 		activeEvent.StartEvent();
 	}
 
