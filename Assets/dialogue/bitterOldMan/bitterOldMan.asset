@@ -22,3 +22,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 886bfeada034c4677ba47a6031e3a09d, type: 2}
   - {fileID: 11400000, guid: d172134f087054d90aeba6c3fd243b48, type: 2}
   - {fileID: 11400000, guid: fb7a30334dd8b4aa3af904be44792464, type: 2}
+  isCutscene: 0
