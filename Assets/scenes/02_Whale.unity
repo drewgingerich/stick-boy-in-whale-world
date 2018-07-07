@@ -765,7 +765,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 314484928}
-        m_MethodName: DelayEvent
+        m_MethodName: RepeatEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -780,7 +780,7 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1050898592}
+      - m_Target: {fileID: 0}
         m_MethodName: DelayEvent
         m_Mode: 1
         m_Arguments:
@@ -818,8 +818,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 314484927}
-  - component: {fileID: 314484926}
   - component: {fileID: 314484928}
+  - component: {fileID: 314484926}
   m_Layer: 0
   m_Name: Event Cycler
   m_TagString: Untagged
@@ -865,10 +865,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 314484925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a0e56cdb83b44938ea588dc8634160, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b2fbeb351a8c43108bae17dbd6234f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSendEvent:
+  OnRepeatEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 314484926}
@@ -884,7 +884,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  delay: 5
+  repeatDelay: 5
 --- !u!1001 &337467251
 Prefab:
   m_ObjectHideFlags: 0
@@ -2239,7 +2239,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 314484928}
-        m_MethodName: DelayEvent
+        m_MethodName: RepeatEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2254,7 +2254,7 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1050898592}
+      - m_Target: {fileID: 0}
         m_MethodName: DelayEvent
         m_Mode: 1
         m_Arguments:
@@ -2435,7 +2435,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 314484928}
-        m_MethodName: DelayEvent
+        m_MethodName: RepeatEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2450,7 +2450,7 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1050898592}
+      - m_Target: {fileID: 0}
         m_MethodName: DelayEvent
         m_Mode: 1
         m_Arguments:
@@ -2887,6 +2887,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1050898590}
+  - component: {fileID: 1050898594}
+  - component: {fileID: 1050898593}
   - component: {fileID: 1050898592}
   - component: {fileID: 1050898591}
   m_Layer: 0
@@ -2936,10 +2938,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1050898589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9a0e56cdb83b44938ea588dc8634160, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b2fbeb351a8c43108bae17dbd6234f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnSendEvent:
+  OnRepeatEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1050898591}
@@ -2955,7 +2957,68 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  delay: 15
+  repeatDelay: 15
+--- !u!114 &1050898593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1050898589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757ddae866d4946d8b674b18bfd964c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whaleFloorSprite: {fileID: 278677860}
+  whaleWallTopSprite: {fileID: 429908387}
+--- !u!114 &1050898594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1050898589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5199f353430248578c8a2efd3962ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1050898593}
+        m_MethodName: DimLights
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1050898592}
+        m_MethodName: RepeatEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnSucceed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnFail:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1064817853
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +3107,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 314484928}
-        m_MethodName: DelayEvent
+        m_MethodName: RepeatEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3059,7 +3122,7 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1050898592}
+      - m_Target: {fileID: 0}
         m_MethodName: DelayEvent
         m_Mode: 1
         m_Arguments:
@@ -3567,7 +3630,7 @@ MonoBehaviour:
   OnStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1268262166}
+      - m_Target: {fileID: 1457985047}
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -3831,7 +3894,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1457985047}
-        m_MethodName: StartGame
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3901,6 +3964,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnFail:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 741299053}
+        m_MethodName: Fail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   leftLung: {fileID: 1750897695}
   rightLung: {fileID: 480187394}
   baseBreathTime: 1
@@ -3908,6 +3987,7 @@ MonoBehaviour:
   numberOfBreaths: 3
   pokeGracePeriod: 0.1
   visualLagAdjustment: 0.15
+  baseFailTime: 30
 --- !u!4 &1457985049
 Transform:
   m_ObjectHideFlags: 0
@@ -4013,7 +4093,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5160,7 +5240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2085914461
 MonoBehaviour:
   m_ObjectHideFlags: 0

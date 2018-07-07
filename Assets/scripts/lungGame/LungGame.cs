@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class LungGame : MonoBehaviour {
 
 	public UnityEvent OnSucceed;
+	public UnityEvent OnFail;
 
 	[SerializeField] Lung leftLung;
 	[SerializeField] Lung rightLung;
@@ -14,27 +15,39 @@ public class LungGame : MonoBehaviour {
 	[SerializeField] int numberOfBreaths = 3;
 	[SerializeField] float pokeGracePeriod = 0.1f;
 	[SerializeField] float visualLagAdjustment = 0.15f;
+	[SerializeField] float baseFailTime = 30f;
 
-	Lung healthyLung;
 	Lung unhealthyLung;
-	bool playingMinigame;
 	List<float> breathTimes;
 	int breathIndex;
-	float timer;
+	float breathTimer;
 	int successchain;
+	Coroutine failTimer;
 
 	void Awake() {
 		breathTimes = new List<float>();
 		GenerateBreathTimes();
 	}
 
-	public void StartGame() {
+	public void Play() {
 		GenerateBreathTimes();
-		timer = 0;
+		breathTimer = 0;
 		breathIndex = 0;
-		playingMinigame = true;
-		DetermineUnhealthyLung();
-		unhealthyLung.OnPoke += OnPokeUnhealthyLung;
+		successchain = 0;
+		SetUnhealthyLung();
+		failTimer = StartCoroutine(FailTimerRoutine(baseFailTime));
+	}
+
+	public void OnKillWhale() {
+		if (unhealthyLung != null)
+			unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
+		leftLung.healthy = false;
+		rightLung.healthy = false;
+	}
+
+	IEnumerator FailTimerRoutine(float failTime) {
+		yield return new WaitForSeconds(failTime);
+		OnFail.Invoke();
 	}
 
 	void GenerateBreathTimes() {
@@ -44,56 +57,29 @@ public class LungGame : MonoBehaviour {
 		}
 	}
 
-	void DetermineUnhealthyLung() {
-		if (Random.value < 0.5f) {
-			healthyLung = rightLung;
-			unhealthyLung = leftLung;
-		} else {
-			healthyLung = leftLung;
-			unhealthyLung = rightLung;
-		}
+	void SetUnhealthyLung() {
+		unhealthyLung = Random.value < 0.5f ? rightLung : leftLung;
+		unhealthyLung.healthy = false;
+		unhealthyLung.OnPoke += OnPokeUnhealthyLung;
 	}
 
 	void Update() {
-		if (playingMinigame)
-			MinigameUpdate();
-		else
-			HealthyUpdate();
-	}
-
-	void HealthyUpdate() {
-		timer += Time.deltaTime;
-		if (timer >= breathTimes[breathIndex]) {
-			HealthyBreath();
-			SetupNextBreath();
-		}
-	}
-
-	void MinigameUpdate() {
-		timer += Time.deltaTime;
-		if (timer >= breathTimes[breathIndex]) {
-			UnhealthyBreath();
+		breathTimer += Time.deltaTime;
+		if (breathTimer >= breathTimes[breathIndex]) {
+			leftLung.Breath();
+			rightLung.Breath();
 			SetupNextBreath();
 		}
 	}
 
 	void SetupNextBreath() {
-		timer = breathTimes[breathIndex] - timer;
+		breathTimer = breathTimes[breathIndex] - breathTimer;
 		breathIndex++;
 		breathIndex %= breathTimes.Count;
 	}
 
-	void HealthyBreath() {
-		leftLung.Breath();
-		rightLung.Breath();
-	}
-
-	void UnhealthyBreath() {
-		healthyLung.Breath();
-	}
-
 	void OnPokeUnhealthyLung() {
-		float adjustedTime = timer - visualLagAdjustment;
+		float adjustedTime = breathTimer - visualLagAdjustment;
 		if (adjustedTime < pokeGracePeriod || breathTimes[breathIndex] - adjustedTime < pokeGracePeriod)
 			OnGoodPoke();
 		else
@@ -113,8 +99,10 @@ public class LungGame : MonoBehaviour {
 	}
 
 	void EndMinigame() {
-		OnSucceed.Invoke();
-		playingMinigame = false;
+		StopCoroutine(failTimer);
 		unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
+		unhealthyLung.healthy = true;
+		unhealthyLung = null;
+		OnSucceed.Invoke();
 	}
 }

@@ -7,6 +7,8 @@ public class Lung : MonoBehaviour {
 
 	public event System.Action OnPoke = delegate { };
 
+	[System.NonSerialized] public bool healthy = true;
+
 	Animator animator;
 	int breatheHash = Animator.StringToHash("Breathe");
 	int weakBreatheHash = Animator.StringToHash("WeakBreathe");
@@ -17,12 +19,12 @@ public class Lung : MonoBehaviour {
 	}
 
 	public void Poke() {
-		Debug.Log("Poked");
 		OnPoke();
 	}
 
 	public void Breath() {
-		animator.SetTrigger(breatheHash);
+		if (healthy)
+			animator.SetTrigger(breatheHash);
 	}
 
 	public void WeakBreath() {
