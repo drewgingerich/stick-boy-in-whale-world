@@ -7,9 +7,8 @@ public class WhaleEventCycler : MonoBehaviour {
 
 	public static WhaleEventCycler instance;
 
-	[SerializeField] List<WhaleEvent> whaleEvents;
+	[SerializeField] List<WhaleEvent> availableEvents;
 
-	List<WhaleEvent> readyEvents;
 	List<WhaleEvent> usedEvents;
 
 	WhaleEvent activeEvent;
@@ -17,29 +16,28 @@ public class WhaleEventCycler : MonoBehaviour {
 	void Awake() {
 		Debug.Assert(instance == null);
 		instance = this;
-		readyEvents = whaleEvents;
 		usedEvents = new List<WhaleEvent>();
 	}
 
 	void Start () {
-		foreach (WhaleEvent whaleEvent in whaleEvents) {
+		foreach (WhaleEvent whaleEvent in availableEvents) {
 			whaleEvent.OnSucceed.AddListener(FindNextEvent);
 		}
 	}
 
 	public void FindNextEvent() {
-		int randIndex = Random.Range(0, whaleEvents.Count);
-		activeEvent = readyEvents[randIndex];
+		int randIndex = Random.Range(0, availableEvents.Count);
+		activeEvent = availableEvents[randIndex];
 		UpdateEventTracking();
 		activeEvent.StartEvent();
 	}
 
 	void UpdateEventTracking() {
 		usedEvents.Add(activeEvent);
-		readyEvents.Remove(activeEvent);
-		if (readyEvents.Count == 0) {
-			List<WhaleEvent> temp = readyEvents;
-			readyEvents = usedEvents;
+		availableEvents.Remove(activeEvent);
+		if (availableEvents.Count == 0) {
+			List<WhaleEvent> temp = availableEvents;
+			availableEvents = usedEvents;
 			usedEvents = temp;
 		}
 	}

@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409ee928c145740f9bf134cd245d9e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whaleEvents:
+  availableEvents:
   - {fileID: 1148353146}
   - {fileID: 741299053}
   - {fileID: 303678857}
