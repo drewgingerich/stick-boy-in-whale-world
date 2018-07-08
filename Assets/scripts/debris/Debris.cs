@@ -8,12 +8,13 @@ public class Debris : MonoBehaviour {
 	public event System.Action OnBreak;
 
 	[SerializeField] float secondsToDestroy = 2f;
-	[SerializeField] float chainPokeMinimumTime = 0.2f;
+	[SerializeField] float chainPokeMinimumTime = 0.5f;
 	[SerializeField] bool hideOnStart = true;
 
 	float timeSinceLastHit;
 	bool chainPoke;
 	float timeChainPoked;
+	bool pokeable = true;
 
 	Animator animator;
 
@@ -33,24 +34,28 @@ public class Debris : MonoBehaviour {
 	public void Spawn() {
 		gameObject.SetActive(true);
 		timeSinceLastHit = 0;
+		timeChainPoked = 0;
 		// animator.SetTrigger(spawnHash);
 	}
 	
 	public void Poke() {
-		// if (timeSinceLastHit <= chainPokeMinimumTime)
-		// 	chainPoke = true;
-		// if (chainPoke) {
-		// 	timeChainPoked += Time.deltaTime;
-		// 	animator.SetTrigger(wobbleHash);
-		// }
-		// if (timeChainPoked >= secondsToDestroy)
+		if (!pokeable)
+			return;
+		chainPoke = timeSinceLastHit <= chainPokeMinimumTime ? true : false;
+		if (chainPoke) {
+			timeChainPoked += Time.deltaTime;
+			// animator.SetTrigger(wobbleHash);
+		}
+		if (timeChainPoked >= secondsToDestroy)
 			StartCoroutine(BreakRoutine());
 		timeSinceLastHit = 0;
 	}
 
 	IEnumerator BreakRoutine() {
+		pokeable = false;
 		// animator.SetTrigger(breakHash);
 		yield return new WaitForSeconds( .01f );
+		pokeable = true;
 		OnBreak();
 		gameObject.SetActive(false);
 	}
