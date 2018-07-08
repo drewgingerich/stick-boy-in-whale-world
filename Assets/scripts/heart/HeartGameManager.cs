@@ -39,6 +39,13 @@ public class HeartGameManager : MonoBehaviour {
 		}
 	}
 
+	public void OnKillWhale() {
+		heartAnimator.SetBool("stopHeart", true);
+		foreach (HeartChamber chamber in heartChambers) {
+			chamber.OnHit -= ChamberHit;
+		}
+	}
+
 	public void StartMinigame() {
 		heartAnimator.SetBool("stopHeart", true);
 		GeneratePattern();
