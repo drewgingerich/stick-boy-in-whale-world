@@ -780,8 +780,8 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: DelayEvent
+      - m_Target: {fileID: 1050898594}
+        m_MethodName: StartEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2271,8 +2271,8 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: DelayEvent
+      - m_Target: {fileID: 1050898594}
+        m_MethodName: StartEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2467,8 +2467,8 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: DelayEvent
+      - m_Target: {fileID: 1050898594}
+        m_MethodName: StartEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2974,7 +2974,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  repeatDelay: 15
+  repeatDelay: 1
 --- !u!114 &1050898593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3183,8 +3183,8 @@ MonoBehaviour:
   OnFail:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: DelayEvent
+      - m_Target: {fileID: 1050898594}
+        m_MethodName: StartEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3346,7 +3346,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnPokedByStick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   onHitSparks: {fileID: 0}
@@ -5007,7 +5018,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   debrisList:
   - {fileID: 583227342}
-  baseFailTime: 30
+  baseFailTime: 1
 --- !u!1 &1924984934
 GameObject:
   m_ObjectHideFlags: 0
