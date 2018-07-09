@@ -7,7 +7,7 @@ public class DimWhaleLights : MonoBehaviour {
 	[SerializeField] SpriteRenderer whaleFloorSprite;
 	[SerializeField] SpriteRenderer whaleWallTopSprite;
 
-	Color dimColor = new Color(128, 125, 156);
+	Color dimColor = new Color32(128, 125, 156, 255);
 
 	public void DimLights() {
 		whaleFloorSprite.color = dimColor;
