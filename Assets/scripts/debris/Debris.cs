@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Debris : MonoBehaviour {
 
-	public event System.Action OnBreak;
+	public event System.Action OnBreak = delegate { };
 
 	[SerializeField] float secondsToDestroy = 2f;
 	[SerializeField] float chainPokeMinimumTime = 0.5f;
