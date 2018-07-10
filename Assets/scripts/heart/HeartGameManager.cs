@@ -49,7 +49,6 @@ public class HeartGameManager : MonoBehaviour {
 	public void StartMinigame() {
 		heartAnimator.SetBool("stopHeart", true);
 		GeneratePattern();
-		StartCoroutine(DemoPatternRoutine());
 		failTimer = StartCoroutine(FailTimer());
 	}
 
@@ -59,6 +58,10 @@ public class HeartGameManager : MonoBehaviour {
 			pattern.Add(Random.Range(0, heartChambers.Count));
 		}
 		patternIndex = 0;
+	}
+
+	public void DemoPattern() {
+		StartCoroutine(DemoPatternRoutine());
 	}
 
 	IEnumerator DemoPatternRoutine() {
