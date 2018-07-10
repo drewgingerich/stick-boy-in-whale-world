@@ -17,7 +17,9 @@ public class HeartGameManager : MonoBehaviour {
 
 	[Header("UI Setup")]
 	[SerializeField] Animator heartAnimator;
+
 	[SerializeField] List<HeartChamber> heartChambers;
+	[SerializeField] TriggerEventOnEnter demoTrigger;
 
 	float hitAnimationTime = 0.3f;
 	List<int> pattern;
@@ -44,13 +46,14 @@ public class HeartGameManager : MonoBehaviour {
 		foreach (HeartChamber chamber in heartChambers) {
 			chamber.OnHit -= ChamberHit;
 		}
+		demoTrigger.TurnOff();
 	}
 
-	public void StartMinigame() {
+	public void Play() {
 		heartAnimator.SetBool("stopHeart", true);
 		GeneratePattern();
-		StartCoroutine(DemoPatternRoutine());
 		failTimer = StartCoroutine(FailTimer());
+		demoTrigger.TurnOn();
 	}
 
 	void GeneratePattern() {
@@ -59,6 +62,10 @@ public class HeartGameManager : MonoBehaviour {
 			pattern.Add(Random.Range(0, heartChambers.Count));
 		}
 		patternIndex = 0;
+	}
+
+	public void DemoPattern() {
+		StartCoroutine(DemoPatternRoutine());
 	}
 
 	IEnumerator DemoPatternRoutine() {
@@ -112,6 +119,7 @@ public class HeartGameManager : MonoBehaviour {
 	void Succeed() {
 		StopCoroutine(failTimer);
 		heartAnimator.SetBool("stopHeart", false);
+		demoTrigger.TurnOff();
 		OnSucceed.Invoke();
 	}
 

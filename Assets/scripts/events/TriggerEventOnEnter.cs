@@ -8,7 +8,18 @@ public class TriggerEventOnEnter : MonoBehaviour {
 
 	public UnityEvent OnEnterTrigger;
 
+	[SerializeField] bool on = true;
+
 	void OnTriggerEnter2D(Collider2D other) {
-		OnEnterTrigger.Invoke();
+		if (on)
+			OnEnterTrigger.Invoke();
+	}
+
+	public void TurnOn() {
+		on = true;
+	}
+
+	public void TurnOff() {
+		on = false;
 	}
 }
