@@ -11,6 +11,10 @@ public class Barricade : MonoBehaviour {
 		interactable = GetComponent<StickInteractable>();
 	}
 
+	public void Start() {
+		interactable.enabled = false;
+	}
+
 	public void MakeBreakable() {
 		interactable.enabled = true;
 	}
