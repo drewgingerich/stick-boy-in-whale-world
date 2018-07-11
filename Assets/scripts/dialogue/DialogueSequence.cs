@@ -2,24 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class DialogueSequence : MonoBehaviour {
 
 	public UnityEvent OnDialogueFinish;
 
-	public List<Dialogue> dialogues;
+	[FormerlySerializedAs("dialogues")]
+	public List<Dialogue> dialogueSequence;
+	public List<Dialogue> dialoguePool;
 
 	Dialogue selectedDialogue;
 	
-	int index = 0;
+	int sequenceIndex = 0;
 
 	public void Play() {
-		selectedDialogue = dialogues[index];
+		if (sequenceIndex == dialogueSequence.Count)
+			selectedDialogue = GetDialogueFromPool();
+		else {
+			selectedDialogue = dialogueSequence[sequenceIndex];
+			sequenceIndex++;
+		}
 		DialoguePlayer.instance.PlayDialogue(selectedDialogue);
 		selectedDialogue.OnDialogueFinish += FinishDialogue;
-		index++;
-		if (index == dialogues.Count)
-			index = dialogues.Count - 1;
+	}
+
+	Dialogue GetDialogueFromPool() {
+		Debug.Assert(dialoguePool.Count > 0);
+		return dialoguePool[Random.Range(0, dialoguePool.Count)];
 	}
 
 	void FinishDialogue() {
