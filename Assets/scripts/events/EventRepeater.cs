@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EventRepeater : MonoBehaviour {
 
+	public UnityEvent OnRecieveEvent;
 	public UnityEvent OnRepeatEvent;
 
 	public float repeatDelay = 5f;
@@ -14,6 +15,7 @@ public class EventRepeater : MonoBehaviour {
 	}
 
 	IEnumerator RepeatEventRoutine() {
+		OnRecieveEvent.Invoke();
 		yield return new WaitForSeconds(repeatDelay);
 		OnRepeatEvent.Invoke();
 	}

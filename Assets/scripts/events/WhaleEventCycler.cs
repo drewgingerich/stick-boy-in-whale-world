@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WhaleEventCycler : MonoBehaviour {
 
-	public static WhaleEventCycler instance;
+	public UnityEvent OnStartNextEvent;
 
 	[SerializeField] List<WhaleEvent> availableEvents;
 
@@ -13,9 +12,7 @@ public class WhaleEventCycler : MonoBehaviour {
 
 	WhaleEvent activeEvent;
 
-	void Awake() {
-		Debug.Assert(instance == null);
-		instance = this;
+	void Start() {
 		usedEvents = new List<WhaleEvent>();
 	}
 
@@ -30,6 +27,8 @@ public class WhaleEventCycler : MonoBehaviour {
 		if (availableEvents.Contains(whaleEvent))
 			UpdateEventTracking();
 		activeEvent.StartEvent();
+		OnStartNextEvent.Invoke();
+		Debug.Log(activeEvent);
 	}
 
 	void UpdateEventTracking() {

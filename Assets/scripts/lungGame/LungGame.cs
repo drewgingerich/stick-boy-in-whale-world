@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class LungGame : MonoBehaviour {
 
 	public UnityEvent OnSucceed;
-	public UnityEvent OnFail;
 
 	[SerializeField] Lung leftLung;
 	[SerializeField] Lung rightLung;
@@ -15,14 +15,12 @@ public class LungGame : MonoBehaviour {
 	[SerializeField] int numberOfBreaths = 3;
 	[SerializeField] float pokeGracePeriod = 0.1f;
 	[SerializeField] float visualLagAdjustment = 0.15f;
-	[SerializeField] float baseFailTime = 30f;
 
 	Lung unhealthyLung;
 	List<float> breathTimes;
 	int breathIndex;
 	float breathTimer;
 	int successchain;
-	Coroutine failTimer;
 
 	void Awake() {
 		breathTimes = new List<float>();
@@ -35,19 +33,12 @@ public class LungGame : MonoBehaviour {
 		breathIndex = 0;
 		successchain = 0;
 		SetUnhealthyLung();
-		failTimer = StartCoroutine(FailTimerRoutine(baseFailTime));
 	}
 
 	public void OnKillWhale() {
 		if (unhealthyLung != null)
 			unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
-		leftLung.healthy = false;
-		rightLung.healthy = false;
-	}
-
-	IEnumerator FailTimerRoutine(float failTime) {
-		yield return new WaitForSeconds(failTime);
-		OnFail.Invoke();
+		leftLung.healthy = rightLung.healthy = false;
 	}
 
 	void GenerateBreathTimes() {
@@ -99,7 +90,6 @@ public class LungGame : MonoBehaviour {
 	}
 
 	void EndMinigame() {
-		StopCoroutine(failTimer);
 		unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
 		unhealthyLung.healthy = true;
 		unhealthyLung = null;

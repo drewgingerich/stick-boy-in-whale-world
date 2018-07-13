@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialoguePlayer : MonoBehaviour {
+
+	public UnityEvent OnStartDialogue;
+	public UnityEvent OnFinishDialogue;
+
+	public static DialoguePlayer instance;
 
 	[SerializeField] GameObject dialogueUI;
 	[SerializeField] GameObject dialogueVeil;
@@ -13,8 +19,6 @@ public class DialoguePlayer : MonoBehaviour {
 	[SerializeField] List<RawImage> panelImages;
 	[SerializeField] bool autoProgress = false;
 	[SerializeField] float lingerTime = 2f;
-
-	public static DialoguePlayer instance;
 
 	Dialogue dialogue;
 	DialoguePiece currentPiece;
@@ -54,6 +58,7 @@ public class DialoguePlayer : MonoBehaviour {
 		dialogueUI.SetActive(true);
 		pieceIndex = 0;
 		lineIndex = 0;
+		OnStartDialogue.Invoke();
 		PlayNextPiece();
 	}
 
@@ -115,5 +120,6 @@ public class DialoguePlayer : MonoBehaviour {
 		dialogueVeil.SetActive(false);
 		dialogueUI.SetActive(false);
 		dialogue.Finish();
+		OnFinishDialogue.Invoke();
 	}
 }

@@ -141,6 +141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 314484927}
+  - {fileID: 962330773}
   - {fileID: 660246724}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -332,7 +333,7 @@ GameObject:
   - component: {fileID: 140311047}
   - component: {fileID: 140311046}
   m_Layer: 0
-  m_Name: Problem o meter
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +389,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Probelm-o-meter
+  m_Text: Am I Alive?
 --- !u!222 &140311047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -540,8 +541,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 63a35e017e743e143a9407d7f93b19e4, type: 2}
+  dialoguePool: []
 --- !u!1001 &204351787
 Prefab:
   m_ObjectHideFlags: 0
@@ -640,8 +642,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 928cbe2c5164ad845831225fe5f97cc8, type: 2}
+  dialoguePool: []
 --- !u!1 &278677859
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +841,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409ee928c145740f9bf134cd245d9e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStartNextEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 962330774}
+        m_MethodName: SetHealthy
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   availableEvents:
   - {fileID: 1148353146}
   - {fileID: 741299053}
@@ -868,6 +887,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2fbeb351a8c43108bae17dbd6234f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnRecieveEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 962330774}
+        m_MethodName: SetHealthy
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnRepeatEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2169,28 +2204,11 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnFail:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 647910025}
-        m_MethodName: Fail
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   debrisList:
   - {fileID: 1275526499}
   - {fileID: 1420295948}
   - {fileID: 968821304}
   - {fileID: 1400393633}
-  baseFailTime: 30
 --- !u!1 &647910023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,7 +2329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 11435145}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &660246725
 MonoBehaviour:
@@ -2372,8 +2390,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: cb5474ad94f7a9141ad4a7f39601efe4, type: 2}
+  dialoguePool: []
 --- !u!4 &674909308
 Transform:
   m_ObjectHideFlags: 0
@@ -2796,8 +2815,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 869a64b1fdb69446d80a7cdc29fd9591, type: 2}
+  dialoguePool: []
 --- !u!114 &937239399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2844,6 +2864,66 @@ EdgeCollider2D:
   - {x: -4.300457, y: -2.6912346}
   - {x: -0.06727409, y: -1.294589}
   - {x: 4.2640896, y: -3.2367544}
+--- !u!1 &962330772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 962330773}
+  - component: {fileID: 962330774}
+  m_Layer: 0
+  m_Name: WhaleHealth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &962330773
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962330772}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1399.22, y: 739.5708, z: 11.018864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 11435145}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &962330774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962330772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40489f5e695c34f47becc4f091480045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1050898594}
+        m_MethodName: StartEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  hpSlider: {fileID: 1716831393}
+  health: 100
+  hpGainRate: 1
+  hpLossRate: 3
 --- !u!114 &968821304 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
@@ -2906,8 +2986,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 14de2164958fd9242a4e1d9b96387757, type: 2}
+  dialoguePool: []
 --- !u!1 &999602399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,8 +3114,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 60444ce56a9c9a64889cc57a12dc2196, type: 2}
+  dialoguePool: []
 --- !u!114 &1050898592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3046,6 +3128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2fbeb351a8c43108bae17dbd6234f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnRecieveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   OnRepeatEvent:
     m_PersistentCalls:
       m_Calls:
@@ -3213,6 +3300,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad384f19cf0d84686a9d16691fa3a1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStartDialogue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 962330774}
+        m_MethodName: SetPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnFinishDialogue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 962330774}
+        m_MethodName: SetPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   dialogueUI: {fileID: 2007785833}
   dialogueVeil: {fileID: 1412918787}
   characterSprite: {fileID: 1722074019}
@@ -3536,8 +3655,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 52c1c7f30088cbf42af597ef2b3b826c, type: 2}
+  dialoguePool: []
 --- !u!4 &1164732625
 Transform:
   m_ObjectHideFlags: 0
@@ -3678,8 +3798,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 4ae2139e64cfb4e1cbf22aaec182240c, type: 2}
+  dialoguePool: []
 --- !u!114 &1275526499 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,
@@ -4069,8 +4190,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 19140368050f6034f83ad810765531a6, type: 2}
+  dialoguePool: []
 --- !u!4 &1443662926
 Transform:
   m_ObjectHideFlags: 0
@@ -4127,22 +4249,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnFail:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 741299053}
-        m_MethodName: Fail
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   leftLung: {fileID: 1750897695}
   rightLung: {fileID: 480187394}
   baseBreathTime: 1
@@ -4150,7 +4256,6 @@ MonoBehaviour:
   numberOfBreaths: 3
   pokeGracePeriod: 0.1
   visualLagAdjustment: 0.15
-  baseFailTime: 30
 --- !u!4 &1457985049
 Transform:
   m_ObjectHideFlags: 0
@@ -4223,8 +4328,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: d68157f15ac520c419e1cb76c981ef1a, type: 2}
+  dialoguePool: []
 --- !u!1 &1488220641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,7 +4364,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1488220643
 MonoBehaviour:
@@ -4493,8 +4599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0.1, y: 0}
-  m_SizeDelta: {x: -9.8, y: 0}
+  m_AnchoredPosition: {x: 0.000020981, y: 0}
+  m_SizeDelta: {x: 0.000030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1701759559
 GameObject:
@@ -4538,7 +4644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193a5f8434d98014798924f39f5ca191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: EndingCutscene
+  targetScene: 03_EndingCutscene
 --- !u!68 &1701759562
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -4793,8 +4899,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  dialogues:
+  dialogueSequence:
   - {fileID: 11400000, guid: 2ded19b2e5ac43743bcd06fa599a4579, type: 2}
+  dialoguePool: []
 --- !u!1 &1741680784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,25 +5284,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnFail:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 303678857}
-        m_MethodName: Fail
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   debrisList:
   - {fileID: 583227342}
-  baseFailTime: 30
 --- !u!1 &1924984934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5457,26 +5547,9 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  OnFail:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1148353146}
-        m_MethodName: Fail
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   patternLength: 3
   blinkTime: 0.25
   betweenBlinkTime: 0.1
-  timeLimit: 30
   heartAnimator: {fileID: 484749360}
   heartChambers:
   - {fileID: 87954653}

@@ -7,13 +7,11 @@ using UnityEngine.Events;
 public class HeartGameManager : MonoBehaviour {
 
 	public UnityEvent OnSucceed;
-	public UnityEvent OnFail;
 
 	[Header("Balance")]
 	[SerializeField] int patternLength = 3;
 	[SerializeField] float blinkTime = 0.5f;
 	[SerializeField] float betweenBlinkTime = 0.1f;
-	[SerializeField] float timeLimit = 30f;
 
 	[Header("UI Setup")]
 	[SerializeField] Animator heartAnimator;
@@ -24,12 +22,7 @@ public class HeartGameManager : MonoBehaviour {
 	float hitAnimationTime = 0.3f;
 	List<int> pattern;
 	int patternIndex = 0;
-	Coroutine failTimer;
 	bool readyForHit;
-
-	Color badHitColor = new Color(251, 0, 130);
-	Color goodHitColoe = new Color(0, 251, 106);
-
 
 	void Awake() {
 		pattern = new List<int>();
@@ -42,6 +35,7 @@ public class HeartGameManager : MonoBehaviour {
 	}
 
 	public void OnKillWhale() {
+		readyForHit = false;
 		heartAnimator.SetBool("stopHeart", true);
 		foreach (HeartChamber chamber in heartChambers) {
 			chamber.OnHit -= ChamberHit;
@@ -52,7 +46,6 @@ public class HeartGameManager : MonoBehaviour {
 	public void Play() {
 		heartAnimator.SetBool("stopHeart", true);
 		GeneratePattern();
-		failTimer = StartCoroutine(FailTimer());
 		demoTrigger.TurnOn();
 	}
 
@@ -80,11 +73,6 @@ public class HeartGameManager : MonoBehaviour {
 			yield return new WaitForSeconds(blinkTime);
 		}
 		readyForHit = true;
-	}
-
-	IEnumerator FailTimer() {
-		yield return new WaitForSeconds(timeLimit);
-		Fail();
 	}
 
 	public void ChamberHit(HeartChamber chamber) {
@@ -117,14 +105,8 @@ public class HeartGameManager : MonoBehaviour {
 	}
 
 	void Succeed() {
-		StopCoroutine(failTimer);
 		heartAnimator.SetBool("stopHeart", false);
 		demoTrigger.TurnOff();
 		OnSucceed.Invoke();
-	}
-
-	void Fail() {
-		readyForHit = false;
-		OnFail.Invoke();
 	}
 }
