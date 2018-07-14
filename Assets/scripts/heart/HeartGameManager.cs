@@ -9,7 +9,7 @@ public class HeartGameManager : MonoBehaviour {
 	public UnityEvent OnSucceed;
 
 	[Header("Balance")]
-	[SerializeField] int patternLength = 3;
+	[SerializeField] int startingPatternLength = 1;
 	[SerializeField] float blinkTime = 0.5f;
 	[SerializeField] float betweenBlinkTime = 0.1f;
 
@@ -23,9 +23,11 @@ public class HeartGameManager : MonoBehaviour {
 	List<int> pattern;
 	int patternIndex = 0;
 	bool readyForHit;
+	int difficulty;
 
 	void Awake() {
 		pattern = new List<int>();
+		difficulty = startingPatternLength;
 	}
 
 	void Start() {
@@ -45,11 +47,11 @@ public class HeartGameManager : MonoBehaviour {
 
 	public void Play() {
 		heartAnimator.SetBool("stopHeart", true);
-		GeneratePattern();
+		GeneratePattern(difficulty);
 		demoTrigger.TurnOn();
 	}
 
-	void GeneratePattern() {
+	void GeneratePattern(int patternLength) {
 		pattern.Clear();
 		for (int i = 0; i < patternLength; i++) {
 			pattern.Add(Random.Range(0, heartChambers.Count));
@@ -105,6 +107,7 @@ public class HeartGameManager : MonoBehaviour {
 	}
 
 	void Succeed() {
+		difficulty++;
 		heartAnimator.SetBool("stopHeart", false);
 		demoTrigger.TurnOff();
 		OnSucceed.Invoke();
