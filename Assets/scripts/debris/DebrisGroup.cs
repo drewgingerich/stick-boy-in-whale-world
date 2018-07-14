@@ -8,6 +8,13 @@ public class DebrisGroup : MonoBehaviour {
 	public UnityEvent OnSucceed;
 
 	public List<Debris> debrisList;
+	[SerializeField] int startingDebrisNumber = 1;
+
+	int difficulty;
+
+	void Awake() {
+		difficulty = startingDebrisNumber;
+	}
 
 	void Start() {
 		foreach (Debris debris in debrisList) {
@@ -23,12 +30,17 @@ public class DebrisGroup : MonoBehaviour {
 	}
 
 	public void StartMinigame() {
-		int randomIndex = Random.Range(0, debrisList.Count);
-		Debris activeDebris = debrisList[randomIndex];
-		activeDebris.Spawn();
+		List<Debris> inactiveDebris = new List<Debris>(debrisList);
+		for (int i = 0; i < difficulty; i++) {
+			int randomIndex = Random.Range(0, inactiveDebris.Count);
+			inactiveDebris[randomIndex].Spawn();
+			inactiveDebris.RemoveAt(randomIndex);
+		}
 	}
 
 	void EndMinigame() {
+		if (difficulty < debrisList.Count - 1)
+			difficulty++;
 		OnSucceed.Invoke();
 	}
 }

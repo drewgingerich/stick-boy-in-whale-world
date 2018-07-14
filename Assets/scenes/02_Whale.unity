@@ -2209,6 +2209,7 @@ MonoBehaviour:
   - {fileID: 1420295948}
   - {fileID: 968821304}
   - {fileID: 1400393633}
+  startingDebrisNumber: 1
 --- !u!1 &647910023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,9 +3439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToDestroy: 0.3
-  chainPokeMinimumTime: 0.5
-  hideOnStart: 0
+  hitsToDestroy: 1
 --- !u!114 &1151830388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4253,7 +4252,7 @@ MonoBehaviour:
   rightLung: {fileID: 480187394}
   baseBreathTime: 1
   breathTimeVariationUnit: 0.5
-  numberOfBreaths: 3
+  startingBreathCount: 2
   pokeGracePeriod: 0.1
   visualLagAdjustment: 0.15
 --- !u!4 &1457985049
@@ -5286,6 +5285,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   debrisList:
   - {fileID: 583227342}
+  startingDebrisNumber: 1
 --- !u!1 &1924984934
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,7 +5547,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  patternLength: 3
+  startingPatternLength: 1
   blinkTime: 0.25
   betweenBlinkTime: 0.1
   heartAnimator: {fileID: 484749360}
