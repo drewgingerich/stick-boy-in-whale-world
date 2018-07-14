@@ -2922,8 +2922,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   hpSlider: {fileID: 1716831393}
   health: 100
-  hpGainRate: 1
-  hpLossRate: 3
+  hpGainRate: 2
+  hpLossRate: 2
 --- !u!114 &968821304 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114578151887660724, guid: 7d04f7e5997db4e4ca0361912c05dd14,

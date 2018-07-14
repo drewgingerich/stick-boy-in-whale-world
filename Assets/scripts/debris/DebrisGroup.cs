@@ -12,6 +12,7 @@ public class DebrisGroup : MonoBehaviour {
 	void Start() {
 		foreach (Debris debris in debrisList) {
 			debris.OnBreak += EndMinigame;
+			debris.gameObject.SetActive(false);
 		}
 	}
 
