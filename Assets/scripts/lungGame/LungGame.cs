@@ -12,7 +12,7 @@ public class LungGame : MonoBehaviour {
 	[SerializeField] Lung rightLung;
 	[SerializeField] float baseBreathTime = 0.75f;
 	[SerializeField] float breathTimeVariationUnit = 0.25f;
-	[SerializeField] int numberOfBreaths = 3;
+	[SerializeField] int startingBreathCount = 1;
 	[SerializeField] float pokeGracePeriod = 0.1f;
 	[SerializeField] float visualLagAdjustment = 0.15f;
 
@@ -21,14 +21,16 @@ public class LungGame : MonoBehaviour {
 	int breathIndex;
 	float breathTimer;
 	int successchain;
+	int difficulty = 0;
 
 	void Awake() {
+		difficulty = startingBreathCount;
 		breathTimes = new List<float>();
-		GenerateBreathTimes();
+		GenerateBreathTimes(difficulty);
 	}
 
 	public void Play() {
-		GenerateBreathTimes();
+		GenerateBreathTimes(difficulty);
 		breathTimer = 0;
 		breathIndex = 0;
 		successchain = 0;
@@ -41,7 +43,7 @@ public class LungGame : MonoBehaviour {
 		leftLung.healthy = rightLung.healthy = false;
 	}
 
-	void GenerateBreathTimes() {
+	void GenerateBreathTimes(int numberOfBreaths) {
 		breathTimes.Clear();
 		for (int i = 0; i < numberOfBreaths; i++) {
 			breathTimes.Add(baseBreathTime + Random.Range(0, 2) * breathTimeVariationUnit);
@@ -93,6 +95,7 @@ public class LungGame : MonoBehaviour {
 		unhealthyLung.OnPoke -= OnPokeUnhealthyLung;
 		unhealthyLung.healthy = true;
 		unhealthyLung = null;
+		difficulty++;
 		OnSucceed.Invoke();
 	}
 }
