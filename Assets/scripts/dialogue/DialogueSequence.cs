@@ -17,9 +17,13 @@ public class DialogueSequence : MonoBehaviour {
 	int sequenceIndex = 0;
 
 	public void Play() {
-		if (sequenceIndex == dialogueSequence.Count)
+		if (sequenceIndex == dialogueSequence.Count) {
 			selectedDialogue = GetDialogueFromPool();
-		else {
+			if (selectedDialogue == null) {
+				OnDialogueFinish.Invoke();
+				return;
+			}
+		} else {
 			selectedDialogue = dialogueSequence[sequenceIndex];
 			sequenceIndex++;
 		}
@@ -28,8 +32,10 @@ public class DialogueSequence : MonoBehaviour {
 	}
 
 	Dialogue GetDialogueFromPool() {
-		Debug.Assert(dialoguePool.Count > 0);
-		return dialoguePool[Random.Range(0, dialoguePool.Count)];
+		if (dialoguePool.Count == 0)
+			return null;
+		else
+			return dialoguePool[Random.Range(0, dialoguePool.Count)];
 	}
 
 	void FinishDialogue() {
