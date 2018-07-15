@@ -58,8 +58,13 @@ public class DialoguePlayer : MonoBehaviour {
 		dialogueUI.SetActive(true);
 		pieceIndex = 0;
 		lineIndex = 0;
-		OnStartDialogue.Invoke();
+		StartCoroutine(AnnounceDialogueStartRoutine());
 		PlayNextPiece();
+	}
+
+	IEnumerator AnnounceDialogueStartRoutine() {
+		yield return null;
+		OnStartDialogue.Invoke();
 	}
 
 	void PlayNextPiece() {
