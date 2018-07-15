@@ -8,13 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
-  m_Name: New Dialogue Piece
+  m_Script: {fileID: 11500000, guid: c211e691a8ecf48b28b0b8c820c2d102, type: 3}
+  m_Name: gut_intro_1
   m_EditorClassIdentifier: 
-  character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
-  lines:
-  - 
-  - 
-  - 
-  - 
-  - 
+  pieces:
+  - {fileID: 11400000, guid: 61f9f8420e8714b4e984e54ce120fb86, type: 2}
+  isCutscene: 1
