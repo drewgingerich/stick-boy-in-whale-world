@@ -13,5 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: 8a299d997aa9242b38b0a030672fcea3, type: 2}
   lines:
-  - Ohh, you have something stuck in your throat. I see it!
-  - Well, hitting things with this stick always works!
+  - Oh there's something stuck in your throat!
+  - I'll walk over and hit it with my stick!
+  - That fixes everything!

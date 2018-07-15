@@ -13,5 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: 8a299d997aa9242b38b0a030672fcea3, type: 2}
   lines:
-  - '"GASP"'
-  - Are you infected by a dark evil deep within, Oh Great Mysterious One???
+  - 'But, but . . . '
+  - '*SOB* . . .'
+  - '*Deep breath* '
+  - No. This is an unfair use of your power.
+  - ' I will find someone else down here and we will form a union.'
