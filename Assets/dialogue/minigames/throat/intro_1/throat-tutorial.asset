@@ -13,4 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieces:
   - {fileID: 11400000, guid: 400d965d6e0e7d4408d956307dd51fe8, type: 2}
+  - {fileID: 11400000, guid: 5a99875ce6e68447d8d523c7495912e5, type: 2}
+  - {fileID: 11400000, guid: 92ac9a2525d2f4435b1036bb98e9741a, type: 2}
+  - {fileID: 11400000, guid: 993d72e99c95b4dc981c55721e415594, type: 2}
+  - {fileID: 11400000, guid: 6fd803254518a44babaac8f8782ca4bd, type: 2}
+  - {fileID: 11400000, guid: 25ad9a254e10744d38451c4add9c8c0d, type: 2}
   isCutscene: 1
