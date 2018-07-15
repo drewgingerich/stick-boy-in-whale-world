@@ -9,8 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
-  m_Name: 17
+  m_Name: 1
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
   lines:
-  - Wait what?
+  - '*RUUUMBLE*'
+  - Ohhh stickboi, this one is bad.
+  - That Taco Bell trash I accidentally ate is not sitting well.
+  - Do me a solid and get rid of the solid in my colon.
+  - See what I did there? Good thing you have my comedy to keep you company down there.
+  - Anyways just poke it apart with your stick or something.

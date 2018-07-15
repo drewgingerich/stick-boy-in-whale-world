@@ -9,8 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
-  m_Name: 12
+  m_Name: 1
   m_EditorClassIdentifier: 
-  character: {fileID: 11400000, guid: 8a299d997aa9242b38b0a030672fcea3, type: 2}
+  character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
   lines:
-  - Thank you Mr. Whale, you're so kind!
+  - Ohh MAN whatarush.
+  - Deep breaths. Deep breaths.
+  - YEAH. Makes me feel alive again. Nice one stickboi.
+  - I should probably stop doing so much coke though.
+  - Haha ya right, what am I even saying?!
