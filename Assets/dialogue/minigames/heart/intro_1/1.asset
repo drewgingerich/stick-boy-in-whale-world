@@ -13,5 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
   lines:
-  - UURRRRK, MY HEART
-  - haaaaaa. Hit my heart chambers in the order they blink to restart it
+  - So how's it goin' down there stickboi?
+  - Everything's been quite for a hot sec. You're doing great Stickboi.
+  - '...'
+  - Wait, nevermind my heart's not beating.
+  - Yaaa so you should probably fix that. Like, now.
+  - I'm not a whale heart sugeon. Figure it out, stickboi, Jesus.
+  - I mean, do you wanna live in a dead, bloated whale carcass?!
