@@ -8,14 +8,10 @@ public class HeartGameManager : MonoBehaviour {
 
 	public UnityEvent OnSucceed;
 
-	[Header("Balance")]
 	[SerializeField] int startingPatternLength = 1;
 	[SerializeField] float blinkTime = 0.5f;
 	[SerializeField] float betweenBlinkTime = 0.1f;
-
-	[Header("UI Setup")]
 	[SerializeField] Animator heartAnimator;
-
 	[SerializeField] List<HeartChamber> heartChambers;
 	[SerializeField] TriggerEventOnEnter demoTrigger;
 
@@ -34,6 +30,7 @@ public class HeartGameManager : MonoBehaviour {
 		foreach(HeartChamber chamber in heartChambers) {
 			chamber.OnHit += ChamberHit;
 		}
+		demoTrigger.gameObject.SetActive(false);
 	}
 
 	public void OnKillWhale() {
@@ -48,6 +45,7 @@ public class HeartGameManager : MonoBehaviour {
 	public void Play() {
 		heartAnimator.SetBool("stopHeart", true);
 		GeneratePattern(difficulty);
+		demoTrigger.gameObject.SetActive(true);
 		demoTrigger.TurnOn();
 	}
 
@@ -109,6 +107,7 @@ public class HeartGameManager : MonoBehaviour {
 	void Succeed() {
 		difficulty++;
 		heartAnimator.SetBool("stopHeart", false);
+		demoTrigger.gameObject.SetActive(false);
 		demoTrigger.TurnOff();
 		OnSucceed.Invoke();
 	}
