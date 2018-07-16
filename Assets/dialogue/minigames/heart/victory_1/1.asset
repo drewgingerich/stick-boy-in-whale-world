@@ -13,5 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
   lines:
-  - Yes, my boy. That the big thump I missed.
-  - No get out of there, I don't want you fucking up my heart again.
+  - I've missed that hearty thumping in my chest.
+  - . . . Do whales have chests?
+  - Anyways get out of there. Shoo!
+  - I don't want you fucking up my heart again.

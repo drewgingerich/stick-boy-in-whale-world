@@ -3658,7 +3658,9 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   dialogueSequence:
   - {fileID: 11400000, guid: 52c1c7f30088cbf42af597ef2b3b826c, type: 2}
-  dialoguePool: []
+  - {fileID: 11400000, guid: dbad9c43edf8940dc9a2443681e66c1e, type: 2}
+  dialoguePool:
+  - {fileID: 11400000, guid: b6e340cc1508f4ef1bd9696fa5876a33, type: 2}
 --- !u!4 &1164732625
 Transform:
   m_ObjectHideFlags: 0
@@ -4904,7 +4906,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   dialogueSequence:
   - {fileID: 11400000, guid: 2ded19b2e5ac43743bcd06fa599a4579, type: 2}
-  dialoguePool: []
+  dialoguePool:
+  - {fileID: 11400000, guid: ef0b622d24e9c466db503a82d3456e19, type: 2}
 --- !u!1 &1741680784
 GameObject:
   m_ObjectHideFlags: 0

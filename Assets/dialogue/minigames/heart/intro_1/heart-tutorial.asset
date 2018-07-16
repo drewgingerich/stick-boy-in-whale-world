@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Name: heart-tutorial
   m_EditorClassIdentifier: 
   pieces:
-  - {fileID: 11400000, guid: 9b716dac85f433e4290242bad17bb862, type: 2}
+  - {fileID: 11400000, guid: d13589f1c6f9e40eb9d96b4dd067e2df, type: 2}
+  - {fileID: 11400000, guid: 01a2804b147e744d9bccf4203f2a1e92, type: 2}
+  - {fileID: 11400000, guid: 26fb60163c60e4af9909df192659529a, type: 2}
+  - {fileID: 11400000, guid: 8e21d155f2d18499998d6f726b38deaa, type: 2}
+  - {fileID: 11400000, guid: aacf32aa5697840779ed238a0b92379e, type: 2}
+  - {fileID: 11400000, guid: 4a937776c98f64a5c8b122719f81533b, type: 2}
   isCutscene: 1
