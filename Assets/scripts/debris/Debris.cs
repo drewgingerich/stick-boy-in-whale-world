@@ -24,6 +24,7 @@ public class Debris : MonoBehaviour {
 
 	public void Spawn() {
 		gameObject.SetActive(true);
+		hitsTaken = 0;
 		// animator.SetTrigger(spawnHash);
 	}
 	
