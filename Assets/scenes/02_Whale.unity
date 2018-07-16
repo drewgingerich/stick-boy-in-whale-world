@@ -543,7 +543,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   dialogueSequence:
   - {fileID: 11400000, guid: 63a35e017e743e143a9407d7f93b19e4, type: 2}
-  dialoguePool: []
+  dialoguePool:
+  - {fileID: 11400000, guid: 8183c43744899427b9b1933c3ebec7af, type: 2}
 --- !u!1001 &204351787
 Prefab:
   m_ObjectHideFlags: 0
@@ -4195,7 +4196,8 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   dialogueSequence:
   - {fileID: 11400000, guid: 19140368050f6034f83ad810765531a6, type: 2}
-  dialoguePool: []
+  dialoguePool:
+  - {fileID: 11400000, guid: 3af5c6232c9ba4e439f45e1645f717d0, type: 2}
 --- !u!4 &1443662926
 Transform:
   m_ObjectHideFlags: 0

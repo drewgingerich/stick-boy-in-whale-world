@@ -13,16 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
   lines:
-  - '*COUGH*'
-  - OW, FUCK
-  - '*COUGH COUGH*'
-  - My lung collapsed.
-  - '*WEEZE*'
-  - 'Just poke it to inflate it- '
-  - '*COUGH*'
-  - in time with my-
-  - '*WEEZE*'
-  - good lung.
-  - '. . . '
-  - '. . . '
-  - '*COUGH*'
+  - HAHA YES!
+  - I'LL NEVER DIEEEE!

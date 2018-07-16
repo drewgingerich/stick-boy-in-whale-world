@@ -11,18 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39cfa6c843e3346d1b0c8555ee00b802, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  character: {fileID: 11400000, guid: e7e6e22e183df42b5b7ac65e5f9181c0, type: 2}
+  character: {fileID: 0}
   lines:
-  - '*COUGH*'
-  - OW, FUCK
-  - '*COUGH COUGH*'
-  - My lung collapsed.
-  - '*WEEZE*'
-  - 'Just poke it to inflate it- '
-  - '*COUGH*'
-  - in time with my-
-  - '*WEEZE*'
-  - good lung.
-  - '. . . '
-  - '. . . '
+  - Lung-
   - '*COUGH*'
