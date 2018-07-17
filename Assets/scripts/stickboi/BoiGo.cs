@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class StomachBoiGo : MonoBehaviour {
+public class BoiGo : MonoBehaviour {
 
 	[Header("Oh shit!")]
 	[SerializeField] float acceleration = 30;

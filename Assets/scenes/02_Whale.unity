@@ -646,6 +646,25 @@ MonoBehaviour:
   dialogueSequence:
   - {fileID: 11400000, guid: 928cbe2c5164ad845831225fe5f97cc8, type: 2}
   dialoguePool: []
+--- !u!1 &273931239 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1515522913484658, guid: 0667fd92e31184bcf8fc8eca2efa202e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1837300460}
+--- !u!114 &273931240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 273931239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30a3138e425649feb3d5a01193ef706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceleration: 30
+  maxVelocity: 20
+  friction: 2
 --- !u!1 &278677859
 GameObject:
   m_ObjectHideFlags: 0
@@ -5227,7 +5246,9 @@ Prefab:
       propertyPath: m_Name
       value: Stickboi
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114559430565182036, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
+    - {fileID: 120686702179122768, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0667fd92e31184bcf8fc8eca2efa202e, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1837300461 stripped
