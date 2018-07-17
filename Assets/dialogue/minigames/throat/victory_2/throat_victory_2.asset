@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c211e691a8ecf48b28b0b8c820c2d102, type: 3}
+  m_Name: throat_victory_2
+  m_EditorClassIdentifier: 
+  pieces:
+  - {fileID: 11400000, guid: 260ad53ed2b0f4f61b57c288720729a9, type: 2}
+  - {fileID: 11400000, guid: cdf0cc3b83ebb4f7190254727f58e2d3, type: 2}
+  - {fileID: 11400000, guid: 33573cdb9ab854670ac23f09cefb817c, type: 2}
+  - {fileID: 11400000, guid: a3ba844f7c24e46c6bfa1363a364711d, type: 2}
+  - {fileID: 11400000, guid: 107e64c2c1aa24554b15a165617d747f, type: 2}
+  isCutscene: 0

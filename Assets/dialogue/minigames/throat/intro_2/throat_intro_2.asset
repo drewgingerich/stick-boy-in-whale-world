@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c211e691a8ecf48b28b0b8c820c2d102, type: 3}
+  m_Name: throat_intro_2
+  m_EditorClassIdentifier: 
+  pieces:
+  - {fileID: 11400000, guid: c99dae860505f437c91e6d42c0ac04ae, type: 2}
+  - {fileID: 11400000, guid: 8e8a08ac778254b1eb69c87b835f4c93, type: 2}
+  - {fileID: 11400000, guid: 44eebb06eea7b4805a10dc943a9a6395, type: 2}
+  - {fileID: 11400000, guid: e391783a3795a4ac1b1a963224b1a53b, type: 2}
+  - {fileID: 11400000, guid: c895f90a852aa42c5a16b31162462220, type: 2}
+  - {fileID: 11400000, guid: 0c36cf3e720d847e7a9ef720d71f0151, type: 2}
+  - {fileID: 11400000, guid: d44617864e0c94c65973bf0753986c6b, type: 2}
+  isCutscene: 0
