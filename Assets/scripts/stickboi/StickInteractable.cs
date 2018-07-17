@@ -4,25 +4,19 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class StickInteractable : MonoBehaviour {
-	public UnityEvent OnPokedByStick;
-	public GameObject onHitSparks;
 
-	void OnCollisionEnter2D(Collision2D collision) {
-		if( collision.gameObject.CompareTag("Stick") ) {
-			HitByStick();
-		}
+	public UnityEvent OnHit;
+
+	[SerializeField] GameObject OnHitSparks;
+
+	void Awake() {
+		gameObject.layer = LayerMask.NameToLayer("Stick");
 	}
 
-	/// <summary>
-	/// Notifies that we've been hit! 🚢
-	/// </summary>
-	/// <param name="hit">Look at the documentation of <see cref="PlayerSwingStick.GetFirstObjHitByStick"/> for more details</param>
-	public void HitByStick( RaycastHit2D hit = new RaycastHit2D() ) {
-		OnPokedByStick.Invoke();
-		if( onHitSparks != null ) {
-			Instantiate( onHitSparks, hit.point, onHitSparks.transform.rotation );
+	public void Hit(RaycastHit2D hit) {
+		if( OnHitSparks != null ) {
+			Instantiate(OnHitSparks, hit.point, OnHitSparks.transform.rotation, transform);
 		}
-		Debug.Log( gameObject + " has been hit by a stick!" );
+		OnHit.Invoke();
 	}
-
 }
