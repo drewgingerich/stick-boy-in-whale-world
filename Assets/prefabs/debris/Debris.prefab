@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1855432142649016}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 1.48, z: 0}
+  m_LocalPosition: {x: -0.41, y: 1.48, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f8aae95d9236e4c8d3475d9c9eaa11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnPokedByStick:
+  OnHit:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114578151887660724}
@@ -103,7 +103,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  onHitSparks: {fileID: 1788076779154248, guid: 852d1fddaa2f988418b1a39a0e7a8459,
+  OnHitSparks: {fileID: 1788076779154248, guid: 852d1fddaa2f988418b1a39a0e7a8459,
     type: 2}
 --- !u!114 &114578151887660724
 MonoBehaviour:
@@ -116,9 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b825ad9c2492c419a8501cd4957680c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToDestroy: 0.5
-  chainPokeMinimumTime: 0.4
-  hideOnStart: 1
+  hitsToDestroy: 1
 --- !u!212 &212755911908489992
 SpriteRenderer:
   m_ObjectHideFlags: 1

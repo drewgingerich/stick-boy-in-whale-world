@@ -11,15 +11,16 @@ public class StickboiController : MonoBehaviour {
 
 	[Header("Stick parameters")]
 	[SerializeField] float stickRadius = 0.2f;
-	[SerializeField] float swingDistance = 0.5f;
+	[SerializeField] float swingDistance = 1f;
 	ContactFilter2D filter;
 	RaycastHit2D[] hitBuffer;
 	int hitBufferSize = 8;
 
 	void Awake() {
 		rb2d = GetComponent<Rigidbody2D>();
-		int stickLayerIndex = LayerMask.NameToLayer("Stick");
+		int stickLayerIndex = 1 << LayerMask.NameToLayer("Stick");
 		filter = new ContactFilter2D();
+		filter.useLayerMask = true;
 		filter.SetLayerMask(stickLayerIndex);
 		hitBuffer = new RaycastHit2D[hitBufferSize];
 	}
@@ -33,13 +34,17 @@ public class StickboiController : MonoBehaviour {
 
 	void SwingStick() {
 		Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Vector2 direction = (mousePosition - transform.position).normalized;
+		Vector2 direction = mousePosition - transform.position;
+		direction = direction.normalized;
 		int numHits = Physics2D.CircleCast(transform.position, stickRadius, direction, filter, hitBuffer, swingDistance);
+		Debug.Log(numHits);
 		for (int i = 0; i < numHits && i < hitBufferSize; i++) {
+			Debug.Log("Hello");
 			RaycastHit2D hit = hitBuffer[i];
 			var interactable = hit.collider.GetComponent<StickInteractable>();
 			if (interactable != null) {
 				interactable.Hit(hit);
+				break;
 			}
 		}
 	}
