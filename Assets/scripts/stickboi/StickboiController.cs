@@ -37,9 +37,7 @@ public class StickboiController : MonoBehaviour {
 		Vector2 direction = mousePosition - transform.position;
 		direction = direction.normalized;
 		int numHits = Physics2D.CircleCast(transform.position, stickRadius, direction, filter, hitBuffer, swingDistance);
-		Debug.Log(numHits);
 		for (int i = 0; i < numHits && i < hitBufferSize; i++) {
-			Debug.Log("Hello");
 			RaycastHit2D hit = hitBuffer[i];
 			var interactable = hit.collider.GetComponent<StickInteractable>();
 			if (interactable != null) {
