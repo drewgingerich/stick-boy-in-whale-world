@@ -15,6 +15,13 @@ public class StickboiController : MonoBehaviour {
 	ContactFilter2D filter;
 	RaycastHit2D[] hitBuffer;
 	int hitBufferSize = 8;
+	bool paused = false;
+
+	public void SetPause(bool value) {
+		paused = value;
+		if (value)
+			rb2d.velocity = Vector2.zero;
+	}
 
 	void Awake() {
 		rb2d = GetComponent<Rigidbody2D>();
@@ -26,6 +33,8 @@ public class StickboiController : MonoBehaviour {
 	}
 
 	void Update () {
+		if (paused)
+			return;
 		Vector2 inputDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;		
 		rb2d.velocity = (Vector3)inputDirection * speed;
 		if (Input.GetMouseButtonDown(0))
