@@ -2619,9 +2619,29 @@ Prefab:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114990542240361062, guid: 132b575198d2e482288d09c95bcfc475,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 833740528}
+    - target: {fileID: 114990542240361062, guid: 132b575198d2e482288d09c95bcfc475,
+        type: 2}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 833740527}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 132b575198d2e482288d09c95bcfc475, type: 2}
   m_IsPrefabParent: 0
+--- !u!212 &833740527 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212491355345953036, guid: 132b575198d2e482288d09c95bcfc475,
+    type: 2}
+  m_PrefabInternal: {fileID: 833740526}
+--- !u!95 &833740528 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95809344842185318, guid: 132b575198d2e482288d09c95bcfc475,
+    type: 2}
+  m_PrefabInternal: {fileID: 833740526}
 --- !u!4 &853031080 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4671384155845850, guid: 7d04f7e5997db4e4ca0361912c05dd14,
